@@ -1,7 +1,14 @@
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3000");
+export function connectWS(url) {
+  return new Promise((resolve, reject) => {
+    const socket = io(url);
+    socket.on("connect", () => {
+      resolve(socket);
+    });
 
-export function connect() {
-  return socket;
+    socket.on("error", () => {
+      reject();
+    });
+  });
 }

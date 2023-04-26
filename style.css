@@ -22,10 +22,24 @@ body,
   gap: 16px;
 }
 
-.container .video {
-  width: 600px;
-  height: auto;
-  border: 1px solid #000;
+.container .videos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.container .videos .video {
+  display: flex;
+  width: 400px;
+  gap: 4px;
+  padding: 16px;
+  flex-direction: column;
+}
+
+.container .videos .video .camera {
+  width: 400px;
+  background-color: #00000011;
 }
 
 .primary {
