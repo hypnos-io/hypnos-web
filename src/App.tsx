@@ -1,5 +1,9 @@
+import Sidebar from './components/Sidebar';
+
 function App() {
-  return <h1>Hypnos</h1>
+  return (
+    <Sidebar></Sidebar>
+  );
 }
 
 export default App
