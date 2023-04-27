@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.Sidebar__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    align-items: center;
+    padding: 10px;
+    padding-left: 30px;
+    background-color: #141533;
+    border-radius: 38px 0px 38px 38px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.Sidebar__button > img {
+    width: 25px;
+    padding-right: 15px;
+}
+
+.Sidebar__button--active {
+    font-family: 'Open Sans';
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    padding-left: 30px;
+    border-radius: 38px 0px 38px 38px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: #2164F0;
+}
+
+.Sidebar__button--active > img {
+    width: 25px;
+    padding-right: 15px;
+}
