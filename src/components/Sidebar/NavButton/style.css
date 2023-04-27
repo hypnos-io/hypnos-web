@@ -16,6 +16,10 @@
     color: white;
 }
 
+.Sidebar__button:hover {
+    background-color: #162D40;
+}
+
 .Sidebar__button > img {
     width: 25px;
     padding-right: 15px;
@@ -35,6 +39,10 @@
     text-decoration: none;
     color: white;
     background-color: #2164F0;
+}
+
+.Sidebar__button--active:hover {
+    background-color: #141ED9;
 }
 
 .Sidebar__button--active > img {
