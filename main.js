@@ -1,5 +1,7 @@
 import { getCameras, open } from "./src/camera.js";
 import "./style.css";
+import { FindAll } from "./src/use_cases/workStations/FindAll.ts";
+import WorkStationService from "./src/services/WorkStationService";
 
 async function configureWorkstationCameras(workstations) {
   const allDevices = await getCameras();
@@ -35,9 +37,11 @@ function setEvents() {
 }
 
 async function main() {
-  const workstations = [1, 2, 3];
-
-  await configureWorkstationCameras(workstations);
+  const workStationService = new WorkStationService();
+  const findAll = new FindAll(workStationService);
+  const numStations = await findAll.execute();
+  const stations = Array.from({ length: numStations }, (_, i) => i + 1);
+  await configureWorkstationCameras(stations);
   setEvents();
   // const socket = await connectWS("http://localhost:3333");
 }

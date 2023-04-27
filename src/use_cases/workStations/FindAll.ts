@@ -1,10 +1,15 @@
 import WorkStationService from "../../services/WorkStationService";
 
 export class FindAll {
-  constructor(private readonly workStationService: WorkStationService){}
+  private workStationService: WorkStationService;
 
-  async execute() {
-    return this.workStationService.fetchAll();
+  constructor(workStationService: WorkStationService){
+    this.workStationService = workStationService;
+  }
+
+  async execute(): Promise<number> {
+    const data = await this.workStationService.fetchAll();
+    return data;
   }
 
 }

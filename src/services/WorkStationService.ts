@@ -1,14 +1,12 @@
 
-
-export default class WorkStationService{
+export default class WorkStationService {
   async register(){
-
   }
 
-  async fetchAll(){
-    const numberSt = Math.random() * 10;
-    return numberSt;
-  }
+  async fetchAll(): Promise<number>{
 
+    return Math.random() * 10;;
+
+  }
 
 }
