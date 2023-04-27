@@ -13,6 +13,9 @@ git clone git@github.com:hypnos-io/hypnos-web.git
 # Muda diretório
 cd hypnos-web
 
+# Instala as dependências
+npm install
+
 # Executa o projeto
 npm run dev
 ```
