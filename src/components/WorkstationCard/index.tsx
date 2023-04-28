@@ -3,7 +3,7 @@ import React from 'react'
 import {Workstation} from '../../entities/workstation'
 import './styles.css'
 
-type BadgeStatus = 'off' | 'alert' | 'critical'
+export type BadgeStatus = 'off' | 'alert' | 'critical'
 
 interface Props {
   workstation: Workstation
