@@ -60,3 +60,7 @@
   width: 62px;
   height: 62px;
 }
+
+.container .content .cards .card.none {
+  opacity: 0.5;
+}
