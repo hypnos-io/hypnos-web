@@ -1,7 +1,8 @@
 import React from 'react'
+import {WorkstationStatus} from '../../components/WorkstationStatus'
 
 const DetectionPage: React.FC = () => {
-  return <h1>Página de detecção</h1>
+  return <WorkstationStatus />
 }
 
 export default DetectionPage
