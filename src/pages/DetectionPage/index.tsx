@@ -1,12 +1,13 @@
 import React from 'react'
 import Sidebar from '../../components/Sidebar'
+import {WorkstationStatus} from '../../components/WorkstationStatus'
 import './style.css'
 
 const DetectionPage: React.FC = () => {
   return (
     <div className="detectionPage">
       <Sidebar></Sidebar>
-      <h1>Página de detecção</h1>
+      <WorkstationStatus />
     </div>
   )
 }

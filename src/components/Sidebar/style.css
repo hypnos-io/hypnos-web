@@ -1,61 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 * {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .Sidebar__container {
-    font-family: 'Open Sans';
-    background-color: #141533;
-    max-width: 325px;
-    min-height: 100vh;
-    color: white;
-    border-radius: 0px 62px 0px 0px;
+  font-family: 'Open Sans';
+  background-color: #141533;
+  width: 40%;
+  min-height: 100vh;
+  color: white;
+  border-radius: 0px 62px 0px 0px;
 }
 
 .Sidebar__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 30px;
-    padding-left: 15px;
-    padding-top: 150px;
-    padding-right: 10px;
-    box-sizing: border-box;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 .Sidebar__buttons__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .Sidebar__header {
-    display: flex;
-    padding-left: 30px;
+  display: flex;
+  padding: 24px;
+  min-width: 380px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .Sidebar__header > img {
-    top: 145px;
-    left: 24px;
-    width: 72px;
-    height: 72px;
-    padding-right: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 62px;
+  height: 62px;
 }
 
 .Sidebar__greeting__container > h1 {
-    font-weight: bold;
-    font-size: 24px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .Sidebar__greeting__container > p {
-    font-weight: normal;
-    font-size: 18px;
+  font-weight: normal;
+  font-size: 18px;
 }
 
 .Sidebar__navbuttons__container {
-    margin-top: 30px;
+  margin-top: 30px;
 }
