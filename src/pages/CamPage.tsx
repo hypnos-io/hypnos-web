@@ -1,5 +1,4 @@
 import React from "react"
-import Screen from "../components/CamScreens";
 import { getCameras, open } from "../camera.js";
 import { FindAll } from "../use_cases/workStations/FindAll.js";
 import WorkStationService from "../services/WorkStationService.js";

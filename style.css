@@ -20,6 +20,7 @@ body,
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  margin-top: 30px;
 }
 
 .container .videos {
@@ -72,4 +73,8 @@ body,
   background-color: black;
   color: white;
   border: 0;
+}
+
+.PageTitle {
+  text-align: center;
 }
