@@ -42,7 +42,6 @@ export const WorkstationStatus: React.FC = () => {
         return workstationOnline
       }
     )
-    allWorkstationsWithDefaultStatus.forEach(onStatus)
     setWorkstations(allWorkstationsWithDefaultStatus)
   }
 
@@ -57,16 +56,20 @@ export const WorkstationStatus: React.FC = () => {
     })
   }, [])
 
-  function onStatus(workstation: WorkstationOnline) {
-    if (!socket) return
-    onWorkstationStatus(socket, workstation, changeWorkstationStatus)
+  useEffect(() => {
+    if (socket && workstations) {
+      workstations.forEach((workstation) => onStatus(workstation, socket))
+    }
+  }, [socket, workstations])
+
+  function onStatus(workstation: WorkstationOnline, socketio: Socket) {
+    onWorkstationStatus(socketio, workstation, changeWorkstationStatus)
   }
 
   function changeWorkstationStatus(socketResponse: SocketDataResponse) {
     if (!workstations) return
     const workstationsValue = socketResponse.workstation
     const newWorkstations = [...workstations]
-
     // Find workstation by response workstation value
     for (const [index, workstation] of newWorkstations.entries()) {
       if (workstation.value === workstationsValue) {
