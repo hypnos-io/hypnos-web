@@ -1,6 +1,6 @@
 export const FPS = 10;
 
-export async function open(video, deviceId) {
+export async function open(video, deviceId, onFrame) {
   const mediaDevices = navigator.mediaDevices;
   if (!mediaDevices || !mediaDevices.getUserMedia)
     throw new Error("getUserMedia() not supported.");
