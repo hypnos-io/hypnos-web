@@ -1,7 +1,7 @@
 import React from "react"
 import { getCameras, open } from "../../camera.js";
-import { FindAll } from "../../use_cases/workStations/FindAll.js";
-import WorkStationService from "../../services/WorkStationService.js";
+import { FetchAll } from "../../use_cases/workstation/FetchAll.js";
+import { WorkstationService } from "../../services/workstation_service.js";
 import { useState, useEffect } from "react";
 import "C:/Users/callidus/Desktop/Repositórios Github/hypnos-web/src/pages/CamsPage/style.css";
 import CamScreens from "../../components/CamScreens/CamScreens.js";
@@ -9,7 +9,7 @@ import CamScreens from "../../components/CamScreens/CamScreens.js";
 
 function CamsPage() {
     const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
-    const [workstations, setWorkstations] = useState<number[]>([]);
+    const [workstations, setWorkstations] = useState<string[]>([]);
   
     useEffect(() => {
       async function fetchDevices() {
@@ -21,10 +21,11 @@ function CamsPage() {
   
     useEffect(() => {
       async function fetchWorkstations() {
-        const workStationService = new WorkStationService();
-        const findAll = new FindAll(workStationService);
-        const numStations = await findAll.execute();
-        const stations = Array.from({ length: numStations }, (_, i) => i + 1);
+        const workStationService = new WorkstationService();
+        const fetchAll = new FetchAll(workStationService);
+        const numStations = await fetchAll.execute();
+        const stations = Array.from({ length: numStations.length }, (_, i) => numStations[i].value);
+        console.log(stations)
         setWorkstations(stations);
       }
       fetchWorkstations();
