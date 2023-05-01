@@ -1,3 +1,4 @@
+import React from 'react'
 import fatigueIcon from '../assets/img/Grupo 293@2x.png'
 import backIcon from '../assets/img/Icon open-account-logout@2x.png'
 import NavButton from './NavButton'

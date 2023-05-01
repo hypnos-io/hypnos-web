@@ -1,15 +1,15 @@
 import React from "react"
-import { getCameras, open } from "../camera.js";
-import { FindAll } from "../use_cases/workStations/FindAll.js";
-import WorkStationService from "../services/WorkStationService.js";
+import { getCameras, open } from "../../camera.js";
+import { FindAll } from "../../use_cases/workStations/FindAll.js";
+import WorkStationService from "../../services/WorkStationService.js";
 import { useState, useEffect } from "react";
-import "C:/Users/callidus/Desktop/Repositórios Github/hypnos-web/style.css";
-import CamScreens from "../components/CamScreens";
+import "C:/Users/callidus/Desktop/Repositórios Github/hypnos-web/src/pages/CamsPage/style.css";
+import CamScreens from "../../components/CamScreens/CamScreens.js";
 
 
-function CamPage() {
-    const [devices, setDevices] = useState([]);
-    const [workstations, setWorkstations] = useState([]);
+function CamsPage() {
+    const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
+    const [workstations, setWorkstations] = useState<number[]>([]);
   
     useEffect(() => {
       async function fetchDevices() {
@@ -53,6 +53,7 @@ function CamPage() {
   
     return (
       <div className="container">
+        <h1>Página de Detecção</h1>
          <div className="videos">
   {workstations && workstations.map((workstation) => (
     <CamScreens
@@ -72,4 +73,4 @@ function CamPage() {
     );
   }
   
-  export default CamPage;
+  export default CamsPage;

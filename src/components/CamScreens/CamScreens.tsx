@@ -1,5 +1,5 @@
 import React from "react";
-import "C:/Users/callidus/Desktop/Repositórios Github/hypnos-web/style.css";
+import "C:/Users/callidus/Desktop/Repositórios Github/hypnos-web/src/components/CamScreens/style.css";
 
 function CamScreens({ workstation, devices, onChange }) {
   return (
