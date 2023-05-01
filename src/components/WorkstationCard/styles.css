@@ -8,6 +8,7 @@
 .container .content .cards .card {
   --badge-color: #bfc0c3;
   width: 48%;
+  flex-wrap: wrap;
   border-radius: 6px;
   box-shadow: 0px 3px 6px #00000029;
   background-color: #f9f9f9;
@@ -55,8 +56,11 @@
 
 .container .content .cards .card .profile {
   object-fit: cover;
-
   border-radius: 50%;
   width: 62px;
   height: 62px;
+}
+
+.container .content .cards .card.none {
+  opacity: 0.5;
 }
