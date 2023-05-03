@@ -1,4 +1,5 @@
 import React from 'react'
+import usersIcon from '../assets/img/Icon awesome-users@2x.png'
 import fatigueIcon from '../assets/img/Grupo 293@2x.png'
 import backIcon from '../assets/img/Icon open-account-logout@2x.png'
 import NavButton from './NavButton'
@@ -26,6 +27,9 @@ function Sidebar() {
             </NavButton>
             <NavButton path="/image-capture" icon={fatigueIcon}>
               Iniciar captura de imagem
+            </NavButton>
+            <NavButton path="/signUp" icon={usersIcon}>
+              Cadastros
             </NavButton>
           </div>
           <NavButton path="/logout" icon={backIcon}>
