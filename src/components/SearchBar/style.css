@@ -1,0 +1,35 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    position: absolute;
+    top: 140px;
+    left: 755px;
+  }
+
+.search-bar input::placeholder {
+  color: #000000;
+  font: normal normal normal 16px/20px Open Sans;
+  }
+  
+  
+  input {
+    width: 310px;
+    height: 40px;
+    border: none;
+    border-radius: 24px;
+    outline: none;
+    padding-left: 45px;
+    color: #000000;
+    font: normal normal normal 16px/20px Open Sans;
+  }
+
+.search-icon {
+  height: 20px;
+  width: 20px;
+  top: 10px;
+  position: absolute;
+  right: 278px;
+}
+
+  

@@ -2,3 +2,15 @@
     display: flex;
 }
 
+.upper-title {
+    position: absolute;
+    top: 62px;
+    left: 760px;
+    width: 174px;
+    height: 49px;
+    text-align: left;
+    font: normal normal 600 36px/28px Open Sans;
+    letter-spacing: 0px;
+    color: #191818;
+    opacity: 1;
+}

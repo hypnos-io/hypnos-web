@@ -1,0 +1,11 @@
+.backRectangle {
+    top: 130px;
+    left: 735px;
+    width: 900px;
+    height: 650px;
+    position: absolute;
+    background-color: #EFF1F5;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 22px;
+  }
+  

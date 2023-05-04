@@ -1,0 +1,19 @@
+.vertical-list {
+    width: 830px;
+    position: absolute;
+    top: 292px;
+    left: 770px;
+  }
+  
+  .vertical-list a {
+    background-color: #FFFFFF;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    border: 1px solid #E3E3E3;
+  }
+  
+  .vertical-list a:hover {
+    background-color: #ccc;
+  }

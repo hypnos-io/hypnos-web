@@ -1,0 +1,39 @@
+.add-user-button {
+    background-color: #2164f0;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 168px;
+    left: 1395px;
+    width: 200px;
+    height: 42px;
+    border-radius: 20px;
+    opacity: 1;
+    font: normal normal normal 16px/20px Open Sans;
+  }
+  
+  .add-user-button:hover {
+    opacity: 0.8;
+  }
+
+  .add-user-button span {
+    position: absolute;
+    top: 10.5px;
+    left: 42px;
+    font: normal normal normal 17px/20px Open Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+  }
+
+  .user-plus-icon {
+    height: 20px;
+    width: 24px;
+    top: 10px;
+    position: absolute;
+    right: 165px;
+  }
+  
