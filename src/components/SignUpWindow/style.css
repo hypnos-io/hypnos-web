@@ -1,9 +1,9 @@
 .signup-window {
-  position: fixed;
-  top: 52.5%;
-  left: 68%;
+  position: absolute;
+  top: 450px;
+  left: 1000px;
   transform: translate(-50%, -50%);
-  width: 445px;
+  width: 500px;
   height: 510px;
   border: none;
   border-radius: 35px 0px 10px 10px;
@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 3;
+  z-index: 101;
 }
 
 .signup-window .white-half {
@@ -141,7 +141,7 @@
 
 .uploaded-image {
   position: absolute;
-  right: -47.5px;
+  right: 150px;
   height: 285px;
   width: 445px;
   top: -225px;
@@ -159,8 +159,8 @@
 
 .confirmation-window {
   position: fixed;
-  top: 43%;
-  left: 68%;
+  top: 400px;
+  left: 1000px;
   transform: translate(-50%, -50%);
   width: 350px;
   height: 250px;
@@ -171,7 +171,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 3;
+  z-index: 101;
 }
 
 .confirmation-window .white-half {
@@ -249,4 +249,13 @@
   letter-spacing: 0px;
   color: #FFFFFF;
   opacity: 1;
+}
+
+.exit-button-confirm {
+  position: absolute;
+  cursor: pointer;
+  bottom: 214px;
+  left: 310px;
+  z-index: 3;
+  height: 27px;
 }

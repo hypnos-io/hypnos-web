@@ -6,7 +6,7 @@
 .Sidebar__container {
   font-family: 'Open Sans';
   background-color: #141533;
-  width: 40%;
+  width: 380px;
   min-height: 100vh;
   color: white;
   border-radius: 0px 62px 0px 0px;
@@ -30,7 +30,7 @@
 .Sidebar__header {
   display: flex;
   padding: 24px;
-  min-width: 380px;
+  width: 380px;
   align-items: center;
   justify-content: flex-start;
   gap: 20px;

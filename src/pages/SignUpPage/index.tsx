@@ -10,9 +10,10 @@ import SignUpWindow from '../../components/SignUpWindow'
 import './style.css'
 
 const SignUpPage: React.FC = () => {
-  const [showWindow, setShowWindow] = useState(false); // Add state to track whether or not to show the window
-
-  const [foundOperators, setFoundOperators] = useState(['João', 'Maria', 'Pedro', 'Reinaldo']);
+  const [showWindow, setShowWindow] = useState(false);
+  const [blurBackground, setBlurBackground] = useState(false);
+  const [foundOperators, setFoundOperators] = useState(['João', 'Maria', 'Pedro', 'Reinaldo', 'João', 'Maria', 'Pedro', 'Reinaldo',
+  'João', 'Maria', 'Pedro', 'Reinaldo',]);
   const [allOperators, setAllOperators] = useState(foundOperators);
 
   const handleFilter = (searchTerm) => {
@@ -29,24 +30,35 @@ const SignUpPage: React.FC = () => {
   };
 
   const handleAddUserClick = () => {
-    setShowWindow(true); // Set state to show the window when the button is clicked
+    setShowWindow(true);
+    setBlurBackground(true);
+  };
+
+  const handleWindowClose = () => {
+    setShowWindow(false);
+    setBlurBackground(false);
   };
 
   return (
     <div className="signUpPage">
-      <Sidebar></Sidebar>
-      <h1 className="upper-title">Cadastros</h1>
-      <img className="awesome-users-icon" src={awesomeUsersDark} alt="Awesome Users Icon"></img>
-      <h2 className="column-title-name">Nome</h2>
-      <h2 className="column-title-enrollment">Matrícula</h2>
-      <GrayRectBackground></GrayRectBackground>
-      <HeaderRectangle></HeaderRectangle>
-      <SearchBar onSearch={handleFilter} />
-      <VerticalList links={foundOperators} />
-      <AddUserButton text="Adicionar Usuário" onClick={handleAddUserClick}></AddUserButton>
-      {showWindow && <SignUpWindow onWindowClose={() => setShowWindow(false)} />}
+      <div className={`page-content ${blurBackground ? "blur" : ""}`}>
+        <Sidebar></Sidebar>
+        {blurBackground && <div className='shadow'></div>}
+        <h1 className="upper-title">Cadastros</h1>
+        <img className="awesome-users-icon" src={awesomeUsersDark} alt="Awesome Users Icon"></img>
+        <h2 className="column-title-name">Nome</h2>
+        <h2 className="column-title-enrollment">Matrícula</h2>
+        <GrayRectBackground></GrayRectBackground>
+        <HeaderRectangle></HeaderRectangle>
+        <SearchBar onSearch={handleFilter} />
+        <VerticalList links={foundOperators} />
+        <AddUserButton text="Adicionar Usuário" onClick={handleAddUserClick}></AddUserButton>
+      </div>
+      {showWindow && <SignUpWindow onWindowClose={handleWindowClose} />}
     </div>
   );
 };
 
 export default SignUpPage;
+
+

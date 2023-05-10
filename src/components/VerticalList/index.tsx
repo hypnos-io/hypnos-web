@@ -7,6 +7,7 @@ function VerticalList ({ links }) {
       <div className="vertical-list">
         {links.map((link, index) => (
           <a href="#" key={index}>
+            <div className="circle"></div>
             {link}
           </a>
         ))}
@@ -16,4 +17,3 @@ function VerticalList ({ links }) {
 }
 
 export default VerticalList;
-

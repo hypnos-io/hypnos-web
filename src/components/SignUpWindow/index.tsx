@@ -37,6 +37,13 @@ function SignUpWindow(props) {
       props.onWindowClose();
     }
   };
+
+  const handleExitConfClick = () => {
+    setIsVisibleConf(false);
+    if (typeof props.onWindowClose === 'function') {
+      props.onWindowClose();
+    }
+  };
   
   const handleClick1 = (event) => {
     event.preventDefault();
@@ -79,7 +86,7 @@ function SignUpWindow(props) {
           <form className='form-data'>
             <img src={exitButton} className='exit-button' onClick={handleExitButtonClick}></img>
             <div className="image-uploader">
-              {image && <img src={image} alt="Uploaded" className="uploaded-image"/>}
+              
               <label htmlFor="file-input">
                 <img src={uploadButton} alt="Upload" className='upload-button'/>
               </label>
@@ -108,6 +115,7 @@ function SignUpWindow(props) {
         <div className='confirmation-window'>
           <div className="white-half"></div>
           <div className='white-circle'></div>
+          <img src={exitButton} className='exit-button-confirm' onClick={handleExitConfClick}></img>
           <img src={checkIcon} className='check-icon'></img>
           <h2 className='confirmation-title'>Usuário Adicionado!</h2>
           <img src={workersImage} className='workers-image'></img>

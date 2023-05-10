@@ -4,7 +4,7 @@
     margin: 1rem;
     position: absolute;
     top: 140px;
-    left: 755px;
+    left: 487px;
   }
 
 .search-bar input::placeholder {
@@ -12,9 +12,8 @@
   font: normal normal normal 16px/20px Open Sans;
   }
   
-  
   input {
-    width: 310px;
+    width: 400px;
     height: 40px;
     border: none;
     border-radius: 24px;
@@ -29,7 +28,5 @@
   width: 20px;
   top: 10px;
   position: absolute;
-  right: 278px;
+  right: 370px;
 }
-
-  
