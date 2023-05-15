@@ -1,12 +1,12 @@
 .signup-window {
   position: absolute;
-  top: 450px;
-  left: 1000px;
+  top: 430px;
+  left: 1050px;
   transform: translate(-50%, -50%);
-  width: 500px;
-  height: 510px;
+  width: 525px;
+  height: 593px;
   border: none;
-  border-radius: 35px 0px 10px 10px;
+  border-radius: 35px 10px 10px 10px;
   background-color: rgb(218, 210, 210);
   padding: 20px;
   display: flex;
@@ -17,19 +17,20 @@
 
 .signup-window .white-half {
   width: 100%;
-  height: 49%;
+  height: 47%;
   border-radius: 0px 0px 10px 10px;
   background-color: #FFFFFF;
   position: absolute;
-  top: 260px;
+  top: 314.5px;
 }
 
 .form-input {
-  margin-bottom: 5px;
+  margin-bottom: 44px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 350px;
+  width: 440px;
+  height: 2px;
 }
 
 .form-label {
@@ -40,6 +41,15 @@
 
 .form-field {
   width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #F3F3F3 0% 0% no-repeat padding-box;
+}
+
+.drop-down-personas {
+  width: 100%;
   padding: 8px;
   font-size: 16px;
   border: none;
@@ -47,9 +57,10 @@
   background: #F3F3F3 0% 0% no-repeat padding-box;
 }
 
+
 .form-data {
   position: absolute;
-  top: 305px;
+  top: 360px;
 }
 
 .form-input input::placeholder {
@@ -62,7 +73,8 @@
 
 .form-title {
   position: absolute;
-  bottom: 100px;
+  bottom: 138.5px;
+  font-size: 22px;
 }
 
 .btn {
@@ -89,8 +101,8 @@
 
 .image-uploader {
   position: absolute;
-  bottom: 200px;
-  left: 350px;
+  bottom: 235px;
+  left: 432px;
 }
 
 .upload-button {
@@ -108,10 +120,10 @@
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 145px;
-  width: 180px;
-  left: 208px;
-  height: 42px;
+  top: 178px;
+  width: 190px;
+  left: 275px;
+  height: 37px;
   border-radius: 20px;
   opacity: 1;
   font: normal normal normal 16px/20px Open Sans;
@@ -121,15 +133,16 @@
   background-color: transparent;
   color: #707070;
   font-weight: bold;
+  text-align: center;
   border-radius: 5px;
   padding: 10px;
   border: 1px solid #707070;
   cursor: pointer;
   position: absolute;
-  top: 145px;
+  top: 178px;
   width: 100px;
-  left: 100px;
-  height: 42px;
+  left: 165px;
+  height: 37px;
   border-radius: 20px;
   opacity: 1;
   font: normal normal normal 16px/20px Open Sans;
@@ -140,19 +153,19 @@
 }
 
 .uploaded-image {
-  position: absolute;
-  right: 150px;
-  height: 285px;
-  width: 445px;
-  top: -225px;
-  border-radius: 35px 0px 0px 0px;
+  position: fixed;
+  left: 0px;
+  height: 345px;
+  width: 525px;
+  bottom: 277.3px;
+  border-radius: 35px 10px 0px 0px;
 }
 
 .exit-button {
   position: absolute;
   cursor: pointer;
-  bottom: 380px;
-  left: 350px;
+  bottom: 470px;
+  left: 432px;
   z-index: 2;
   height: 35px;
 }
@@ -230,7 +243,7 @@
   position: absolute;
   top: 280px;
   left: 75px;
-  width: 200px;
+  width: 220px;
   height: 42px;
   border-radius: 20px;
   opacity: 1;
@@ -258,4 +271,55 @@
   left: 310px;
   z-index: 3;
   height: 27px;
+}
+
+.radio-box-manager {
+  position: fixed;
+  top: 485px;
+  height: 17px;
+  left: -140px;
+}
+
+.label-manager {
+  position: absolute;
+  left: 36px;
+  top: 138.8px;
+}
+
+.radio-box-leader {
+  position: absolute;
+  top: 140px;
+  height: 17px;
+  left: -80px;
+}
+
+.label-leader {
+  position: absolute;
+  left: 137px;
+  top: 138.8px;
+}
+
+.radio-box-operator {
+  position: fixed;
+  top: 140px;
+  height: 17px;
+}
+
+.label-operator {
+  position: absolute;
+  left: 216px;
+  top: 138.8px;
+}
+
+.radio-group-users {
+  position: fixed;
+  bottom: 60px;
+  left: 52px;
+}
+
+.password-eye {
+  position: absolute;
+  top: 103px;
+  right: 20px;
+  cursor: pointer;
 }

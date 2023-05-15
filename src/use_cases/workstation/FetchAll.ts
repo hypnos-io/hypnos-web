@@ -4,6 +4,7 @@ export class FetchAll {
   constructor(private readonly workstationService: WorkstationService) {}
 
   async execute() {
-    return this.workstationService.fetchAll()
+    const foundWorkstations = await this.workstationService.fetchAll();
+    return foundWorkstations;
   }
 }

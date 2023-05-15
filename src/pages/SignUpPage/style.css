@@ -25,7 +25,7 @@
 .column-title-name {
     position: absolute;
     top: 243px;
-    left: 580px;
+    left: 535px;
     text-align: left;
     font: normal normal 600 24px/29px Open Sans;
     letter-spacing: 0px;
@@ -37,7 +37,31 @@
 .column-title-enrollment {
     position: absolute;
     top: 243px;
-    left: 1100px;
+    left: 910px;
+    text-align: left;
+    font: normal normal 600 24px/29px Open Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    z-index: 3;
+}
+
+.column-title-permissions {
+    position: absolute;
+    top: 243px;
+    left: 1175px;
+    text-align: left;
+    font: normal normal 600 24px/29px Open Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    z-index: 3;
+}
+
+.column-title-actions {
+    position: absolute;
+    top: 243px;
+    left: 1440px;
     text-align: left;
     font: normal normal 600 24px/29px Open Sans;
     letter-spacing: 0px;
