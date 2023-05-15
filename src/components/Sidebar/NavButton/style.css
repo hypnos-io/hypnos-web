@@ -22,7 +22,7 @@
 }
 
 .Sidebar__button > img {
-    width: 25px;
+    width: 35px;
     padding-right: 15px;
 }
 
@@ -48,6 +48,6 @@
 }
 
 .Sidebar__button--active > img {
-    width: 25px;
+    width: 35px;
     padding-right: 15px;
 }

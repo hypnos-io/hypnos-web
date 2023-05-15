@@ -1,0 +1,36 @@
+.password-input {
+    display: inline-block;
+}
+
+.password-input.error {
+    color: red;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container input {
+    padding-right: 2.5rem; /* Espaçamento para o botão */
+    width: 100%;
+}
+
+.input-container button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 60px;
+    padding: 0px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .input-container button svg {
+    width: 1.5rem; 
+    height: 1.5rem; 
+  }
