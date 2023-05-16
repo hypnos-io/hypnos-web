@@ -5,12 +5,16 @@ import exitButton from '../assets/img/Icon ionic-ios-close-circle-outline@2x.png
 import workersImage from '../assets/img/Grupo 390@2x.png'
 import checkIcon from '../assets/img/Grupo 394@2x.png'
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material'
-import { Create } from '../../use_cases/employees/Create';
+import { CreateEmployee } from '../../use_cases/employees/Create';
 import { EmployeeService } from '../../services/employee_service';
+import { SupervisorService } from '../../services/supervisor_service';
+import { LeaderService } from '../../services/leader_service';
 import { RolesEnum } from '../../use_cases/authorization/roles';
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs"
 import { VITE_DEFAULT_PROFILE_IMAGE } from '../../constants';
 import './style.css';
+import { CreateSupervisor } from '../../use_cases/supervisors/Create';
+import { CreateLeader } from '../../use_cases/leaders/Create';
 
 function SignUpWindow(props) {
   
@@ -34,12 +38,35 @@ function SignUpWindow(props) {
     {
       setIsVisible(false);
       setIsVisibleConf(true);
-      const add_employ = new Create(new EmployeeService());
-      let image_upload = await add_employ.uploadImg(imageFile);
-      if (imageFile === '')
-        image_upload = defaultImageURL;
-      const role_number = await roleToEnum()
-      const signup_user = await add_employ.execute(matricula, nomeCompleto, senha, new Date(), role_number, image_upload);
+      
+      if (role === 'Operator')
+      {
+        const add_employ = new CreateEmployee(new EmployeeService());
+        let image_upload = await add_employ.uploadImg(imageFile);
+        if (imageFile === '')
+          image_upload = defaultImageURL;
+        const role_number = await roleToEnum()
+        const signup_employee = await add_employ.execute(matricula, nomeCompleto, new Date(), role_number, image_upload);
+      }
+      else if (role === 'manager')
+      {
+        const add_supervisor = new CreateSupervisor(new SupervisorService());
+        let image_upload = await add_supervisor.uploadImg(imageFile);
+        if (imageFile === '')
+          image_upload = defaultImageURL;
+        const role_number = await roleToEnum()
+        const signup_supervisor = await add_supervisor.execute(matricula, nomeCompleto, senha, new Date(), role_number, image_upload);
+      }
+      else if (role === 'leader')
+      {
+        const add_leader = new CreateLeader(new LeaderService());
+        let image_upload = await add_leader.uploadImg(imageFile);
+        if (imageFile === '')
+          image_upload = defaultImageURL;
+        const role_number = await roleToEnum()
+        const signup_leader = await add_leader.execute(matricula, nomeCompleto, senha, new Date(), role_number, image_upload);
+      }
+
     }
     else
       alert(error)

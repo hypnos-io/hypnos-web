@@ -1,40 +1,42 @@
 import { api } from '../api/axios';
 import axios from 'axios';
-import { Employee } from "../entities/employee";
+import { Leader } from '../entities/leader';
 import { VITE_CLOUD_IMAGES_NAME, VITE_UPLOAD_PRESET } from '../constants';
 
-const PATH = '/employees';
+const PATH = '/leaders';
 
-export class EmployeeService {
+export class LeaderService {
 
   async create(
     registration: string,
     fullName: string,
+    password: string,
     admissionDate: Date,
     role: Number,
     imageURL: string,
-  ): Promise<Employee> {
+  ): Promise<Leader> {
 
-    const employeeData = {
+    const leaderData = {
       registration: registration,
       fullName: fullName,
+      password: password,
       admissionDate: admissionDate,
       role: role,
       imageURL: imageURL,
     };
 
     try {
-      const response = await api.post<Employee>(PATH, employeeData);
-      const createdEmployee: Employee = response.data;
-      return createdEmployee;
+      const response = await api.post<Leader>(PATH, leaderData);
+      const createdLeader: Leader = response.data;
+      return createdLeader;
     } catch (error) {
       console.error(error);
-      throw new Error('Failed to create employee');
+      throw new Error('Failed to create leader');
     }
   }
 
-  async fetchAll (): Promise<Employee[]> {
-      const {data} = await api.get<Employee[]>(PATH)
+  async fetchAll (): Promise<Leader[]> {
+      const {data} = await api.get<Leader[]>(PATH)
       return data
   }
 
@@ -58,17 +60,14 @@ export class EmployeeService {
     }
   }
 
-  async delete(id_employee: string): Promise<void> {
+  async delete(id_leader: string): Promise<void> {
     try {
-      const response = await api.delete(`${PATH}/${id_employee}`);
+      const response = await api.delete(`${PATH}/${id_leader}`);
       console.log(response.data);
     } catch (error) {
       console.error(error);
-      throw new Error('Failed to delete employee');
+      throw new Error('Failed to delete leader');
     }
   }  
 
 }
-
-
-

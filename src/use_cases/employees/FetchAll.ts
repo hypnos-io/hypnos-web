@@ -1,6 +1,6 @@
 import { EmployeeService } from "../../services/employee_service";
 
-export class FetchAll {
+export class FetchAllEmployees {
   constructor(private readonly employeeService: EmployeeService) {}
 
   async execute() {

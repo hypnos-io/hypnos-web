@@ -7,9 +7,13 @@ import SearchBar from '../../components/SearchBar'
 import AddUserButton from '../../components/AddUserButton'
 import awesomeUsersDark from '../../components/assets/img/Icon awesome-users-black@2x.png'
 import SignUpWindow from '../../components/SignUpWindow'
-import { FetchAll } from '../../use_cases/employees/FetchAll';
+import { FetchAllEmployees } from '../../use_cases/employees/FetchAll';
+import { FetchAllLeaders } from '../../use_cases/leaders/FetchAll'
 import { EmployeeService } from '../../services/employee_service';
 import './style.css'
+import { LeaderService } from '../../services/leader_service'
+import { SupervisorService } from '../../services/supervisor_service'
+import { FetchAllSupervisors } from '../../use_cases/supervisors/FetchAll'
 
 const SignUpPage: React.FC = () => {
   const [showWindow, setShowWindow] = useState(false);
@@ -40,9 +44,12 @@ const SignUpPage: React.FC = () => {
   };
 
   useEffect(() => {
-    async function getEmployees() {
-      const employers = await new FetchAll(new EmployeeService()).execute();
-      const employers_list = employers.map(obj => {
+    async function getUsers() {
+      const employers = await new FetchAllEmployees(new EmployeeService()).execute();
+      const leaders = await new FetchAllLeaders(new LeaderService()).execute();
+      const supervisors = await new FetchAllSupervisors(new SupervisorService()).execute();
+  
+      const employersList = employers.map(obj => {
         let roleString = '';
         switch (obj.role) {
           case 0:
@@ -59,11 +66,53 @@ const SignUpPage: React.FC = () => {
         }
         return [obj.fullName, obj.imageURL, obj.registration, roleString, obj._id];
       });
-      setFoundOperators(employers_list);
-      setAllOperators(employers_list);
+  
+      const leadersList = leaders.map(obj => {
+        let roleString = '';
+        switch (obj.role) {
+          case 0:
+            roleString = 'Operário';
+            break;
+          case 1:
+            roleString = 'Gerente';
+            break;
+          case 2:
+            roleString = 'Líder';
+            break;
+          default:
+            roleString = 'Operário';
+        }
+        return [obj.fullName, obj.imageURL, obj.registration, roleString, obj._id];
+      });
+  
+      const supervisorsList = supervisors.map(obj => {
+        let roleString = '';
+        switch (obj.role) {
+          case 0:
+            roleString = 'Operário';
+            break;
+          case 1:
+            roleString = 'Gerente';
+            break;
+          case 2:
+            roleString = 'Líder';
+            break;
+          default:
+            roleString = 'Operário';
+        }
+        return [obj.fullName, obj.imageURL, obj.registration, roleString, obj._id];
+      });
+  
+      // Merge the three lists into a single list
+      const mergedList = employersList.concat(leadersList, supervisorsList);
+  
+      setFoundOperators(mergedList);
+      setAllOperators(mergedList);
     }
-    getEmployees();
+  
+    getUsers();
   }, []);
+  
 
   return (
     <div className="signUpPage">

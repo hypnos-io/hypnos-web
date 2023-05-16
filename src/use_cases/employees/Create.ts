@@ -1,17 +1,16 @@
 import { EmployeeService } from '../../services/employee_service'
 import { RolesEnum } from '../authorization/roles';
 
-export class Create {
+export class CreateEmployee {
   constructor(private readonly employeeService: EmployeeService) {}
 
   async execute(registration: string,
     fullName: string,
-    password: string,
     admissionDate: Date,
     role: Number,
     imageURL: string) {
 
-    const createdEmployee = await this.employeeService.create(registration, fullName, password, admissionDate, role, 
+    const createdEmployee = await this.employeeService.create(registration, fullName, admissionDate, role, 
       imageURL);
     return createdEmployee;
   }
