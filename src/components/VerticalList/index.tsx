@@ -45,10 +45,12 @@ function VerticalList ({ links }) {
       </div>
       {showConfirmation && (
         <div className="confirmation-box">
-          <p>Deseja deletar esse empregado da lista?</p>
+          <p className='title-confirmation-deleting'>Deseja excluir esse usuário?</p>
+          <div className='white-half'>
           <div className="confirmation-buttons">
-            <button onClick={handleConfirmDeleteClick}>Yes</button>
-            <button onClick={handleCancelDeleteClick}>No</button>
+            <button onClick={handleConfirmDeleteClick} className='exclude-button'>Excluir</button>
+            <button onClick={handleCancelDeleteClick} className='cancel-delete-button'>Cancelar</button>
+          </div>
           </div>
         </div>
       )}

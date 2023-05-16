@@ -9,10 +9,10 @@ export class Create {
     password: string,
     admissionDate: Date,
     role: Number,
-    profileImage: string) {
+    imageURL: string) {
 
     const createdEmployee = await this.employeeService.create(registration, fullName, password, admissionDate, role, 
-      profileImage);
+      imageURL);
     return createdEmployee;
   }
 

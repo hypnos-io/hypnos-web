@@ -57,7 +57,7 @@ const SignUpPage: React.FC = () => {
           default:
             roleString = 'Operário';
         }
-        return [obj.fullName, obj.profileImage, obj.registration, roleString, obj._id];
+        return [obj.fullName, obj.imageURL, obj.registration, roleString, obj._id];
       });
       setFoundOperators(employers_list);
       setAllOperators(employers_list);

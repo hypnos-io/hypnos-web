@@ -23,6 +23,7 @@ function SignUpWindow(props) {
   const [senha, setSenha] = useState('');
   const [role, setSelectedRole] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [operatorChosen, setOperatorChosen] = useState(false);
   const defaultImageURL = `${VITE_DEFAULT_PROFILE_IMAGE}`
 
   async function addUser (event) {
@@ -72,17 +73,16 @@ function SignUpWindow(props) {
     } 
 
     // validate the senha field
-    else if (senha.length < 1) {
+    else if (senha.length < 1 && !operatorChosen) {
       return 'A senha é obrigatória'
     
     } 
-    else if (senha.length < 6) {
+    else if (senha.length < 6 && !operatorChosen) {
       return 'A senha deve ter pelo menos 8 caracteres'
       
     }
-    else if (!/\d/.test(senha)) {
+    else if (!/\d/.test(senha) && !operatorChosen) {
       return "A senha deve conter ao menos um número"
-     
     }
 
     // validate the role field
@@ -126,6 +126,12 @@ function SignUpWindow(props) {
 
   const handleRadioChange = async (event) => {
     setSelectedRole(event.target.value);
+    if (event.target.value === 'Operator')
+    {
+       setOperatorChosen(true);
+    }
+    else
+      setOperatorChosen(false);
   };
 
 
@@ -155,19 +161,19 @@ function SignUpWindow(props) {
               <input type="text" placeholder='Nº de Matrícula' value={matricula} className="form-field" 
               onChange={(event) => setMatricula(event.target.value)} />
             </div>
-            <input
+            {!operatorChosen && <input
             type={showPassword ? "text" : "password"}
             placeholder="Senha"
             value={senha}
             className="form-field"
             onChange={(event) => setSenha(event.target.value)}
-          />
-          {!showPassword && <BsFillEyeFill
+          />}
+          {!showPassword && !operatorChosen && <BsFillEyeFill
             className="password-eye"
             onClick={() => setShowPassword(true)}
           >
           </BsFillEyeFill>}
-          {showPassword && <BsFillEyeSlashFill
+          {showPassword && !operatorChosen && <BsFillEyeSlashFill
             className="password-eye"
             onClick={() => setShowPassword(false)}>
           </BsFillEyeSlashFill>}
@@ -194,11 +200,11 @@ function SignUpWindow(props) {
         <div className='confirmation-window'>
           <div className="white-half"></div>
           <div className='white-circle'></div>
-          <img src={exitButton} className='exit-button-confirm' onClick={()=> {handleExitConfClick(), window.location.reload()}}></img>
+          <img src={exitButton} className='exit-button-confirm' onClick={()=> {handleExitConfClick()}}></img>
           <img src={checkIcon} className='check-icon'></img>
           <h2 className='confirmation-title'>Usuário Adicionado!</h2>
           <img src={workersImage} className='workers-image'></img>
-          <button className="back-initialpage-button" onClick={()=> {handleExitButtonClick(), window.location.reload()}}>Voltar à página inicial</button>
+          <button className="back-initialpage-button" onClick={()=> {handleExitButtonClick()}}>Voltar à página inicial</button>
         </div>
       )}
       </div>

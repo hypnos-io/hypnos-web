@@ -71,10 +71,10 @@
   left: 1000px;
   transform: translate(-50%, -50%);
   width: 350px;
-  height: 250px;
+  height: 135px;
   border: none;
-  border-radius: 35px 0px 10px 10px;
-  background-color: rgb(218, 210, 210);
+  border-radius: 35px 0px 0px 0px;
+  background-color: #141533;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -84,11 +84,11 @@
 
 .confirmation-box .white-half {
   width: 100%;
-  height: 60%;
+  height: 100%;
   border-radius: 0px 0px 10px 10px;
   background-color: #FFFFFF;
   position: absolute;
-  top: 190px;
+  top: 130px;
 }
 
 .employee-image {
@@ -103,4 +103,47 @@
   flex-direction: column;
   align-items: center;
   border-radius: 35px 0px 0px 0px;
+}
+
+.cancel-delete-button {
+  background-color: transparent;
+  color: #707070;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #707070;
+  cursor: pointer;
+  position: absolute;
+  top: 80px;
+  width: 100px;
+  left: 60px;
+  height: 37px;
+  border-radius: 20px;
+  opacity: 1;
+  font: normal normal normal 16px/20px Open Sans;
+}
+
+.exclude-button {
+  background-color: rgb(213, 10, 10);
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 80px;
+  width: 140px;
+  left: 170px;
+  height: 37px;
+  border-radius: 20px;
+  opacity: 1;
+  font: normal normal normal 16px/20px Open Sans;
+}
+
+.title-confirmation-deleting {
+  font: normal normal normal 20px/20px Open Sans;
+  color: white;
+  top: 45px;
+  position: fixed;
 }

@@ -7,5 +7,5 @@ export interface Employee extends User {
 
 export type EmployeeRequest = Omit<
   Employee,
-  '_id' | 'createdAt' | 'updatedAt' | 'role' | 'supervisor'
+  '_id' | 'createdAt' | 'updatedAt' | 'role' | 'supervisor' | 'password'
 >

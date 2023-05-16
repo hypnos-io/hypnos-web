@@ -72,8 +72,8 @@
   }
 
 .form-title {
-  position: absolute;
-  bottom: 138.5px;
+  position: fixed;
+  bottom: 239px;
   font-size: 22px;
 }
 
@@ -100,9 +100,9 @@
 }
 
 .image-uploader {
-  position: absolute;
-  bottom: 235px;
-  left: 432px;
+  position: fixed;
+  bottom: 335px;
+  left: 470px;
 }
 
 .upload-button {
@@ -162,10 +162,10 @@
 }
 
 .exit-button {
-  position: absolute;
+  position: fixed;
   cursor: pointer;
-  bottom: 470px;
-  left: 432px;
+  bottom: 565px;
+  left: 470px;
   z-index: 2;
   height: 35px;
 }

@@ -8,4 +8,18 @@
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 22px;
   }
+
+.refresh-icon {
+  position: absolute;
+  top: 171px;
+  left: 1290px;
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.refresh-icon:hover {
+  opacity: 0.6;
+}
+
   

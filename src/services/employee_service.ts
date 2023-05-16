@@ -13,7 +13,7 @@ export class EmployeeService {
     password: string,
     admissionDate: Date,
     role: Number,
-    profileImage: string,
+    imageURL: string,
   ): Promise<Employee> {
 
     const employeeData = {
@@ -22,7 +22,7 @@ export class EmployeeService {
       password: password,
       admissionDate: admissionDate,
       role: role,
-      profileImage: profileImage,
+      imageURL: imageURL,
     };
 
     try {
@@ -40,13 +40,13 @@ export class EmployeeService {
       return data
   }
 
-  async uploadToCloudinary(imageURL) {
+  async uploadToCloudinary(image) {
 
     try {
       // upload image to Cloudinary
       const cloudinaryUploadUrl = `https://api.cloudinary.com/v1_1/${VITE_CLOUD_IMAGES_NAME}/image/upload`;
       const formData = new FormData();
-      formData.append("file", imageURL);
+      formData.append("file", image);
       formData.append("upload_preset", VITE_UPLOAD_PRESET);
       formData.append("cloud_name", VITE_CLOUD_IMAGES_NAME);
       const response = await axios.post(cloudinaryUploadUrl, formData);
