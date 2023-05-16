@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import { Logout } from '../../../use_cases/authentication/logout';
+import { LogoutService } from '../../../services/logout_service';
 
 interface LogoutButtonProps {
     icon: string,
@@ -9,19 +10,15 @@ interface LogoutButtonProps {
 }
 
 function LogoutButton({ icon, path, children }: LogoutButtonProps) {
-    const handleLogout = () => {
-        axios.post('http://localhost:3000/logout') 
-        .then(response => {
-            if (response.status === 200) {
-                console.log('Logout successfully');
-            }
-            else if (response.status === 400) {
-                console.log(response.data);
-            }
-        })
-        .catch(error => {
-            console.error('Logout failed', error);
-        });
+    const LOGIN_URL = '/';
+
+    async function handleLogout() {
+        const logoutUC = new Logout(new LogoutService());
+        const response = await logoutUC.execute();
+
+        if (response.status === 200) {
+            window.location.href = LOGIN_URL;
+        }
     }
 
     return (

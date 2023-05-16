@@ -1,55 +1,70 @@
-import fatigueIcon from '../assets/img/Grupo 293@2x.png'
-import backIcon from '../assets/img/Icon open-account-logout@2x.png'
-import processIcon from '../assets/img/Icon ionic-ios-git-network@2x.png';
-import registerIcon from '../assets/img/Icon awesome-users@2x.png';
-import NavButton from './NavButton';
+import { useEffect, useState } from 'react';
+
+import fatigueIcon from '../assets/img/Sidebar/Grupo 293@2x.png'
+import backIcon from '../assets/img/Sidebar/Icon open-account-logout@2x.png'
+import processIcon from '../assets/img/Sidebar/Icon ionic-ios-git-network@2x.png';
+import registerIcon from '../assets/img/Sidebar/Icon awesome-users@2x.png';
+
 import './style.css'
-import {useEffect} from 'react';
+
 import LogoutButton from './LogoutButton';
-import axios from 'axios';
-import { can } from '../../use_cases/authorization/can';
+import NavButton from './NavButton';
+
+import { User } from '../../entities/user';
+import { AuthenticationService } from '../../services/authentication_service';
+import { Authenticate } from '../../use_cases/authentication/authenticate';
 
 function Sidebar() {
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/authenticated');
-        if (response.status === 200) {
-            console.log('teste');
-        }
-      } catch (error) {
-        console.log('Usuário não autenticado:', error);
-      }
-    };
+  const [user, setUser] = useState<User>();
 
-    checkAuthentication();
-  }, []);
+  const LOGIN_URL = '/';
 
-  const permissions = can(1);
+  async function getAuthenticatedUser() {
+    const authenticationUC = new Authenticate(new AuthenticationService());
+    const response = await authenticationUC.execute();
 
-  const navButtons: JSX.Element[] = [];
-  for (let i = 0; i < permissions.length; i++) {
-    if (permissions[i] === 'VIEW_HISTORY_FATIGUE') {
-      navButtons.push(
-        <NavButton key={i} path="/" icon={fatigueIcon}>Detecção de Fadiga</NavButton>
-      )
-    }
-    else if (permissions[i] === 'CREATE_PROCESS') {
-      navButtons.push(
-        <NavButton key={i} path="/process" icon={processIcon}>Processos</NavButton>
-      )
-    }
-    else if (permissions[i] === 'CREATE_EMPLOYEE') {
-      navButtons.push(
-        <NavButton key={i} path="/register" icon={registerIcon}>Cadastros</NavButton>
-      )
-    }
-    else if (permissions[i] === 'VIEW_CAMERAS') {
-      navButtons.push(
-        <NavButton key={i} path="/cameras" icon={registerIcon}>Câmeras</NavButton>
-      )
+    if (response.status === 200) {
+      setUser(response.data);
+    } else {
+      window.location.href = LOGIN_URL;
     }
   }
+
+  function renderButtons() {
+    if (user?.role === 0) {
+      return (
+        <></>
+      );
+    } else if (user?.role === 1) {
+      return (
+        <>
+          <NavButton path="/process" icon={processIcon}>Processos</NavButton>
+          <NavButton path="/register" icon={registerIcon}>Cadastros</NavButton>
+          <NavButton path="/cameras" icon={registerIcon}>Câmeras</NavButton>
+        </>
+      );
+    } else if (user?.role === 2) {
+      return (
+        <>
+          <NavButton path="/" icon={fatigueIcon}>Detecção de Fadiga</NavButton>
+        </>
+      );
+    }
+  }
+
+  function getUserRole() {
+    if (user?.role === 1) {
+      return 'Gerente';
+    } else if (user?.role === 2) {
+      return 'Líder';
+    }
+    return '';
+  }
+
+  useEffect(() => {
+    getAuthenticatedUser();
+  }, []);
+
 
   return (
     <div className="Sidebar__container">
@@ -60,17 +75,16 @@ function Sidebar() {
             <h1>
               Olá,
               <br />
-              Ana Maria
+              {user?.firstName}
             </h1>
-            <p>Líder</p>
+            <p>
+              {getUserRole()}
+            </p>
           </div>
         </div>
         <div className="Sidebar__buttons__container">
           <div className="Sidebar__navbuttons__container">
-            {navButtons}
-            <NavButton path="/image-capture" icon={fatigueIcon}>
-              Iniciar captura de imagem
-            </NavButton>
+            {renderButtons()}
           </div>
           <LogoutButton path="/login" icon={backIcon}>
             Sair
@@ -81,4 +95,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default Sidebar;

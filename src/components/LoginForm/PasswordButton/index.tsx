@@ -1,8 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
-import passwordEyeSlash from '../../assets/img/Login/Icon ionic-md-eye-off@2x.png';
 import './style.css';
 
-import { FaEye, FaEyeSlash, FaExclamationTriangle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
 type ILoginForm = {

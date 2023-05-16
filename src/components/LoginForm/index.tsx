@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import PasswordInput from './PasswordButton';
 import RegistrationInput from './RegistrationInput';
-import login from '../../use_cases/authentication/login';
+import { LoginService } from '../../services/login_service';
+import { Login } from '../../use_cases/authentication/login';
 
 import './style.css';
 
@@ -17,10 +18,26 @@ const LoginForm: React.FC = () => {
         password: '',
     });
 
+    const [errorMessage, setErrorMessage] = useState<string>('');
+
+    const HOME_URL = '/home';
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        login(formData.registration, formData.password);
+        const registration = formData.registration;
+        const password = formData.password;
+
+        const loginUC = new Login(new LoginService());
+        const response = await loginUC.execute(registration, password);
+        
+        if (response.status === 200) {
+            console.log('Usuário logado!');
+            window.location.href = HOME_URL;
+        } else if (response.status === 400) {
+            console.log('Não foi possível efetuar login!');
+            setErrorMessage(response.data.message);
+        }
     };
 
     return (
@@ -28,6 +45,7 @@ const LoginForm: React.FC = () => {
             <div className="Login__inputs__container">
                 <RegistrationInput formData={formData} setFormData={setFormData}></RegistrationInput>
                 <PasswordInput formData={formData} setFormData={setFormData}></PasswordInput>
+                <span className="error__message">{errorMessage}</span>
                 <div>
                     <input type="checkbox" />
                     <label>Manter-me conectado</label>

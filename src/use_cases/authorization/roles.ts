@@ -1,5 +1,6 @@
 export enum RolesEnum {
-    EMPLOYEE,
-    SUPERVISOR,
-    LEADER,
+    EMPLOYEE = 0,
+    SUPERVISOR = 1,
+    LEADER = 2,
 }
+  

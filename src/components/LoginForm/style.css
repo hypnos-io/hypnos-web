@@ -43,3 +43,7 @@
     color: black;
     text-decoration: none;
 }
+
+.error__message {
+    color: red;
+}
