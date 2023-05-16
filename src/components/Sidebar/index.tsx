@@ -4,6 +4,7 @@ import fatigueIcon from '../assets/img/Sidebar/Grupo 293@2x.png'
 import backIcon from '../assets/img/Sidebar/Icon open-account-logout@2x.png'
 import processIcon from '../assets/img/Sidebar/Icon ionic-ios-git-network@2x.png';
 import registerIcon from '../assets/img/Sidebar/Icon awesome-users@2x.png';
+import cameraIcon from '../assets/img/Sidebar/Icon metro-video-camera@2x.png';
 
 import './style.css'
 
@@ -40,7 +41,7 @@ function Sidebar() {
         <>
           <NavButton path="/process" icon={processIcon}>Processos</NavButton>
           <NavButton path="/register" icon={registerIcon}>Cadastros</NavButton>
-          <NavButton path="/cameras" icon={registerIcon}>Câmeras</NavButton>
+          <NavButton path="/cameras" icon={cameraIcon}>Câmeras</NavButton>
         </>
       );
     } else if (user?.role === 2) {
