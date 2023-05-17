@@ -1,0 +1,67 @@
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+.generic-table {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.generic-table thead {
+  height: 80px;
+  font-size: 24px/28px;
+  font-weight: 600;
+  border-radius: 16px 16px 0px 0px;
+  background-color: #141533;
+  color: #fff;
+}
+
+.generic-table thead tr {
+  height: 100%;
+  display: flex;
+}
+
+.generic-table thead tr th {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.generic-table tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background-color: #e3e3e3;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.generic-table tbody tr {
+  display: flex;
+  background-color: #fff;
+}
+
+.generic-table tbody tr td {
+  height: 72px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px/24px;
+}
