@@ -1,0 +1,32 @@
+.process__table {
+    border-collapse: collapse;
+    display: table;
+    width: 100%;
+}
+
+.table__row:nth-child(odd) {
+    background-color: #E3E3E3;
+}
+
+.table__row:nth-child(even) {
+    background-color: white;
+}
+
+.table__header {
+    background-color: #5522D3;
+    color: white;
+    height: 50px;
+}
+
+.table__row {
+    text-align: center;
+}
+
+.table__row td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.table__row img {
+    width: 15px;
+}
