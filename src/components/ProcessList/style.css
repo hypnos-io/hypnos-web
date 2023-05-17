@@ -44,6 +44,7 @@
     border-radius: 20px;
     font-size: 15px;
     padding: 10px;
+    cursor: pointer;
 }
 
 .add__process__container img {

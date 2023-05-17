@@ -39,17 +39,3 @@
 .process__header__title img:hover{
     cursor: pointer;
 }
-
-.add__task__container {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 0 0 15px 15px;
-    height: 50px;
-    gap: 10px;
-    padding-left: 10px;
-}
-
-.add__task__container img {
-    width: 30px;
-}
