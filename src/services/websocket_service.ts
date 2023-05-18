@@ -20,6 +20,8 @@ export interface SocketDataResponse extends SocketData {
   imageStatus: FatigueStatus;
 }
 
+export const FPS = 10
+
 export type Callback = (data: SocketDataResponse) => void;
 
 export class WebSocketService {
@@ -40,26 +42,27 @@ export class WebSocketService {
     });
   }
 
-  onWorkstationStatus(workstation: Workstation, callback: Callback) {
-    if (!this.socket) {
-      throw new Error('Socket is not connected');
-    }
-    this.socket.on(`notify-status:workstation-${workstation.value}`, callback);
+  onWorkstationStatus(socket: Socket,
+    workstation: Workstation,
+    callback: Callback
+  ) {
+    socket.on(`notify-status:workstation-${workstation.value}`, callback)
   }
 
-  sendWorkstationImage(images: Image[], workstation?: Workstation) {
-    if (!workstation?.employee || !workstation.employee._id) return;
-
+  sendWorkstationImage(socket: Socket,
+    images: Image[],
+    workstation: Workstation
+  ) {
+    if (!workstation.employee || !workstation.employee._id) return
+  
     const data: SocketDataRequest = {
       employeeId: workstation.employee._id,
-      fps: 10,
-      id: this.socket?.id,
+      fps: FPS,
+      id: socket.id,
       images,
       workstation: workstation.value,
-    };
-    if (!this.socket) {
-      throw new Error('Socket is not connected');
     }
-    this.socket.emit('process-image', data);
+    socket.emit('process-image', data)
   }
+
 }

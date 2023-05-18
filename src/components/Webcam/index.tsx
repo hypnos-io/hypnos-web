@@ -2,17 +2,19 @@ import React, {ChangeEvent, useEffect, useRef, useState} from 'react'
 import {Camera} from '../../entities/camera'
 import {Workstation} from '../../entities/workstation'
 import { SendWorkstationImages } from '../../use_cases/websocket/SendImages'
-
+import { ConnectSocket } from '../../use_cases/websocket/Connect'
 import {useNavigate} from 'react-router-dom'
 import {FPS} from '../../services/websocket/fatigue'
 import {WorkstationService} from '../../services/workstation_service'
 import {Update} from '../../use_cases/workstation/Update'
 import './styles.css'
+import { Socket } from 'socket.io-client'
 
 interface Props {
   camera: Camera
   workstationAssociated?: Workstation
   sectorId: string
+  socket?: Socket
   workstationsWithoutCamera: Workstation[]
   sendWebcamImages: boolean
 }
@@ -21,6 +23,7 @@ export const Webcam: React.FC<Props> = ({
   camera,
   workstationAssociated,
   sectorId,
+  socket,
   workstationsWithoutCamera,
   sendWebcamImages: sendWebcamStatus,
 }) => {
@@ -64,7 +67,8 @@ export const Webcam: React.FC<Props> = ({
     images.push(buffer)
     if (images.length >= 10) {
       console.log(`Enviando imagens de câmera ${camera.name}`)
-      await workstationImages.sendImagesWithConnection(images, workstation)
+      if (workstationAssociated !== undefined && socket !== undefined)
+        await workstationImages.sendImagesWithConnection(socket, images, workstationAssociated);
       images = []
     }
 

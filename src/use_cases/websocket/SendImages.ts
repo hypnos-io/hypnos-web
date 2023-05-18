@@ -1,3 +1,4 @@
+import { Socket } from 'socket.io-client';
 import { Workstation } from '../../entities/workstation';
 import { Image, WebSocketService } from '../../services/websocket_service';
 
@@ -8,10 +9,9 @@ export class SendWorkstationImages {
     this.socketService = new WebSocketService();
   }
 
-  async sendImagesWithConnection(images: Image[], workstation?: Workstation ) {
+  async sendImagesWithConnection(socket: Socket, images: Image[], workstation: Workstation ) {
     try {
-      const socket = await this.socketService.connect();
-      this.socketService.sendWorkstationImage(images, workstation);
+      this.socketService.sendWorkstationImage(socket, images, workstation);
     } catch (error) {
       console.error('Error connecting to WebSocket server:', error);
     }

@@ -1,5 +1,4 @@
 import React, {ChangeEvent, useEffect, useRef, useState} from 'react'
-
 import {CgCloseO as CloseIcon} from 'react-icons/cg'
 import {ImVideoCamera as CameraIcon} from 'react-icons/im'
 import {IoMdSearch as SearchIcon} from 'react-icons/io'
@@ -18,7 +17,7 @@ import './styles.css'
 
 export const CamPanelPage: React.FC = () => {
   const navigate = useNavigate()
-  const [{workstations, sectorId}] = useState<CamPanelLoaderResult>(
+  const [{workstations, sectorId, socket}] = useState<CamPanelLoaderResult>(
     useLoaderData() as CamPanelLoaderResult
   )
   const [cameras, setCameras] = useState<Camera[]>([])
@@ -43,6 +42,7 @@ export const CamPanelPage: React.FC = () => {
     )
     return (
       <Webcam
+        socket={socket}
         key={`camera-${index}`}
         sectorId={sectorId}
         camera={camera}
