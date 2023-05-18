@@ -3,10 +3,11 @@ import {CamConfigPage} from './pages/CamConfigPage'
 import {CamPanelPage} from './pages/CamPanelPage'
 import {camPanelLoader} from './pages/CamPanelPage/camPanelLoader'
 import DetectionPage from './pages/DetectionPage'
+import LoginPage from  './pages/LoginPage'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/home',
     element: <DetectionPage />,
   },
   {
@@ -18,4 +19,7 @@ export const router = createBrowserRouter([
     element: <CamPanelPage />,
     loader: camPanelLoader,
   },
+    path: '/',
+    element: <LoginPage />,
+  }
 ])

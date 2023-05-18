@@ -12,6 +12,7 @@
   margin-bottom: 10px;
   text-decoration: none;
   color: white;
+  margin: 15px;
 }
 
 .Sidebar__button:hover {
@@ -37,6 +38,8 @@
   text-decoration: none;
   color: white;
   background-color: #2164f0;
+    width: 35px;
+    padding-right: 15px;
 }
 
 .Sidebar__button--active:hover {
@@ -44,6 +47,6 @@
 }
 
 .Sidebar__button--active > img {
-  width: 25px;
-  padding-right: 15px;
+    width: 35px;
+    padding-right: 15px;
 }
