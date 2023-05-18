@@ -10,7 +10,7 @@ export class WorkstationService {
     return data
   }
 
-  async fecthAllBySector(sectorId: string): Promise<Workstation[]> {
+  async fetchAllBySector(sectorId: string): Promise<Workstation[]> {
     const {data} = await api.get<Workstation[]>(`/sectors/${sectorId}${PATH}`)
     return data
   }
