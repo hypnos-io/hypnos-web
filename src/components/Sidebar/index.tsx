@@ -1,71 +1,76 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react'
 
 import fatigueIcon from '../assets/img/Sidebar/Grupo 293@2x.png'
+import registerIcon from '../assets/img/Sidebar/Icon awesome-users@2x.png'
+import processIcon from '../assets/img/Sidebar/Icon ionic-ios-git-network@2x.png'
+import cameraIcon from '../assets/img/Sidebar/Icon metro-video-camera@2x.png'
 import backIcon from '../assets/img/Sidebar/Icon open-account-logout@2x.png'
-import processIcon from '../assets/img/Sidebar/Icon ionic-ios-git-network@2x.png';
-import registerIcon from '../assets/img/Sidebar/Icon awesome-users@2x.png';
-import cameraIcon from '../assets/img/Sidebar/Icon metro-video-camera@2x.png';
 
 import './style.css'
 
-import LogoutButton from './LogoutButton';
-import NavButton from './NavButton';
+import LogoutButton from './LogoutButton'
+import NavButton from './NavButton'
 
-import { User } from '../../entities/user';
-import { AuthenticationService } from '../../services/authentication_service';
-import { Authenticate } from '../../use_cases/authentication/authenticate';
+import {User} from '../../entities/user'
+import {AuthenticationService} from '../../services/authentication_service'
+import {Authenticate} from '../../use_cases/authentication/authenticate'
 
 function Sidebar() {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User>()
 
-  const LOGIN_URL = '/';
+  const LOGIN_URL = '/'
 
   async function getAuthenticatedUser() {
-    const authenticationUC = new Authenticate(new AuthenticationService());
-    const response = await authenticationUC.execute();
+    const authenticationUC = new Authenticate(new AuthenticationService())
+    const response = await authenticationUC.execute()
 
-    if (response.status === 200) {
-      setUser(response.data);
-    } else {
-      window.location.href = LOGIN_URL;
-    }
+    // if (response.status === 200) {
+    //   setUser(response.data)
+    // } else {
+    //   window.location.href = LOGIN_URL
+    // }
   }
 
   function renderButtons() {
     if (user?.role === 0) {
-      return (
-        <></>
-      );
+      return <></>
     } else if (user?.role === 1) {
       return (
         <>
-          <NavButton path="/process" icon={processIcon}>Processos</NavButton>
-          <NavButton path="/register" icon={registerIcon}>Cadastros</NavButton>
-          <NavButton path="/cameras" icon={cameraIcon}>Câmeras</NavButton>
+          <NavButton path="/process" icon={processIcon}>
+            Processos
+          </NavButton>
+          <NavButton path="/signUp" icon={registerIcon}>
+            Cadastros
+          </NavButton>
+          <NavButton path="/cameras" icon={cameraIcon}>
+            Câmeras
+          </NavButton>
         </>
-      );
+      )
     } else if (user?.role === 2) {
       return (
         <>
-          <NavButton path="/" icon={fatigueIcon}>Detecção de Fadiga</NavButton>
+          <NavButton path="/" icon={fatigueIcon}>
+            Detecção de Fadiga
+          </NavButton>
         </>
-      );
+      )
     }
   }
 
   function getUserRole() {
     if (user?.role === 1) {
-      return 'Gerente';
+      return 'Gerente'
     } else if (user?.role === 2) {
-      return 'Líder';
+      return 'Líder'
     }
-    return '';
+    return ''
   }
 
   useEffect(() => {
-    getAuthenticatedUser();
-  }, []);
-
+    getAuthenticatedUser()
+  }, [])
 
   return (
     <div className="Sidebar__container">
@@ -76,11 +81,9 @@ function Sidebar() {
             <h1>
               Olá,
               <br />
-              {user?.firstName}
+              {user?.name}
             </h1>
-            <p>
-              {getUserRole()}
-            </p>
+            <p>{getUserRole()}</p>
           </div>
         </div>
         <div className="Sidebar__buttons__container">
@@ -96,4 +99,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar;
+export default Sidebar

@@ -15,9 +15,7 @@ export const WorkstationCard: React.FC<Props> = ({workstation, status}) => {
 
   const hasEmployee = !!employee
 
-  const fullName = hasEmployee
-    ? `${employee.firstName} ${employee.lastName}`
-    : 'Sem operador'
+  const fullName = hasEmployee ? `${employee.name}` : 'Sem operador'
 
   const registration = employee ? `#${employee.registration}` : ''
 

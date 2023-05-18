@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
+import {CgCloseO as CloseIcon} from 'react-icons/cg'
 import {ImVideoCamera as CameraIcon} from 'react-icons/im'
 import {IoMdSearch as SearchIcon} from 'react-icons/io'
 import {MdAddCircleOutline as AddIcon} from 'react-icons/md'
@@ -8,13 +9,16 @@ import {GenericTable} from '../../components/GenericTable'
 import TableCell from '../../components/GenericTable/TableCell'
 
 import {useNavigate} from 'react-router-dom'
+import {GenericModal} from '../../components/GenericModal'
 import {Sector} from '../../entities/sector'
 import {SectorService} from '../../services/sector_service'
+import {Create} from '../../use_cases/sectors/Create'
 import {FetchAll} from '../../use_cases/sectors/FetchAll'
 import './styles.css'
 
 export const CamConfigPage: React.FC = () => {
   const navigate = useNavigate()
+  const sectorModal = useRef<HTMLDialogElement>(null)
   const [sectors, setSectors] = useState<Sector[]>([])
 
   useEffect(() => {
@@ -49,6 +53,24 @@ export const CamConfigPage: React.FC = () => {
     )
   }
 
+  function openModal() {
+    sectorModal.current?.showModal()
+  }
+
+  function closeModal() {
+    sectorModal.current?.close()
+  }
+
+  async function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const sectorName = event.currentTarget.sector.value as string
+
+    const createUC = new Create(new SectorService())
+    await createUC.execute({value: sectorName})
+
+    navigate(0)
+  }
+
   return (
     <div className="cam-config">
       <Sidebar />
@@ -64,7 +86,7 @@ export const CamConfigPage: React.FC = () => {
               <SearchIcon size={24} className="icon" />
               <input type="text" className="input" placeholder="Buscar" />
             </div>
-            <button className="button create-sector">
+            <button onClick={openModal} className="button create-sector">
               <AddIcon size={18} />
               Adicionar setor
             </button>
@@ -77,6 +99,31 @@ export const CamConfigPage: React.FC = () => {
           />
         </main>
       </div>
+      <GenericModal ref={sectorModal}>
+        <button onClick={closeModal} className="close-modal">
+          <CloseIcon size={28} />
+        </button>
+        <form className="form" onSubmit={handleSubmit}>
+          <legend className="title">Adicionar setor</legend>
+          <input
+            type="text"
+            name="sector"
+            placeholder="Digite o nome"
+            className="input"
+          />
+          <div className="actions">
+            <button
+              onClick={closeModal}
+              className="button secondary cancel-form"
+            >
+              Cancelar
+            </button>
+            <button className="button create-sector" type="submit">
+              Adicionar setor
+            </button>
+          </div>
+        </form>
+      </GenericModal>
     </div>
   )
 }
