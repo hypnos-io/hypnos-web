@@ -7,16 +7,18 @@ import {
 import {IoGrid as GridViewIcon} from 'react-icons/io5'
 import {Workstation} from '../../entities/workstation'
 import {WorkstationService} from '../../services/workstation_service'
-import {FetchAll} from '../../use_cases/workstation/FetchAll'
+import {FetchAllBySector} from '../../use_cases/workstation/FetchAllBySector'
 import {Title} from '../Title'
 import {BadgeStatus, WorkstationCard} from '../WorkstationCard'
 
 import {Socket} from 'socket.io-client'
+import {SectorService} from '../../services/sector_service'
 import {connect} from '../../services/websocket/connect'
 import {
   SocketDataResponse,
   onWorkstationStatus,
 } from '../../services/websocket/fatigue'
+import {FetchAll as FetchAllSectors} from '../../use_cases/sectors/FetchAll'
 import './styles.css'
 
 type ViewType = 'grid' | 'list'
@@ -31,8 +33,20 @@ export const WorkstationStatus: React.FC = () => {
   const [socket, setSocket] = useState<Socket>()
 
   async function fetchAllWorkstations() {
-    const fetchAllUC = new FetchAll(new WorkstationService())
-    const allWorkstations = await fetchAllUC.execute()
+    const fetchAllUC = new FetchAllBySector(new WorkstationService())
+    const fectchAllSectorsUC = new FetchAllSectors(new SectorService())
+
+    const allSectors = await fectchAllSectorsUC.execute()
+
+    let allWorkstations: Workstation[] = []
+
+    for (const sector of allSectors) {
+      if (sector._id) {
+        const workstations = await fetchAllUC.execute(sector._id)
+        allWorkstations = [...allWorkstations, ...workstations]
+      }
+    }
+
     const allWorkstationsWithDefaultStatus = allWorkstations.map(
       (workstation) => {
         const workstationOnline: WorkstationOnline = {
@@ -42,7 +56,13 @@ export const WorkstationStatus: React.FC = () => {
         return workstationOnline
       }
     )
-    setWorkstations(allWorkstationsWithDefaultStatus)
+
+    // Show workstations without an employee associated
+    const allWorkstationsWithoutEmployee =
+      allWorkstationsWithDefaultStatus.filter(
+        (workstation) => workstation.employee
+      )
+    setWorkstations(allWorkstationsWithoutEmployee)
   }
 
   async function connectWithWebsocketServer() {

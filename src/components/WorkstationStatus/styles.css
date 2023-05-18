@@ -21,6 +21,7 @@ ul {
 }
 
 .container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -28,10 +29,11 @@ ul {
 }
 
 .container .content {
+  width: 100%;
   display: grid;
   grid-template-areas:
-    'header header'
-    'workstations notifications';
+    'header header header header header'
+    'workstations workstations workstations workstations notifications';
   padding: 24px;
   background-color: #eff1f5;
   box-shadow: 0px 3px 6px #00000029;
