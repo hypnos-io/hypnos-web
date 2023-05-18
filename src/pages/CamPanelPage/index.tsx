@@ -3,6 +3,7 @@ import React, {ChangeEvent, useEffect, useRef, useState} from 'react'
 import {CgCloseO as CloseIcon} from 'react-icons/cg'
 import {ImVideoCamera as CameraIcon} from 'react-icons/im'
 import {IoMdSearch as SearchIcon} from 'react-icons/io'
+import {MdStop as StopIcon} from 'react-icons/md'
 import {useLoaderData, useNavigate} from 'react-router-dom'
 import {GenericModal} from '../../components/GenericModal'
 import Sidebar from '../../components/Sidebar'
@@ -78,6 +79,10 @@ export const CamPanelPage: React.FC = () => {
     setCamerasFilter(filteredCameras)
   }
 
+  function toggleStatus() {
+    setSendImages(!sendImages)
+  }
+
   return (
     <div className="cam-panel">
       <Sidebar />
@@ -98,6 +103,17 @@ export const CamPanelPage: React.FC = () => {
                 placeholder="Buscar"
               />
             </div>
+            <button
+              onClick={toggleStatus}
+              className={`button init-detection ${
+                sendImages ? 'secondary' : ''
+              }`}
+            >
+              {sendImages && <StopIcon size={24} />}
+              {sendImages
+                ? 'Parar envio de imagens'
+                : 'Iniciar envio de imagens'}
+            </button>
             <button onClick={openModal} className="button create-workstation">
               Adicionar Posto de Trabalho
             </button>

@@ -67,7 +67,7 @@ input {
 .cam-panel .container .main .search-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 16px;
 }
 
 .cam-panel .container .main .search-bar .input-group {
@@ -140,4 +140,12 @@ input {
 
 .generic-modal .form .button.cancel-form {
   width: 150px;
+}
+
+.button.init-detection {
+  margin-left: auto;
+}
+
+.button.init-detection.secondary {
+  color: red;
 }
