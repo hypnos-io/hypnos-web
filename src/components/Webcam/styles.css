@@ -1,0 +1,64 @@
+.cameras {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cameras .camera {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cameras .camera .camera-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cameras .camera .camera-content .description {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 16px/22px;
+  color: #fff;
+}
+
+.cameras .camera .camera-content .description .workstation-name {
+  font-weight: bold;
+}
+
+.cameras .camera .camera-content .no-signal {
+  position: absolute;
+  text-transform: uppercase;
+  color: #fff;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cameras .camera .camera-content .camera-source {
+  background-color: #000000;
+  border-radius: 12px;
+  box-shadow: 2px 2px 4px 0px #00000029;
+  width: 400px;
+  height: 260px;
+}
+
+.cameras .camera .select {
+  width: 100%;
+  height: 42px;
+  font-size: 16px/48px;
+  border: 0;
+  border-radius: 7px;
+  padding: 0px 8px;
+  background-color: #fff;
+}
