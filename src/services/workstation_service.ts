@@ -28,12 +28,9 @@ export class WorkstationService {
 
   async create(
     sectorId: string,
-    newWorkstation: Omit<
-      Workstation,
-      '_id' | 'createdAt' | 'updatedAt' | 'employee' | 'sector'
-    >
+    newWorkstation: Workstation
   ): Promise<Workstation> {
-    const {data} = await api.patch<Workstation>(
+    const {data} = await api.post<Workstation>(
       `/sectors/${sectorId}${PATH}`,
       newWorkstation
     )

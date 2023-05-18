@@ -94,6 +94,50 @@ input {
   color: #909090;
 }
 
-.button.create-camera {
+.button.create-ws {
   font-size: 16px;
+}
+
+.generic-modal {
+  height: 200px;
+}
+
+.generic-modal .form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0px 32px;
+  height: 400px;
+}
+
+.generic-modal .form .title {
+  font-size: 26px/28px;
+  font-weight: 600;
+}
+
+.generic-modal .form .actions {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.generic-modal .form .input {
+  height: 40px;
+  background-color: #f3f3f3;
+  color: #000;
+  border-radius: 16px;
+  border: 0;
+  padding: 0px 18px;
+  width: 100%;
+}
+
+.generic-modal .form .button.create-workstation {
+  width: 260px;
+}
+
+.generic-modal .form .button.cancel-form {
+  width: 150px;
 }
