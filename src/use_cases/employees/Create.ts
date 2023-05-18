@@ -5,13 +5,11 @@ export class CreateEmployee {
   constructor(private readonly employeeService: EmployeeService) {}
 
   async execute(registration: string,
-    fullName: string,
-    admissionDate: Date,
-    role: Number,
+    name: string,
+    role: RolesEnum,
     imageURL: string) {
 
-    const createdEmployee = await this.employeeService.create(registration, fullName, admissionDate, role, 
-      imageURL);
+    const createdEmployee = await this.employeeService.create(registration, name, role, imageURL);
     return createdEmployee;
   }
 

@@ -37,7 +37,7 @@ function Sidebar() {
       return (
         <>
           <NavButton path="/process" icon={processIcon}>Processos</NavButton>
-          <NavButton path="/register" icon={registerIcon}>Cadastros</NavButton>
+          <NavButton path="/signUp" icon={registerIcon}>Cadastros</NavButton>
           <NavButton path="/cameras" icon={cameraIcon}>Câmeras</NavButton>
         </>
       );

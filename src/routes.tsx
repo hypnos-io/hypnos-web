@@ -4,6 +4,7 @@ import {CamPanelPage} from './pages/CamPanelPage'
 import {camPanelLoader} from './pages/CamPanelPage/camPanelLoader'
 import DetectionPage from './pages/DetectionPage'
 import LoginPage from  './pages/LoginPage'
+import SignUpPage from './pages/SignUpPage'
 import React from 'react'
 
 export const router = createBrowserRouter([
@@ -22,5 +23,9 @@ export const router = createBrowserRouter([
   },
   { path: '/',
     element: <LoginPage />,
+  },
+  {
+    path: '/signUp',
+    element: <SignUpPage />,
   }
 ])

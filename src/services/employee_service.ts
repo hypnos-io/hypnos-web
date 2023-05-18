@@ -2,6 +2,7 @@ import { api } from '../api/axios';
 import axios from 'axios';
 import { Employee } from "../entities/employee";
 import { VITE_CLOUD_IMAGES_NAME, VITE_UPLOAD_PRESET } from '../constants';
+import { RolesEnum } from '../use_cases/authorization/roles';
 
 const PATH = '/employees';
 
@@ -9,16 +10,14 @@ export class EmployeeService {
 
   async create(
     registration: string,
-    fullName: string,
-    admissionDate: Date,
-    role: Number,
-    imageURL: string,
+    name: string,
+    role: RolesEnum,
+    imageURL: string
   ): Promise<Employee> {
 
     const employeeData = {
       registration: registration,
-      fullName: fullName,
-      admissionDate: admissionDate,
+      name: name,
       role: role,
       imageURL: imageURL,
     };

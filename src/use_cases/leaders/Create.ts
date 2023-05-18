@@ -5,13 +5,12 @@ export class CreateLeader {
   constructor(private readonly leadersService: LeaderService) {}
 
   async execute(registration: string,
-    fullName: string,
+    name: string,
     password: string,
-    admissionDate: Date,
-    role: Number,
+    role: RolesEnum,
     imageURL: string) {
 
-    const createdLeaders = await this.leadersService.create(registration, fullName, password, admissionDate, role, 
+    const createdLeaders = await this.leadersService.create(registration, name, password, role, 
       imageURL);
     return createdLeaders;
   }

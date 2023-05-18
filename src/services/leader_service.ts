@@ -2,6 +2,7 @@ import { api } from '../api/axios';
 import axios from 'axios';
 import { Leader } from '../entities/leader';
 import { VITE_CLOUD_IMAGES_NAME, VITE_UPLOAD_PRESET } from '../constants';
+import { RolesEnum } from '../use_cases/authorization/roles';
 
 const PATH = '/leaders';
 
@@ -9,18 +10,16 @@ export class LeaderService {
 
   async create(
     registration: string,
-    fullName: string,
+    name: string,
     password: string,
-    admissionDate: Date,
-    role: Number,
-    imageURL: string,
+    role: RolesEnum,
+    imageURL: string
   ): Promise<Leader> {
 
     const leaderData = {
       registration: registration,
-      fullName: fullName,
+      name: name,
       password: password,
-      admissionDate: admissionDate,
       role: role,
       imageURL: imageURL,
     };

@@ -46,7 +46,10 @@ function SignUpWindow(props) {
         if (imageFile === '')
           image_upload = defaultImageURL;
         const role_number = await roleToEnum()
-        const signup_employee = await add_employ.execute(matricula, nomeCompleto, new Date(), role_number, image_upload);
+        const signup_employee = await add_employ.execute(matricula,
+          nomeCompleto,
+          role_number,
+          image_upload);
       }
       else if (role === 'manager')
       {
@@ -55,7 +58,7 @@ function SignUpWindow(props) {
         if (imageFile === '')
           image_upload = defaultImageURL;
         const role_number = await roleToEnum()
-        const signup_supervisor = await add_supervisor.execute(matricula, nomeCompleto, senha, new Date(), role_number, image_upload);
+        const signup_supervisor = await add_supervisor.execute(matricula, nomeCompleto, senha, role_number, image_upload);
       }
       else if (role === 'leader')
       {
@@ -64,7 +67,7 @@ function SignUpWindow(props) {
         if (imageFile === '')
           image_upload = defaultImageURL;
         const role_number = await roleToEnum()
-        const signup_leader = await add_leader.execute(matricula, nomeCompleto, senha, new Date(), role_number, image_upload);
+        const signup_leader = await add_leader.execute(matricula, nomeCompleto, senha, role_number, image_upload);
       }
 
     }

@@ -64,7 +64,7 @@ const SignUpPage: React.FC = () => {
           default:
             roleString = 'Operário';
         }
-        return [obj.fullName, obj.imageURL, obj.registration, roleString, obj._id];
+        return [obj.name, obj.imageURL, obj.registration, roleString, obj._id];
       });
   
       const leadersList = leaders.map(obj => {
@@ -82,7 +82,7 @@ const SignUpPage: React.FC = () => {
           default:
             roleString = 'Operário';
         }
-        return [obj.fullName, obj.imageURL, obj.registration, roleString, obj._id];
+        return [obj.name, obj.imageURL, obj.registration, roleString, obj._id];
       });
   
       const supervisorsList = supervisors.map(obj => {
@@ -100,7 +100,7 @@ const SignUpPage: React.FC = () => {
           default:
             roleString = 'Operário';
         }
-        return [obj.fullName, obj.imageURL, obj.registration, roleString, obj._id];
+        return [obj.name, obj.imageURL, obj.registration, roleString, obj._id];
       });
   
       // Merge the three lists into a single list

@@ -1,16 +1,16 @@
 import { SupervisorService } from '../../services/supervisor_service'
+import { RolesEnum } from '../authorization/roles';
 
 export class CreateSupervisor {
   constructor(private readonly supervisorService: SupervisorService) {}
 
   async execute(registration: string,
-    fullName: string,
+    name: string,
     password: string,
-    admissionDate: Date,
-    role: Number,
+    role: RolesEnum,
     imageURL: string) {
 
-    const createdSupervisor = await this.supervisorService.create(registration, fullName, password, admissionDate, role, 
+    const createdSupervisor = await this.supervisorService.create(registration, name, password, role, 
       imageURL);
     return createdSupervisor;
   }

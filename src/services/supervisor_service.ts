@@ -9,18 +9,16 @@ export class SupervisorService {
 
   async create(
     registration: string,
-    fullName: string,
+    name: string,
     password: string,
-    admissionDate: Date,
     role: Number,
     imageURL: string,
   ): Promise<Supervisor> {
 
     const supervisorData = {
       registration: registration,
-      fullName: fullName,
+      name: name,
       password: password,
-      admissionDate: admissionDate,
       role: role,
       imageURL: imageURL,
     };
