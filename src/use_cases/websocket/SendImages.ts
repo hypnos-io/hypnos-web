@@ -8,7 +8,7 @@ export class SendWorkstationImages {
     this.socketService = new WebSocketService();
   }
 
-  async sendImagesWithConnection(images: Image[], workstation: Workstation) {
+  async sendImagesWithConnection(images: Image[], workstation?: Workstation ) {
     try {
       const socket = await this.socketService.connect();
       this.socketService.sendWorkstationImage(images, workstation);

@@ -47,8 +47,8 @@ export class WebSocketService {
     this.socket.on(`notify-status:workstation-${workstation.value}`, callback);
   }
 
-  sendWorkstationImage(images: Image[], workstation: Workstation) {
-    if (!workstation.employee || !workstation.employee._id) return;
+  sendWorkstationImage(images: Image[], workstation?: Workstation) {
+    if (!workstation?.employee || !workstation.employee._id) return;
 
     const data: SocketDataRequest = {
       employeeId: workstation.employee._id,
