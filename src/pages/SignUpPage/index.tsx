@@ -7,7 +7,7 @@ import SearchBar from '../../components/SearchBar'
 import AddUserButton from '../../components/AddUserButton'
 import awesomeUsersDark from '../../components/assets/img/Icon awesome-users-black@2x.png'
 import SignUpWindow from '../../components/SignUpWindow'
-import { FetchAllEmployees } from '../../use_cases/employees/FetchAll';
+import { FetchAllEmployees } from '../../use_cases/employees/FetchAll'
 import { FetchAllLeaders } from '../../use_cases/leaders/FetchAll'
 import { EmployeeService } from '../../services/employee_service';
 import './style.css'
@@ -21,7 +21,7 @@ const SignUpPage: React.FC = () => {
   const [foundOperators, setFoundOperators] = useState<(string | undefined)[][]>([]);
   const [allOperators, setAllOperators] = useState(foundOperators);
 
-  const handleFilter = (searchTerm) => {
+  const handleFilter = (searchTerm: string) => {
     if (searchTerm === '') {
       setFoundOperators(allOperators);
       return;
