@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 
 import {ImVideoCamera as CameraIcon} from 'react-icons/im'
 import {IoMdSearch as SearchIcon} from 'react-icons/io'
-import {MdCamera as CameraLensIcon} from 'react-icons/md'
 import {useLoaderData} from 'react-router-dom'
 import Sidebar from '../../components/Sidebar'
 import {Webcam} from '../../components/Webcam'
@@ -20,6 +19,7 @@ export const CamPanelPage: React.FC = () => {
     Workstation[]
   >([])
   const [cameras, setCameras] = useState<Camera[]>([])
+  const [sendImages, setSendImages] = useState(false) // TODO Estado que controla o envio de imagens via websocket
 
   useEffect(() => {
     async function fetchAllCameras() {
@@ -33,7 +33,7 @@ export const CamPanelPage: React.FC = () => {
 
   useEffect(() => {
     setWorkstationsWithoutCamera(
-      workstations.filter((workstation) => !!workstation.cameraId)
+      workstations.filter((workstation) => !workstation.cameraId)
     )
   }, [workstations])
 
@@ -47,6 +47,7 @@ export const CamPanelPage: React.FC = () => {
         camera={camera}
         workstation={foundWorkstation}
         workstationsWithoutCamera={workstationsWithoutCamera}
+        sendWebcamImages={sendImages}
       />
     )
   }
@@ -66,10 +67,10 @@ export const CamPanelPage: React.FC = () => {
               <SearchIcon size={24} className="icon" />
               <input type="text" className="input" placeholder="Buscar" />
             </div>
-            <button className="button create-camera">
+            {/* <button className="button create-camera">
               <CameraLensIcon size={24} />
               Adicionar câmera
-            </button>
+            </button> */}
           </header>
 
           <ul className="cameras">{cameras.map(renderCamera)}</ul>

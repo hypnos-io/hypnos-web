@@ -10,19 +10,33 @@ export class WorkstationService {
   }
 
   async fecthAllBySector(sectorId: string): Promise<Workstation[]> {
-    return [
-      {
-        _id: '123',
-        value: 'Posto 1',
-      },
-      {
-        _id: '1234',
-        value: 'Posto 1',
-      },
-      {
-        _id: '1235',
-        value: 'Posto 1',
-      },
-    ]
+    const {data} = await api.get<Workstation[]>(`/sectors/${sectorId}${PATH}`)
+    return data
+  }
+
+  async update(
+    id: string,
+    sectorId: string,
+    newWorkstation: Partial<Workstation>
+  ): Promise<Workstation> {
+    const {data} = await api.patch<Workstation>(
+      `/sectors/${sectorId}${PATH}/${id}`,
+      newWorkstation
+    )
+    return data
+  }
+
+  async create(
+    sectorId: string,
+    newWorkstation: Omit<
+      Workstation,
+      '_id' | 'createdAt' | 'updatedAt' | 'employee' | 'sector'
+    >
+  ): Promise<Workstation> {
+    const {data} = await api.patch<Workstation>(
+      `/sectors/${sectorId}${PATH}`,
+      newWorkstation
+    )
+    return data
   }
 }
