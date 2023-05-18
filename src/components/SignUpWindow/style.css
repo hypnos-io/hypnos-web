@@ -1,0 +1,325 @@
+.signup-window {
+  position: absolute;
+  top: 430px;
+  left: 1050px;
+  transform: translate(-50%, -50%);
+  width: 525px;
+  height: 593px;
+  border: none;
+  border-radius: 35px 10px 10px 10px;
+  background-color: rgb(218, 210, 210);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 101;
+}
+
+.signup-window .white-half {
+  width: 100%;
+  height: 47%;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 314.5px;
+}
+
+.form-input {
+  margin-bottom: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 440px;
+  height: 2px;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #F3F3F3 0% 0% no-repeat padding-box;
+}
+
+.drop-down-personas {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #F3F3F3 0% 0% no-repeat padding-box;
+}
+
+
+.form-data {
+  position: absolute;
+  top: 360px;
+}
+
+.form-input input::placeholder {
+  text-align: left;
+  font: normal normal normal 16px/24px Open Sans;
+  letter-spacing: 0px;
+  color: #1D1D1D;
+  opacity: 1;
+  }
+
+.form-title {
+  position: fixed;
+  bottom: 239px;
+  font-size: 22px;
+}
+
+.btn {
+  border: 1.2px solid black;
+  outline: none;
+  padding: 2.5px 5.8px;
+  border-radius: 4px;
+  left: 204px;
+  bottom: 13px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  position: relative;
+  font: normal normal normal 12.5px/20px Open Sans;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #141533;
+  color: white;
+}
+
+.image-uploader {
+  position: fixed;
+  bottom: 335px;
+  left: 470px;
+}
+
+.upload-button {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #3ABA6F;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 178px;
+  width: 190px;
+  left: 275px;
+  height: 37px;
+  border-radius: 20px;
+  opacity: 1;
+  font: normal normal normal 16px/20px Open Sans;
+}
+
+.cancel-button {
+  background-color: transparent;
+  color: #707070;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #707070;
+  cursor: pointer;
+  position: absolute;
+  top: 178px;
+  width: 100px;
+  left: 165px;
+  height: 37px;
+  border-radius: 20px;
+  opacity: 1;
+  font: normal normal normal 16px/20px Open Sans;
+}
+
+.submit-button:hover {
+  opacity: 0.8;
+}
+
+.uploaded-image {
+  position: fixed;
+  left: 0px;
+  height: 345px;
+  width: 525px;
+  bottom: 277.3px;
+  border-radius: 35px 10px 0px 0px;
+}
+
+.exit-button {
+  position: fixed;
+  cursor: pointer;
+  bottom: 565px;
+  left: 470px;
+  z-index: 2;
+  height: 35px;
+}
+
+.confirmation-window {
+  position: fixed;
+  top: 400px;
+  left: 1000px;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 250px;
+  border: none;
+  border-radius: 35px 0px 10px 10px;
+  background-color: rgb(218, 210, 210);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 101;
+}
+
+.confirmation-window .white-half {
+  width: 100%;
+  height: 60%;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 190px;
+}
+
+.workers-image {
+  position: absolute;
+  top: 37%;
+  left: 50.5%;
+  width: 404.5px;
+  height: 250px;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 35px 0px 0px 0px;
+}
+
+.confirmation-title {
+  position: absolute;
+  bottom: -17px;
+  z-index: 2;
+}
+
+.check-icon {
+  position: absolute;
+  height: 90px;
+  top: 143px;
+  z-index: 2;
+}
+
+.white-circle {
+  position: absolute;
+  width: 110px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  height: 110px;
+  top: 133.1px;
+  z-index: 1;
+}
+
+.back-initialpage-button {
+  background-color: #2164f0;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 280px;
+  left: 75px;
+  width: 220px;
+  height: 42px;
+  border-radius: 20px;
+  opacity: 1;
+  font: normal normal normal 16px/20px Open Sans;
+}
+
+.back-initialpage-button:hover {
+  opacity: 0.8;
+}
+
+.back-initialpage-button span {
+  position: absolute;
+  top: 10.5px;
+  left: 42px;
+  font: normal normal normal 17px/20px Open Sans;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.exit-button-confirm {
+  position: absolute;
+  cursor: pointer;
+  bottom: 214px;
+  left: 310px;
+  z-index: 3;
+  height: 27px;
+}
+
+.radio-box-manager {
+  position: fixed;
+  top: 485px;
+  height: 17px;
+  left: -140px;
+}
+
+.label-manager {
+  position: absolute;
+  left: 36px;
+  top: 138.8px;
+}
+
+.radio-box-leader {
+  position: absolute;
+  top: 140px;
+  height: 17px;
+  left: -80px;
+}
+
+.label-leader {
+  position: absolute;
+  left: 137px;
+  top: 138.8px;
+}
+
+.radio-box-operator {
+  position: fixed;
+  top: 140px;
+  height: 17px;
+}
+
+.label-operator {
+  position: absolute;
+  left: 216px;
+  top: 138.8px;
+}
+
+.radio-group-users {
+  position: fixed;
+  bottom: 60px;
+  left: 52px;
+}
+
+.password-eye {
+  position: absolute;
+  top: 103px;
+  right: 20px;
+  cursor: pointer;
+}

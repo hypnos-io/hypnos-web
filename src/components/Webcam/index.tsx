@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useEffect, useRef, useState} from 'react'
 import {Camera} from '../../entities/camera'
 import {Workstation} from '../../entities/workstation'
+import { SendWorkstationImages } from '../../use_cases/websocket/SendImages'
 
 import {useNavigate} from 'react-router-dom'
 import {FPS} from '../../services/websocket/fatigue'
@@ -29,6 +30,7 @@ export const Webcam: React.FC<Props> = ({
   )
   const videoRef = useRef<HTMLVideoElement>(null)
   let images: string[] = []
+  const workstationImages = new SendWorkstationImages();
 
   useEffect(() => {
     async function openCamera() {
@@ -55,14 +57,14 @@ export const Webcam: React.FC<Props> = ({
     }
   }, [sendWebcamStatus])
 
-  function sendImage() {
+  async function sendImage() {
     const buffer = getCurrentFrame()
     if (!buffer) return
 
     images.push(buffer)
     if (images.length >= 10) {
       console.log(`Enviando imagens de câmera ${camera.name}`)
-      // TODO Chamar caso de uso de envio de imagem
+      await workstationImages.sendImagesWithConnection(images, workstation)
       images = []
     }
 
