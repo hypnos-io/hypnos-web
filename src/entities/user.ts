@@ -1,12 +1,16 @@
-import {RolesEnum} from '../use_cases/authorization/roles'
 import {ID} from './common'
+
+export enum RolesEnum {
+  EMPLOYEE = 0,
+  SUPERVISOR = 1,
+  LEADER = 2,
+}
 
 export interface User {
   _id?: ID
   registration: string
-  fullName: string
+  name: string
   password: string
-  admissionDate: Date
   role: RolesEnum
   imageURL: string
   createdAt?: Date
