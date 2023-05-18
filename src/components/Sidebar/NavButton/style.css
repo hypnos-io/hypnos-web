@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .Sidebar__button {
+    margin: 15px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -21,11 +22,12 @@
 }
 
 .Sidebar__button > img {
-    width: 25px;
+    width: 35px;
     padding-right: 15px;
 }
 
 .Sidebar__button--active {
+    margin: 15px;
     font-family: 'Open Sans';
     font-weight: bold;
     display: flex;
@@ -46,6 +48,6 @@
 }
 
 .Sidebar__button--active > img {
-    width: 25px;
+    width: 35px;
     padding-right: 15px;
 }
