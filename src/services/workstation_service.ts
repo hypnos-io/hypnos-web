@@ -1,5 +1,6 @@
 import {api} from '../api/axios'
 import {Workstation} from '../entities/workstation'
+import {WorkstationUpdateRequest} from '../use_cases/workstation/Update'
 
 const PATH = '/workstations'
 
@@ -17,7 +18,7 @@ export class WorkstationService {
   async update(
     id: string,
     sectorId: string,
-    newWorkstation: Partial<Workstation>
+    newWorkstation: WorkstationUpdateRequest
   ): Promise<Workstation> {
     const {data} = await api.patch<Workstation>(
       `/sectors/${sectorId}${PATH}/${id}`,

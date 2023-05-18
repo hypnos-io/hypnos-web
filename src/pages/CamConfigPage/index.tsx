@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {ChangeEvent, useEffect, useRef, useState} from 'react'
 import {CgCloseO as CloseIcon} from 'react-icons/cg'
 import {ImVideoCamera as CameraIcon} from 'react-icons/im'
 import {IoMdSearch as SearchIcon} from 'react-icons/io'
@@ -20,12 +20,14 @@ export const CamConfigPage: React.FC = () => {
   const navigate = useNavigate()
   const sectorModal = useRef<HTMLDialogElement>(null)
   const [sectors, setSectors] = useState<Sector[]>([])
+  const [sectorsFilter, setSectorsFilter] = useState<Sector[]>([])
 
   useEffect(() => {
     async function fetchAll() {
       const fetchAllUC = new FetchAll(new SectorService())
       const allSectors = await fetchAllUC.execute()
       setSectors(allSectors)
+      setSectorsFilter(allSectors)
     }
 
     fetchAll()
@@ -33,6 +35,14 @@ export const CamConfigPage: React.FC = () => {
 
   function handleConfigPanel(id: string) {
     navigate(`/cameras/${id}`)
+  }
+
+  function handleFilter(event: ChangeEvent<HTMLInputElement>) {
+    const {value} = event.currentTarget
+    const filteredSectors = sectors.filter((sector) =>
+      sector.value.toLowerCase().includes(value)
+    )
+    setSectorsFilter(filteredSectors)
   }
 
   function renderSector(item: unknown) {
@@ -84,7 +94,12 @@ export const CamConfigPage: React.FC = () => {
           <header className="search-bar">
             <div className="input-group">
               <SearchIcon size={24} className="icon" />
-              <input type="text" className="input" placeholder="Buscar" />
+              <input
+                onChange={handleFilter}
+                type="text"
+                className="input"
+                placeholder="Buscar"
+              />
             </div>
             <button onClick={openModal} className="button create-sector">
               <AddIcon size={18} />
@@ -93,7 +108,7 @@ export const CamConfigPage: React.FC = () => {
           </header>
 
           <GenericTable
-            data={sectors}
+            data={sectorsFilter}
             columns={['Setor', 'Nº de câmeras', 'Configurar']}
             renderItem={renderSector}
           />
