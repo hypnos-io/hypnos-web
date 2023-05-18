@@ -1,0 +1,92 @@
+.modal__background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0,0,0, 0.7);
+    backdrop-filter: blur(2px);
+}
+
+.add__process__modal__container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background-color: #fff;
+    color: black;
+    border-radius: 48px 8px 8px 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.process__modal__header {
+    position: relative;
+}
+
+.modal__header__background {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modal__header__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    cursor: pointer;
+}
+
+.add__process__modal__container h1 {
+    padding: 16px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.process__name__input__container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px 30px 30px;
+}
+
+.process__modal__input {
+    padding-left: 10px;
+    color: black;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    border: none;
+    background-color: #F3F3F3;
+    border-radius: 14px;
+    height: 50px;
+}
+
+.process__modal__buttons__container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.process__modal__button {
+    font-weight: bold;
+    border-radius: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+    height: 35px;
+}
+
+.cancel {
+    border-color: #707070;
+    color: #707070;
+    background-color: white;
+}
+
+.add {
+    border: none;
+    color: white;
+    background-color: #5522D3;
+}

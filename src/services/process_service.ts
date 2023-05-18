@@ -8,4 +8,11 @@ export class ProcessService {
     const {data} = await api.get<Process[]>(PATH);
     return data;
   }
+
+  async create(name: string): Promise<Process> {
+    const {data} = await api.post(PATH, {
+      name: name,
+    });
+    return data;
+  }
 }

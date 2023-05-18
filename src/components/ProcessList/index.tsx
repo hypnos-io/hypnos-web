@@ -10,9 +10,11 @@ import ProcessDropDown from './ProcessDropDown';
 import { FetchAll } from '../../use_cases/process/FetchAll';
 import { ProcessService } from '../../services/process_service';
 import { Process } from '../../entities/process';
+import AddProcessModal from './AddProcessModal';
 
 function ProcessList() {
     const [processes, setProcesses] = useState<Process[]>([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     async function fetchAllProcesses() {
         const fetchAllUC = new FetchAll(new ProcessService());
@@ -30,9 +32,10 @@ function ProcessList() {
         );
     }
 
-
     return (
         <div className="content">
+            <AddProcessModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}></AddProcessModal>
+
             <header className="header__container">
                 <img src={processIcon}/>
                 <h1>Processos</h1>
@@ -44,7 +47,7 @@ function ProcessList() {
 
                     {processes.map(renderProcess)}
                     
-                    <div className="add__process__container">
+                    <div className="add__process__container" onClick={() => setIsModalOpen(!isModalOpen)}>
                         <img src={addProcessIcon}/>
                         <p>Adicionar processo</p>
                     </div>
