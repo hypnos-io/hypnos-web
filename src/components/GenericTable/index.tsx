@@ -1,7 +1,8 @@
 import React from 'react'
 
-import './styles.css'
+import TableCell from './TableCell'
 import TableRow from './TableRow'
+import './styles.css'
 
 interface Props {
   columns: string[]
@@ -27,7 +28,16 @@ export const GenericTable: React.FC<Props> = ({columns, data, renderItem}) => {
       <thead className="table-header">
         <tr className="table-row-column">{columns.map(renderColumn)}</tr>
       </thead>
-      <tbody className="table-body">{data.map(renderRow)}</tbody>
+      <tbody className="table-body">
+        {data.length === 0 && (
+          <TableRow>
+            <TableCell>
+              <label>Não há itens a serem listados.</label>
+            </TableCell>
+          </TableRow>
+        )}
+        {data.map(renderRow)}
+      </tbody>
     </table>
   )
 }

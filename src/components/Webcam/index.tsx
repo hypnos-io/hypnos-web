@@ -1,26 +1,32 @@
-import React, {useEffect, useRef} from 'react'
+import React, {ChangeEvent, useEffect, useRef, useState} from 'react'
 import {Camera} from '../../entities/camera'
 import {Workstation} from '../../entities/workstation'
 
+import {useNavigate} from 'react-router-dom'
 import {FPS} from '../../services/websocket/fatigue'
+import {WorkstationService} from '../../services/workstation_service'
+import {Update} from '../../use_cases/workstation/Update'
 import './styles.css'
 
 interface Props {
   camera: Camera
-  workstation?: Workstation
+  workstationAssociated?: Workstation
+  sectorId: string
   workstationsWithoutCamera: Workstation[]
   sendWebcamImages: boolean
 }
 
 export const Webcam: React.FC<Props> = ({
   camera,
-  workstation,
+  workstationAssociated,
+  sectorId,
   workstationsWithoutCamera,
   sendWebcamImages: sendWebcamStatus,
 }) => {
-  const workstationName = workstation
-    ? `Posto #${workstation.value}`
-    : 'Selecionar posto'
+  const navigate = useNavigate()
+  const [workstationName, setWorkstationName] = useState(
+    workstationAssociated?.value
+  )
   const videoRef = useRef<HTMLVideoElement>(null)
   let images: string[] = []
 
@@ -39,7 +45,12 @@ export const Webcam: React.FC<Props> = ({
   }, [videoRef])
 
   useEffect(() => {
-    if (sendWebcamStatus && !!workstation) {
+    console.log(workstationAssociated)
+    setWorkstationName(workstationAssociated?.value)
+  }, [workstationAssociated])
+
+  useEffect(() => {
+    if (sendWebcamStatus && !!workstationAssociated) {
       setInterval(sendImage, 1000 / FPS)
     }
   }, [sendWebcamStatus])
@@ -79,23 +90,56 @@ export const Webcam: React.FC<Props> = ({
     }
   }
 
-  function renderWorkstation(workstations: Workstation, index: number) {
+  function renderWorkstation(workstation: Workstation, index: number) {
+    const isChecked =
+      !!workstationAssociated && workstation._id === workstationAssociated._id
     return (
-      <option key={`workstation-option-${index}`}>{workstations.value}</option>
+      <option
+        defaultChecked={isChecked}
+        key={`workstation-option-${index}`}
+        value={workstation?._id}
+      >
+        {workstation.value}
+      </option>
     )
+  }
+
+  async function handleUpdateWorkstation(
+    event: ChangeEvent<HTMLSelectElement>
+  ) {
+    const {value} = event.target
+    const updateUC = new Update(new WorkstationService())
+
+    await updateUC.execute(value, sectorId, {
+      cameraId: camera.name,
+    })
+
+    navigate(0)
   }
 
   return (
     <li className="camera">
       <div className="camera-content">
         <div className="description">
-          <label className="workstation-name">{workstationName}</label>
+          <label className="workstation-name">
+            {workstationName || 'Selecionar posto'}
+          </label>
           <label className="camera-name">{camera.name}</label>
         </div>
-        {/* {!foundWorkstation && <label className="no-signal">SEM SINAL</label>} */}
+        {!workstationName && sendWebcamStatus && (
+          <label className="no-signal">SEM POSTO ASSOCIADO</label>
+        )}
         <video ref={videoRef} className="camera-source" autoPlay></video>
       </div>
-      <select disabled={sendWebcamStatus} className="select">
+      <select
+        onChange={handleUpdateWorkstation}
+        defaultValue={workstationAssociated?._id}
+        disabled={sendWebcamStatus}
+        className="select"
+      >
+        <option defaultChecked={!workstationName}>
+          Selecione um posto de trabalho
+        </option>
         {workstationsWithoutCamera.map(renderWorkstation)}
       </select>
     </li>

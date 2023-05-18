@@ -45,6 +45,10 @@
   transform: translate(-50%, -50%);
 }
 
+.cameras .camera .camera-content .no-signal + .camera-source {
+  opacity: 0.5;
+}
+
 .cameras .camera .camera-content .camera-source {
   background-color: #000000;
   border-radius: 12px;
