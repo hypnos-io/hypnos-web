@@ -29,6 +29,16 @@ input {
   background-color: #1649b7;
 }
 
+.button.secondary {
+  color: #a1a1a1;
+  border: 1px solid #ededed;
+  background-color: #fff;
+}
+
+.button.secondary:hover {
+  background-color: #00000029;
+}
+
 .cam-config {
   display: flex;
 }
@@ -94,6 +104,51 @@ input {
   width: 72px;
 }
 
-.button.create-sector {
+.button.create-sector,
+.button.cancel-form {
   font-size: 16px;
+}
+
+.generic-modal {
+  height: 200px;
+}
+
+.generic-modal .form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0px 32px;
+  height: 400px;
+}
+
+.generic-modal .form .title {
+  font-size: 26px/28px;
+  font-weight: 600;
+}
+
+.generic-modal .form .actions {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.generic-modal .form .input {
+  height: 40px;
+  background-color: #f3f3f3;
+  color: #000;
+  border-radius: 16px;
+  border: 0;
+  padding: 0px 18px;
+  width: 100%;
+}
+
+.generic-modal .form .button.create-sector {
+  width: 260px;
+}
+
+.generic-modal .form .button.cancel-form {
+  width: 150px;
 }
