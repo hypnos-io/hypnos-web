@@ -24,11 +24,11 @@ function Sidebar() {
     const authenticationUC = new Authenticate(new AuthenticationService())
     const response = await authenticationUC.execute()
 
-    // if (response.status === 200) {
-    //   setUser(response.data)
-    // } else {
-    //   window.location.href = LOGIN_URL
-    // }
+    if (response.status === 200) {
+      setUser(response.data)
+    } else {
+      window.location.href = LOGIN_URL
+    }
   }
 
   function renderButtons() {
