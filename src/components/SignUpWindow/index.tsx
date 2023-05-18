@@ -16,7 +16,7 @@ import './style.css';
 import { CreateSupervisor } from '../../use_cases/supervisors/Create';
 import { CreateLeader } from '../../use_cases/leaders/Create';
 
-function SignUpWindow(props) {
+function SignUpWindow(props: { onWindowClose: () => void; }) {
   
   const [imageFile, setImageFile] = useState('');
   const [image, setImage] = useState(unkownPersonIcon);
@@ -30,7 +30,7 @@ function SignUpWindow(props) {
   const [operatorChosen, setOperatorChosen] = useState(false);
   const defaultImageURL = `${VITE_DEFAULT_PROFILE_IMAGE}`
 
-  async function addUser (event) {
+  async function addUser (event: { preventDefault: () => void; }) {
     event.preventDefault();
     const error = await validateForm();
 
@@ -124,7 +124,7 @@ function SignUpWindow(props) {
   }  
 
 
-  const handleImageUpload = (event) => {
+  const handleImageUpload = (event: { target: { files: any[]; }; }) => {
     const file = event.target.files[0];
     console.log(unkownPersonIcon);
     console.log(file);
@@ -147,14 +147,14 @@ function SignUpWindow(props) {
     }
   };
 
-  const handleCancelClick = (event) => {
+  const handleCancelClick = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     setNomeCompleto('');
     setMatricula('');
     setImage(unkownPersonIcon)
   };
 
-  const handleRadioChange = async (event) => {
+  const handleRadioChange = async (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setSelectedRole(event.target.value);
     if (event.target.value === 'Operator')
     {
