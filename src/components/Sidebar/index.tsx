@@ -11,7 +11,6 @@ import './style.css'
 import LogoutButton from './LogoutButton'
 import NavButton from './NavButton'
 
-import {User} from '../../entities/user'
 import {AuthenticationService} from '../../services/authentication_service'
 import {Authenticate} from '../../use_cases/authentication/authenticate'
 import { Leader } from '../../entities/leader'
@@ -29,7 +28,17 @@ function Sidebar() {
 
     if (response.status === 200) {
       const userRole = response.data.role;
-      const currentPage = window.location.href;
+      const currentPage = new URL(window.location.href).pathname;
+
+      if (userRole === 1) {
+        if (currentPage === '/detection') {
+          window.location.href = '/cameras';
+        }
+      } else if (userRole === 2) {
+        if (currentPage !== '/detection') {
+          window.location.href = '/detection';
+        }
+      }
       setUser(response.data);
     } else {
       window.location.href = LOGIN_URL;
@@ -61,6 +70,23 @@ function Sidebar() {
           </NavButton>
         </>
       );
+    } else if (user?.role === 3) {
+      return (
+        <>
+          <NavButton path="/detection" icon={fatigueIcon}>
+            Detecção de Fadiga
+          </NavButton>
+          <NavButton path="/process" icon={processIcon}>
+            Processos
+          </NavButton>
+          <NavButton path="/signUp" icon={registerIcon}>
+            Cadastros
+          </NavButton>
+          <NavButton path="/cameras" icon={cameraIcon}>
+            Câmeras
+          </NavButton>
+        </>
+      );
     }
   }
 
@@ -69,6 +95,8 @@ function Sidebar() {
       return 'Gerente';
     } else if (user?.role === 2) {
       return 'Líder';
+    } else if (user?.role === 3) {
+      return 'Administrador';
     }
     return '';
   }

@@ -116,8 +116,8 @@ const SignUpPage: React.FC = () => {
 
   return (
     <div className="signUpPage">
+      <Sidebar></Sidebar>
       <div className={`page-content ${blurBackground ? "blur" : ""}`}>
-        <Sidebar></Sidebar>
         {blurBackground && <div className='shadow'></div>}
         <h1 className="upper-title">Cadastros</h1>
         <img className="awesome-users-icon" src={awesomeUsersDark} alt="Awesome Users Icon"></img>
