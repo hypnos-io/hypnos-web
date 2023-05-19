@@ -20,10 +20,10 @@ const LoginForm: React.FC = () => {
 
     const [errorMessage, setErrorMessage] = useState<string>('');
 
-    const HOME_URL = '/home';
+    const DETECTION_URL = '/detection';
+    const CAMERAS_URL = '/cameras';
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleLoginSubmit = async () => {
 
         const registration = formData.registration;
         const password = formData.password;
@@ -33,7 +33,11 @@ const LoginForm: React.FC = () => {
         
         if (response.status === 200) {
             console.log('Usuário logado!');
-            window.location.href = HOME_URL;
+            if (response.data.role === 1) {
+                window.location.href = CAMERAS_URL;
+            } else if (response.data.role === 2) {
+                window.location.href = DETECTION_URL;
+            }
         } else if (response.status === 400) {
             console.log('Não foi possível efetuar login!');
             setErrorMessage(response.data.message);
@@ -41,12 +45,12 @@ const LoginForm: React.FC = () => {
     };
 
     return (
-        <form className="Login__form" onSubmit={handleSubmit} method="POST">
+        <div className="Login__form">
             <div className="Login__inputs__container">
                 <RegistrationInput formData={formData} setFormData={setFormData}></RegistrationInput>
                 <PasswordInput formData={formData} setFormData={setFormData}></PasswordInput>
                 <span className="error__message">{errorMessage}</span>
-                <div>
+                <div className="Login__checkbox__container">
                     <input type="checkbox" />
                     <label>Manter-me conectado</label>
                 </div>
@@ -54,9 +58,9 @@ const LoginForm: React.FC = () => {
             
             <div className="Login__submit__container">
                 <a className="Login__forget__password__link" href="#">Esqueceu a senha?</a>
-                <input className="Login__submit__button" type="submit" value="Entrar" />
+                <input className="Login__submit__button" type="submit" value="Entrar" onClick={handleLoginSubmit} />
             </div>
-        </form>
+        </div>
     );
 }
 

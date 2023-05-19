@@ -14,7 +14,7 @@
   font: normal normal normal 16px/20px Open Sans;
 }
 
-input {
+.generic-search-bar input {
   width: 400px;
   height: 40px;
   border: none;

@@ -8,7 +8,7 @@ import SignUpPage from './pages/SignUpPage'
 
 export const router = createBrowserRouter([
   {
-    path: '/home',
+    path: '/detection',
     element: <DetectionPage />,
   },
   {

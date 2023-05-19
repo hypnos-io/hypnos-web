@@ -11,29 +11,43 @@ import './style.css'
 import LogoutButton from './LogoutButton'
 import NavButton from './NavButton'
 
-import {User} from '../../entities/user'
 import {AuthenticationService} from '../../services/authentication_service'
 import {Authenticate} from '../../use_cases/authentication/authenticate'
+import { Leader } from '../../entities/leader'
+import { Employee } from '../../entities/employee'
+import { Supervisor } from '../../entities/supervisor'
 
 function Sidebar() {
-  const [user, setUser] = useState<User>()
+  const [user, setUser] = useState<Employee | Supervisor | Leader | null>(null);
 
-  const LOGIN_URL = '/'
+  const LOGIN_URL = '/';
 
   async function getAuthenticatedUser() {
-    const authenticationUC = new Authenticate(new AuthenticationService())
-    const response = await authenticationUC.execute()
+    const authenticationUC = new Authenticate(new AuthenticationService());
+    const response = await authenticationUC.execute();
 
     if (response.status === 200) {
-      setUser(response.data)
+      const userRole = response.data.role;
+      const currentPage = new URL(window.location.href).pathname;
+
+      if (userRole === 1) {
+        if (currentPage === '/detection') {
+          window.location.href = '/cameras';
+        }
+      } else if (userRole === 2) {
+        if (currentPage !== '/detection') {
+          window.location.href = '/detection';
+        }
+      }
+      setUser(response.data);
     } else {
-      window.location.href = LOGIN_URL
+      window.location.href = LOGIN_URL;
     }
   }
 
   function renderButtons() {
     if (user?.role === 0) {
-      return <></>
+      return <></>;
     } else if (user?.role === 1) {
       return (
         <>
@@ -47,30 +61,55 @@ function Sidebar() {
             Câmeras
           </NavButton>
         </>
-      )
+      );
     } else if (user?.role === 2) {
       return (
         <>
-          <NavButton path="/" icon={fatigueIcon}>
+          <NavButton path="/detection" icon={fatigueIcon}>
             Detecção de Fadiga
           </NavButton>
         </>
-      )
+      );
+    } else if (user?.role === 3) {
+      return (
+        <>
+          <NavButton path="/detection" icon={fatigueIcon}>
+            Detecção de Fadiga
+          </NavButton>
+          <NavButton path="/process" icon={processIcon}>
+            Processos
+          </NavButton>
+          <NavButton path="/signUp" icon={registerIcon}>
+            Cadastros
+          </NavButton>
+          <NavButton path="/cameras" icon={cameraIcon}>
+            Câmeras
+          </NavButton>
+        </>
+      );
     }
   }
 
   function getUserRole() {
     if (user?.role === 1) {
-      return 'Gerente'
+      return 'Gerente';
     } else if (user?.role === 2) {
-      return 'Líder'
+      return 'Líder';
+    } else if (user?.role === 3) {
+      return 'Administrador';
     }
-    return ''
+    return '';
+  }
+
+  function getFirstName(fullName: string) {
+    if (fullName == null) return;
+    const firstName = fullName.split(' ')[0];
+    return firstName;
   }
 
   useEffect(() => {
-    getAuthenticatedUser()
-  }, [])
+    getAuthenticatedUser();
+  }, []);
 
   return (
     <div className="Sidebar__container">
@@ -81,7 +120,7 @@ function Sidebar() {
             <h1>
               Olá,
               <br />
-              {user?.name}
+              {user ? getFirstName(user.name) : ''}
             </h1>
             <p>{getUserRole()}</p>
           </div>
@@ -90,7 +129,7 @@ function Sidebar() {
           <div className="Sidebar__navbuttons__container">
             {renderButtons()}
           </div>
-          <LogoutButton path="/login" icon={backIcon}>
+          <LogoutButton path="/" icon={backIcon}>
             Sair
           </LogoutButton>
         </div>
@@ -99,4 +138,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default Sidebar;
