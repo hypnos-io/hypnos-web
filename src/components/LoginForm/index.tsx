@@ -37,6 +37,8 @@ const LoginForm: React.FC = () => {
                 window.location.href = CAMERAS_URL;
             } else if (response.data.role === 2) {
                 window.location.href = DETECTION_URL;
+            } else if (response.location.role === 3) {
+                window.location.href = DETECTION_URL;
             }
         } else if (response.status === 400) {
             console.log('Não foi possível efetuar login!');
