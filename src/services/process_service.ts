@@ -15,4 +15,11 @@ export class ProcessService {
     });
     return data;
   }
+
+  async patch(process: Process, name: string): Promise<Process> {
+    const {data} = await api.patch(`${PATH}/${process._id}`, {
+      name: name,
+    });
+    return data;
+  }
 }

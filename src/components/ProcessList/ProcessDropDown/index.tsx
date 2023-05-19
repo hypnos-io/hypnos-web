@@ -6,6 +6,7 @@ import arrowIcon from '../../assets/img/ProcessList/Icon ionic-ios-arrow-down@2x
 import whitePencilIcon from '../../assets/img/ProcessList/Icon material-edit@2x.png';
 
 import ProcessTable from './ProcessTable';
+import UpdateProcessModal from './UpdateProcessModal';
 import { Process } from '../../../entities/process';
 import { FetchAll } from '../../../use_cases/job/FetchAll';
 import { JobService } from '../../../services/job_service';
@@ -19,6 +20,7 @@ function ProcessDropDown({ processProp }: ProcessDropDownProps) {
     const [isActive, setIsActive] = useState(false);
     const [process, setProcess] = useState<Process>(processProp);
     const [jobs, setJobs] = useState<Job[]>([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     async function fetchJobs() {
         const fetchAllUC = new FetchAll(new JobService());
@@ -37,12 +39,13 @@ function ProcessDropDown({ processProp }: ProcessDropDownProps) {
 
     return (
         <div className="process__dropdown">
+            <UpdateProcessModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} processProp={processProp} ></UpdateProcessModal>
 
             <div className={isActive ? "process__header active" : "process__header"}>
 
                 <div className="process__header__title">
                     <h1>{process.name}</h1>
-                    <img src={whitePencilIcon}/>
+                    <img src={whitePencilIcon} onClick={() => setIsModalOpen(!isModalOpen)}/>
                 </div>
                 <img className="arrow" src={arrowIcon} onClick={onClickProcessTable}/>
 
