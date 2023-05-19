@@ -33,7 +33,7 @@ function ProcessList() {
     }
 
     return (
-        <div className="content">
+        <div className="process__list__content">
             <AddProcessModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}></AddProcessModal>
 
             <header className="header__container">
