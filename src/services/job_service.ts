@@ -10,4 +10,9 @@ export class JobService {
     const {data} = await api.get<Job[]>(`${PATH}/${process._id}/jobs`);
     return data;
   }
+
+  async delete(process: Process, job: Job) {
+    const {data} = await api.delete<Job>(`${PATH}/${process._id}/jobs/${job._id}`);
+    return data;
+  }
 }

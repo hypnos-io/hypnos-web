@@ -27,6 +27,8 @@
     border-radius: 15px;
     width: 1000px;
     height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .process__wrapper {

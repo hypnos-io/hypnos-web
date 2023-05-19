@@ -14,15 +14,22 @@ interface ProcessTableProps {
 
 function ProcessTable({ jobs }: ProcessTableProps) {
 
+    function formatTime(dateString: Date): string {
+        const date = new Date(dateString);
+        const hours = date.getHours().toString();
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
+
     function renderJob(job: Job, index: number) {
         return (
             <tr key={`${index}-${job._id}`} className="table__row">
                 <td><img src={arrowsUpDownIcon}/></td>
                 <td>{job.name}</td>
-                <td>1</td>
+                <td>{job.sector ? job.sector.value : ''}</td>
                 <td>{job.durationInHours}h</td>
-                <td>8:00</td>
-                <td>12:00</td>
+                <td>{formatTime(job.startAt)}</td>
+                <td>{formatTime(job.endAt)}</td>
                 <td>5</td>
                 <td><img src={blackPencilIcon}/></td>
                 <td><img src={deleteIcon}/></td>
