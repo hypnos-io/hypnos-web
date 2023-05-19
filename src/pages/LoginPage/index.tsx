@@ -10,14 +10,19 @@ import { AuthenticationService } from '../../services/authentication_service';
 import { Authenticate } from '../../use_cases/authentication/authenticate';
 
 const LoginPage: React.FC = () => {
-  const HOME_URL = '/home';
+  const DETECTION_URL = '/detection';
+    const CAMERAS_URL = '/cameras';
 
   async function isUserAuthenticated() {
     const authenticationUC = new Authenticate(new AuthenticationService());
     const response = await authenticationUC.execute();
 
     if (response.status === 200) {
-      window.location.href = HOME_URL;
+      if (response.data.role === 1) {
+        window.location.href = CAMERAS_URL;
+      } else if (response.data.role === 2) {
+          window.location.href = DETECTION_URL;
+      }
     } 
   }
 
