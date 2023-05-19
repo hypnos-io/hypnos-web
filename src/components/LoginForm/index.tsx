@@ -23,8 +23,7 @@ const LoginForm: React.FC = () => {
     const DETECTION_URL = '/detection';
     const CAMERAS_URL = '/cameras';
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleLoginSubmit = async () => {
 
         const registration = formData.registration;
         const password = formData.password;
@@ -46,7 +45,7 @@ const LoginForm: React.FC = () => {
     };
 
     return (
-        <form className="Login__form" onSubmit={handleSubmit} method="POST">
+        <div className="Login__form">
             <div className="Login__inputs__container">
                 <RegistrationInput formData={formData} setFormData={setFormData}></RegistrationInput>
                 <PasswordInput formData={formData} setFormData={setFormData}></PasswordInput>
@@ -59,9 +58,9 @@ const LoginForm: React.FC = () => {
             
             <div className="Login__submit__container">
                 <a className="Login__forget__password__link" href="#">Esqueceu a senha?</a>
-                <input className="Login__submit__button" type="submit" value="Entrar" />
+                <input className="Login__submit__button" type="submit" value="Entrar" onClick={handleLoginSubmit} />
             </div>
-        </form>
+        </div>
     );
 }
 
