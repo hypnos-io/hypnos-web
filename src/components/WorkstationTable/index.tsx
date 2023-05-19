@@ -3,6 +3,9 @@ import React from 'react'
 import {Workstation} from '../../entities/workstation'
 import './styles.css'
 import { getCurrentTime } from '../../common/current_time'
+import { Employee } from '../../entities/employee'
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 
 export type BadgeStatus = 'off' | 'alert' | 'critical'
 
@@ -14,7 +17,6 @@ interface Props {
 export const WorkstationTable: React.FC<Props> = ({workstation, status}) => {
   const {employee} = workstation
 
-  
   const hasEmployee = !!employee
 
   const fullName = hasEmployee
@@ -29,8 +31,7 @@ export const WorkstationTable: React.FC<Props> = ({workstation, status}) => {
   return (
    
       <tr className='line'>
-          <td>
-            <div className='description'>
+          <td className='description'>
             <img
             src="https://images.unsplash.com/photo-1592948078640-39656341be54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
             alt="profile"
@@ -41,12 +42,11 @@ export const WorkstationTable: React.FC<Props> = ({workstation, status}) => {
         <p >{role} {registration}</p>
 
       </div>
-      </div>
             </td>
           <td className='workstation-value'>{workstation.value}</td>
           <td className= 'status'><span className= {`status span ${status}`}>{status}</span></td>
           <td >{getCurrentTime()}H</td>
-          <td className='text-button'>Ver Historico</td>
+          <td className='text-button'>Ver Histórico</td>
         </tr>
     
   )

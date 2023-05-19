@@ -6,8 +6,7 @@
      text-align: left;
      width: 100%;
      display:table;
-     border: 1px solid #E3E3E3;
-     
+     border: 1px solid #E3E3E3;  
  }
  
  .text-button {
@@ -19,17 +18,15 @@
  
  
  .container .content .table .body .line .description {
-   display: flex;
+    display: flex;
    flex-direction: line;
    align-items: flex-start;
    box-sizing: border-box;
-   width: 180px;
  }
  
  .emloyee-container{
    display: flex;
    flex-direction: column;
-   
  }
  
  .employee-container .name{
@@ -37,9 +34,9 @@
    flex-direction: column;
    margin-bottom: 2px;
    font: normal normal 600 16px/22px Open Sans;
- letter-spacing: 0.29px;
- color: #000000;
- opacity: 1;
+  letter-spacing: 0.29px;
+  color: #000000;
+  opacity: 1;
  }
  
  .container .content .table .body .line .description .profile {
