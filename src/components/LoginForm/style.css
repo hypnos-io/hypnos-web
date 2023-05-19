@@ -47,3 +47,15 @@
 .error__message {
     color: red;
 }
+
+.Login__checkbox__container {
+    display: flex;
+    height: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.Login__checkbox__container input {
+    width: 15px;
+}

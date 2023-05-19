@@ -19,34 +19,16 @@
   background-color: #162d40;
 }
 
-.Sidebar__button > img {
-  width: 25px;
+.Sidebar__button img {
+  width: 35px;
   padding-right: 15px;
 }
 
-.Sidebar__button--active {
-  font-family: 'Open Sans';
-  font-weight: bold;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 10px;
-  padding-left: 30px;
-  border-radius: 38px 0px 38px 38px;
-  margin-bottom: 10px;
-  text-decoration: none;
+.button__active {
   color: white;
   background-color: #2164f0;
-    width: 35px;
-    padding-right: 15px;
 }
 
-.Sidebar__button--active:hover {
+.button__active:hover {
   background-color: #141ed9;
-}
-
-.Sidebar__button--active > img {
-    width: 35px;
-    padding-right: 15px;
 }
