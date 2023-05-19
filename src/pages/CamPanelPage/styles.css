@@ -1,0 +1,151 @@
+.cam-panel {
+  display: flex;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Open Sans;
+}
+
+input {
+  border: 0;
+  background-color: transparent;
+}
+
+.button {
+  padding: 0px 8px;
+  height: 40px;
+  border-radius: 22px;
+  border: 0;
+  background-color: #2164f0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 24px/28px;
+  font-weight: 600;
+}
+
+.button:hover {
+  background-color: #1649b7;
+}
+
+.cam-panel {
+  display: flex;
+}
+
+.cam-panel .container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cam-panel .container > .header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.cam-panel .container > .header .title {
+  font-size: 36px/28px;
+}
+
+.cam-panel .container .main {
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  padding: 16px;
+  padding-top: 32px;
+  background-color: #eff1f5;
+  gap: 16px;
+}
+
+.cam-panel .container .main .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cam-panel .container .main .search-bar .input-group {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  background-color: #f7f8fa;
+  position: relative;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 26px;
+}
+
+.cam-panel .container .main .search-bar .input-group .input {
+  width: 100%;
+  height: 40px;
+  color: #000;
+  padding-left: 40px;
+  border-radius: 26px;
+}
+
+.cam-panel .container .main .search-bar .input-group .icon {
+  position: absolute;
+  left: 8px;
+  color: #909090;
+}
+
+.button.create-ws {
+  font-size: 16px;
+}
+
+.generic-modal {
+  height: 200px;
+}
+
+.generic-modal .form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0px 32px;
+  height: 400px;
+}
+
+.generic-modal .form .title {
+  font-size: 26px/28px;
+  font-weight: 600;
+}
+
+.generic-modal .form .actions {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.generic-modal .form .input {
+  height: 40px;
+  background-color: #f3f3f3;
+  color: #000;
+  border-radius: 16px;
+  border: 0;
+  padding: 0px 18px;
+  width: 100%;
+}
+
+.generic-modal .form .button.create-workstation {
+  width: 260px;
+}
+
+.generic-modal .form .button.cancel-form {
+  width: 150px;
+}
+
+.button.init-detection {
+  margin-left: auto;
+}
+
+.button.init-detection.secondary {
+  color: red;
+}
