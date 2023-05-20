@@ -21,6 +21,8 @@ export interface SocketDataResponse extends SocketData {
 
 type Callback = (data: SocketDataResponse) => void
 
+export const FPS = 10
+
 export function onWorkstationStatus(
   socket: Socket,
   workstation: Workstation,
@@ -38,7 +40,7 @@ export function sendWorkstationImage(
 
   const data: SocketDataRequest = {
     employeeId: workstation.employee._id,
-    fps: 10,
+    fps: FPS,
     id: socket.id,
     images,
     workstation: workstation.value,

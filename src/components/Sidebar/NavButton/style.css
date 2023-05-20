@@ -1,51 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 .Sidebar__button {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    font-family: 'Open Sans';
-    font-weight: bold;
-    align-items: center;
-    padding: 10px;
-    padding-left: 30px;
-    background-color: #141533;
-    border-radius: 38px 0px 38px 38px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-family: 'Open Sans';
+  font-weight: bold;
+  align-items: center;
+  padding: 10px;
+  padding-left: 30px;
+  background-color: #141533;
+  border-radius: 38px 0px 38px 38px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: white;
+  margin: 15px;
 }
 
 .Sidebar__button:hover {
-    background-color: #162D40;
+  background-color: #162d40;
 }
 
-.Sidebar__button > img {
-    width: 25px;
-    padding-right: 15px;
+.Sidebar__button img {
+  width: 35px;
+  padding-right: 15px;
 }
 
-.Sidebar__button--active {
-    font-family: 'Open Sans';
-    font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px;
-    padding-left: 30px;
-    border-radius: 38px 0px 38px 38px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: white;
-    background-color: #2164F0;
+.button__active {
+  color: white;
+  background-color: #2164f0;
 }
 
-.Sidebar__button--active:hover {
-    background-color: #141ED9;
-}
-
-.Sidebar__button--active > img {
-    width: 25px;
-    padding-right: 15px;
+.button__active:hover {
+  background-color: #141ed9;
 }

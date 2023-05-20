@@ -10,7 +10,7 @@ interface NavButtonProps {
 
 function NavButton({ icon, path, children }: NavButtonProps) {
     return (
-        <NavLink to={path} className={({ isActive }) => isActive ? "Sidebar__button--active" : "Sidebar__button"}>
+        <NavLink to={path} className={({ isActive }) => isActive ? "Sidebar__button button__active" : "Sidebar__button"}>
             <img src={icon} />
             <span>{children}</span>
         </NavLink>
