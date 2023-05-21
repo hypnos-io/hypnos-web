@@ -10,7 +10,6 @@ import {WorkstationService} from '../../services/workstation_service'
 import {FetchAllBySector} from '../../use_cases/workstation/FetchAllBySector'
 import {Title} from '../Title'
 import {BadgeStatus, WorkstationCard} from '../WorkstationCard'
-
 import {Socket} from 'socket.io-client'
 import {SectorService} from '../../services/sector_service'
 import {connect} from '../../services/websocket/connect'
@@ -20,6 +19,9 @@ import {
 } from '../../services/websocket/fatigue'
 import {FetchAll as FetchAllSectors} from '../../use_cases/sectors/FetchAll'
 import './styles.css'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 type ViewType = 'grid' | 'list'
 
@@ -27,10 +29,13 @@ interface WorkstationOnline extends Workstation {
   status: BadgeStatus
 }
 
+
+
 export const WorkstationStatus: React.FC = () => {
   const [viewType, setViewType] = useState<ViewType>('grid')
   const [workstations, setWorkstations] = useState<WorkstationOnline[]>()
   const [socket, setSocket] = useState<Socket>()
+  const [notificationWorkstations, setNotificationWorkstations] = useState<WorkstationOnline[]>([]);
 
   async function fetchAllWorkstations() {
     const fetchAllUC = new FetchAllBySector(new WorkstationService())
@@ -101,9 +106,20 @@ export const WorkstationStatus: React.FC = () => {
 
         // Update workstation status
         newWorkstations[index] = {...workstation, status}
+
+        if (status === 'alert') {
+          toast.warning('Alerta: Fadiga detectada no posto de trabalho!');
+        } else if (status === 'critical') {
+          toast.error('Atenção: Fadiga crítica detectada no posto de trabalho!');
+        }
       }
     }
     setWorkstations(newWorkstations)
+
+    const notificationWorkstations = newWorkstations.filter(
+      (workstation) => workstation.status === 'alert' || workstation.status === 'critical'
+    );
+    setNotificationWorkstations(notificationWorkstations);
   }
 
   function renderWorkstation(workstation: WorkstationOnline, index: number) {
@@ -126,6 +142,7 @@ export const WorkstationStatus: React.FC = () => {
       <div className="container">
         <Title title="Detecção de Fadiga nos Postos de Trabalho" live={false} />
         <main className="content">
+        <ToastContainer />
           <header className="header">
             <label className="title">Visualização</label>
             <GridViewIcon
@@ -193,7 +210,7 @@ export const WorkstationStatus: React.FC = () => {
             <NotificationIcon size={20} />
             Notificações
           </h2>
-          <ul className="cards">{workstations.map(renderWorkstation)}</ul>
+          <ul className="cards">{notificationWorkstations.map(renderWorkstation)}</ul>
         </div>
       </main>
     </div>
