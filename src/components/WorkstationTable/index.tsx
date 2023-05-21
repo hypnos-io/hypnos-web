@@ -20,7 +20,7 @@ export const WorkstationTable: React.FC<Props> = ({workstation, status}) => {
   const hasEmployee = !!employee
 
   const fullName = hasEmployee
-    ? `${employee.firstName} ${employee.lastName}`
+    ? `${employee.name}`
     : 'Sem operador'
 
   const role = hasEmployee ? ` ${employee.role} ` : 'Operador'
@@ -48,6 +48,5 @@ export const WorkstationTable: React.FC<Props> = ({workstation, status}) => {
           <td >{getCurrentTime()}H</td>
           <td className='text-button'>Ver Histórico</td>
         </tr>
-    
   )
 }

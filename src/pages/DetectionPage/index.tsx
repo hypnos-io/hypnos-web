@@ -8,7 +8,7 @@ const DetectionPage: React.FC = () => {
   return (
     <div className="detectionPage">
       <Sidebar></Sidebar>
-      <WorkstationStatusList />
+      <WorkstationStatus />
     </div>
   )
 }
