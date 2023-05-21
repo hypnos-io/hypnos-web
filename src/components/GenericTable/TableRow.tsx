@@ -8,4 +8,4 @@ const TableRow: React.FC<Props> = ({children}) => {
   return <tr className="table-row">{children}</tr>
 }
 
-export default TableRow
+export default TableRow;

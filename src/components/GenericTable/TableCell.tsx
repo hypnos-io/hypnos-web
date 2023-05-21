@@ -8,4 +8,4 @@ const TableCell: React.FC<Props> = ({children}) => {
   return <td className="table-cell">{children}</td>
 }
 
-export default TableCell
+export default TableCell;

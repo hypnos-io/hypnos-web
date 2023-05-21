@@ -1,7 +1,8 @@
 import React from 'react'
 import Sidebar from '../../components/Sidebar'
-import {WorkstationStatus} from '../../components/WorkstationStatus'
 import './style.css'
+import { WorkstationStatus } from '../../components/WorkstationStatus'
+import { WorkstationStatusList } from '../../components/WorkstationList'
 
 const DetectionPage: React.FC = () => {
   return (
