@@ -1,0 +1,30 @@
+.container .content .event-section{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 6px;
+    display: flex;
+  align-items: left;
+  padding: 30px;
+  flex-direction: column;
+  
+}
+
+li{
+    list-style: none;
+}
+
+.container .content .event-section .card-content {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    flex-direction: column;
+    
+  }
+
+  .container .content .event-section .card-content .history-title{
+text-align: left;
+font: normal normal 600 24px/26px Open Sans;
+letter-spacing: 0px;
+color: #191818;
+opacity: 1;
+padding-bottom: 30px;
+  }
