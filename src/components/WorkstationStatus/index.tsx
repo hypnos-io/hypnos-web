@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-
 import {
   FaListAlt as ListViewIcon,
   FaBell as NotificationIcon,
