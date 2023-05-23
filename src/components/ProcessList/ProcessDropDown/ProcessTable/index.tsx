@@ -30,7 +30,7 @@ function ProcessTable({ jobs }: ProcessTableProps) {
                 <td>{job.durationInHours}h</td>
                 <td>{formatTime(job.startAt)}</td>
                 <td>{formatTime(job.endAt)}</td>
-                <td>5</td>
+                <td>{job.employeeSize}</td>
                 <td><img src={blackPencilIcon}/></td>
                 <td><img src={deleteIcon}/></td>
             </tr>
