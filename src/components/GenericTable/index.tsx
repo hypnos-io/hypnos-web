@@ -8,9 +8,15 @@ interface Props {
   columns: string[]
   data: unknown[]
   renderItem: (item: unknown) => JSX.Element
+  showColumnName?: boolean
 }
 
-export const GenericTable: React.FC<Props> = ({columns, data, renderItem}) => {
+export const GenericTable: React.FC<Props> = ({
+  columns,
+  data,
+  renderItem,
+  showColumnName: showColumns = true,
+}) => {
   function renderColumn(column: string, index: number) {
     return (
       <th key={`column-${index}`} className="table-column">
@@ -25,9 +31,11 @@ export const GenericTable: React.FC<Props> = ({columns, data, renderItem}) => {
 
   return (
     <table className="generic-table">
-      <thead className="table-header">
-        <tr className="table-row-column">{columns.map(renderColumn)}</tr>
-      </thead>
+      {showColumns && (
+        <thead className="table-header">
+          <tr className="table-row-column">{columns.map(renderColumn)}</tr>
+        </thead>
+      )}
       <tbody className="table-body">
         {data.length === 0 && (
           <TableRow>
