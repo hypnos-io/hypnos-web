@@ -7,13 +7,13 @@ import ProgressBar from './ProgressBar';
 
 interface JobHeaderProps {
     process: Process | null,
-    addJobScreen: any,
+    setCurrentPage: any,
     jobScreenStep: number
 }
 
-function JobHeader({ process, addJobScreen, jobScreenStep }: JobHeaderProps) {
+function JobHeader({ process, setCurrentPage, jobScreenStep }: JobHeaderProps) {
     function renderProgressBar(step: number) {
-        if (jobScreenStep == 1) {
+        if (step == 1) {
             return (
                 <>
                     <ProgressBar isComplete={true}><strong>01</strong> Informações Básicas</ProgressBar>
@@ -21,7 +21,7 @@ function JobHeader({ process, addJobScreen, jobScreenStep }: JobHeaderProps) {
                     <ProgressBar isComplete={false}><strong>03</strong> Sincronização</ProgressBar>
                 </>
             );
-        } else if (jobScreenStep == 2) {
+        } else if (step == 2) {
             return (
                 <>
                     <ProgressBar isComplete={true}><strong>01</strong> Informações Básicas</ProgressBar>
@@ -29,7 +29,7 @@ function JobHeader({ process, addJobScreen, jobScreenStep }: JobHeaderProps) {
                     <ProgressBar isComplete={false}><strong>03</strong> Sincronização</ProgressBar>
                 </>
             );
-        } else if (jobScreenStep == 3) {
+        } else if (step == 3) {
             return (
                 <>
                     <ProgressBar isComplete={true}><strong>01</strong> Informações Básicas</ProgressBar>
@@ -44,7 +44,7 @@ function JobHeader({ process, addJobScreen, jobScreenStep }: JobHeaderProps) {
         <header>
             <div className="job__header__title__container">
                 <div className="add__job__header__title">
-                    <img src={backIcon} onClick={() => addJobScreen()} />
+                    <img src={backIcon} onClick={() => setCurrentPage(0)} />
                     <h1>Adicionar tarefa</h1>
                 </div>
                 <p>{process?.name} &gt; Adicionar Tarefa</p>

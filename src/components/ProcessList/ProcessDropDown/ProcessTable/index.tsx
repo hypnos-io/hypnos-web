@@ -12,10 +12,11 @@ import { Process } from '../../../../entities/process';
 interface ProcessTableProps {
     process: Process,
     jobs: Job[],
-    addJobScreen: any
+    setCurrentPage: (page: number) => void,
+    setCurrentProcess: (process: Process) => void
 }
 
-function ProcessTable({ process, jobs, addJobScreen }: ProcessTableProps) {
+function ProcessTable({ process, jobs, setCurrentPage, setCurrentProcess }: ProcessTableProps) {
 
     function formatTime(dateString: Date): string {
         const date = new Date(dateString);
@@ -63,7 +64,10 @@ function ProcessTable({ process, jobs, addJobScreen }: ProcessTableProps) {
             
             </table>
 
-            <div className="add__task__container" onClick={() => addJobScreen(process)}>
+            <div className="add__task__container" onClick={() => {
+                setCurrentProcess(process);
+                setCurrentPage(1);
+            }}>
                 <img src={addJobIcon}/>
                 <p>Adicionar Tarefa</p>
             </div>
