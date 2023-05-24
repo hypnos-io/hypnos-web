@@ -12,7 +12,7 @@ import { ProcessService } from '../../services/process_service';
 import { Process } from '../../entities/process';
 import AddProcessModal from './AddProcessModal';
 
-function ProcessList({ addJobScreen }: any) {
+function ProcessList({ setCurrentPage, setCurrentProcess }: any) {
     const [processes, setProcesses] = useState<Process[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,7 +28,7 @@ function ProcessList({ addJobScreen }: any) {
 
     function renderProcess(process: Process, index: number) {
         return (
-            <ProcessDropDown key={`${index}-${process._id}`} processProp={process} addJobScreen={addJobScreen}></ProcessDropDown>
+            <ProcessDropDown key={`${index}-${process._id}`} processProp={process} setCurrentPage={setCurrentPage} setCurrentProcess={setCurrentProcess}></ProcessDropDown>
         );
     }
 

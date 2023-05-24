@@ -6,14 +6,14 @@ import JobHeader from "./JobHeader";
 
 interface JobFormsProp {
     process: Process,
-    addJobScreen: any,
+    setCurrentPage: any,
 }
 
-function JobForms({ process, addJobScreen }: JobFormsProp) {
+function JobForms({ process, setCurrentPage }: JobFormsProp) {
     return (
         <div className="job__screen">
-            <JobHeader process={process} addJobScreen={addJobScreen} jobScreenStep={1}></JobHeader>
-            <JobForm process={process!} addJobScreen={addJobScreen}></JobForm>
+            <JobHeader process={process} setCurrentPage={setCurrentPage} jobScreenStep={1}></JobHeader>
+            <JobForm process={process!} setCurrentPage={setCurrentPage}></JobForm>
         </div>
     );
 }

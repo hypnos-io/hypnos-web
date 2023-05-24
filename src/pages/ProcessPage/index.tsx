@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Sidebar from '../../components/Sidebar'
 import ProcessList from '../../components/ProcessList'
 
@@ -8,19 +8,36 @@ import JobForms from '../../components/JobForms'
 
 const ProcessPage: React.FC = () => {
   const [isAddingJob, setIsAddingJob] = useState(false);
-  const [process, setProcess] = useState<Process | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentProcess, setCurrentProcess] = useState<Process | null>(null);
 
-  function addJobScreen(process: any) {
-    setProcess(process);
-    setIsAddingJob(!isAddingJob);
+  function renderPage() {
+    if (currentPage === 0) {
+      return (
+        <ProcessList setCurrentPage={setCurrentPage} setCurrentProcess={setCurrentProcess}></ProcessList>
+      );
+    } else if (currentPage === 1) {
+      return (
+        <JobForms process={currentProcess!} setCurrentPage={setCurrentPage}></JobForms>
+      );
+    } 
+    // else if (currentPage === 2) {
+    //   return (
+    //      <Exemplo setCurrentPage={setCurrentPage}></Exemplo>
+    //   );
+    // }
   }
+
+  useEffect(() => {
+    setIsAddingJob(currentPage !== 0);
+  }, [currentPage]);
 
   return (
     <div className={isAddingJob ? "processPage adding__job" : "processPage"}>
       <Sidebar></Sidebar>
-      {isAddingJob ? <JobForms process={process!} addJobScreen={addJobScreen}></JobForms> : <ProcessList addJobScreen={addJobScreen}></ProcessList>}
+      {renderPage()}
     </div>
   )
 }
 
-export default ProcessPage
+export default ProcessPage;

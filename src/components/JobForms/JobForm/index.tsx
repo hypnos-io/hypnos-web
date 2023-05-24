@@ -18,10 +18,10 @@ import { Process } from '../../../entities/process';
 
 interface JobFormProps {
     process: Process,
-    addJobScreen: () => void
+    setCurrentPage: (page: number) => void
 }
 
-function JobForm({ process, addJobScreen }: JobFormProps) {
+function JobForm({ process, setCurrentPage }: JobFormProps) {
     const [sectors, setSectors] = useState<Sector[]>([]);
     const [job, setJob] = useState<Job>({
         name: '',
@@ -208,7 +208,7 @@ function JobForm({ process, addJobScreen }: JobFormProps) {
             </div>
 
             <div className="job__form__buttons__container">
-                <button className="job__form__cancel__button" onClick={() => addJobScreen()}>Cancelar</button>
+                <button className="job__form__cancel__button" onClick={() => setCurrentPage(0)}>Cancelar</button>
                 <button className="job__form__continue__button" onClick={handleContinueButton}>Prosseguir</button>
             </div>
         </div>

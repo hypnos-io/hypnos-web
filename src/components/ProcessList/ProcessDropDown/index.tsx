@@ -14,10 +14,11 @@ import { Job } from '../../../entities/job';
 
 interface ProcessDropDownProps {
     processProp: Process,
-    addJobScreen: any
+    setCurrentPage: (page: number) => void,
+    setCurrentProcess: (process: Process) => void
 }
 
-function ProcessDropDown({ processProp, addJobScreen }: ProcessDropDownProps) {
+function ProcessDropDown({ processProp, setCurrentPage, setCurrentProcess }: ProcessDropDownProps) {
     const [isActive, setIsActive] = useState(false);
     const [process, setProcess] = useState<Process>(processProp);
     const [jobs, setJobs] = useState<Job[]>([]);
@@ -54,7 +55,7 @@ function ProcessDropDown({ processProp, addJobScreen }: ProcessDropDownProps) {
 
             <div>
 
-                {isActive && <ProcessTable process={processProp} jobs={jobs} addJobScreen={addJobScreen}></ProcessTable>}
+                {isActive && <ProcessTable process={processProp} jobs={jobs} setCurrentPage={setCurrentPage} setCurrentProcess={setCurrentProcess}></ProcessTable>}
 
             </div>
 
