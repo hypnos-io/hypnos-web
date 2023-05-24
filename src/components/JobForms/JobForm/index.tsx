@@ -1,3 +1,5 @@
+import {useState, useEffect} from 'react';
+
 import './style.css';
 
 import braceletIcon from '../../assets/img/Job/JobForm/Grupo 234@2x.png';
@@ -8,8 +10,29 @@ import glovesIcon from '../../assets/img/Job/JobForm/Grupo 325@2x.png';
 import hearingProtectionIcon from '../../assets/img/Job/JobForm/Grupo 2344@2x.png';
 
 import EPICheckField from './EPICheckField';
+import { FetchAll } from '../../../use_cases/sectors/FetchAll';
+import { SectorService } from '../../../services/sector_service';
+import { Sector } from '../../../entities/sector';
 
 function JobForm() {
+    const [sectors, setSectors] = useState<Sector[]>([]);
+
+    async function fetchSectors() {
+        const fetchUC = new FetchAll(new SectorService());
+        const allSectors = await fetchUC.execute();
+        setSectors(allSectors);
+    }
+
+    function renderSectorOption(sector: Sector, index: number) {
+        return (
+            <option>{sector.value}</option>
+        );
+    }
+
+    useEffect(() => {
+        fetchSectors();
+    }, []);
+
     return (
         <div className="job__form__container">
             <div className="job__form__fields__container">
@@ -26,9 +49,7 @@ function JobForm() {
                         <label>Setor</label>
                         <select>
                             <option></option>
-                            <option>Setor 1</option>
-                            <option>Setor 1</option>
-                            <option>Setor 1</option>
+                            {sectors.map(renderSectorOption)}
                         </select>
                     </div>
 
