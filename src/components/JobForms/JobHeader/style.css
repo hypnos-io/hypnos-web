@@ -10,6 +10,7 @@
 
 .add__job__header__title img {
     width: 30px;
+    cursor: pointer;
 }
 
 .job__progress__containers {

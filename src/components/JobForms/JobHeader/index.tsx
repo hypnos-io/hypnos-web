@@ -8,15 +8,16 @@ import './style.css';
 import { Process } from "../../../entities/process";
 
 interface JobHeaderProps {
-    process: Process | null
+    process: Process | null,
+    addJobScreen: any
 }
 
-function JobHeader({ process }: JobHeaderProps) {
+function JobHeader({ process, addJobScreen }: JobHeaderProps) {
     return (
         <header>
             <div className="job__header__title__container">
                 <div className="add__job__header__title">
-                    <img src={backIcon}/>
+                    <img src={backIcon} onClick={() => addJobScreen()} />
                     <h1>Adicionar tarefa</h1>
                 </div>
                 <p>{process?.name} &gt; Adicionar Tarefa</p>

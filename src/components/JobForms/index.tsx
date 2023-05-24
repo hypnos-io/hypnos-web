@@ -5,13 +5,14 @@ import JobForm from "./JobForm";
 import JobHeader from "./JobHeader";
 
 interface JobFormsProp {
-    process: Process | null
+    process: Process | null,
+    addJobScreen: any,
 }
 
-function JobForms({ process }: JobFormsProp) {
+function JobForms({ process, addJobScreen }: JobFormsProp) {
     return (
         <div className="job__screen">
-            <JobHeader process={process}></JobHeader>
+            <JobHeader process={process} addJobScreen={addJobScreen}></JobHeader>
             <JobForm></JobForm>
         </div>
     );

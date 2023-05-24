@@ -1,7 +1,7 @@
 .job__form__container {
     background-color: #ffffff;
     width: 1000px;
-    height: 400px;
+    height: 500px;
     border-radius: 30px;
     padding: 30px;
 }
@@ -51,4 +51,32 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+}
+
+.job__form__buttons__container {
+    display: flex;
+    margin-top: 100px;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.job__form__cancel__button {
+    background-color: #ffffff;
+    cursor: pointer;
+    height: 35px;
+    width: 90px;
+    border-color: #818181;
+    color: #818181;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.job__form__continue__button {
+    background-color: #5522D3;
+    height: 35px;
+    width: 110px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
 }

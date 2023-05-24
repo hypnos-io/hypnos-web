@@ -114,9 +114,9 @@ function JobForm() {
                 </div>
             </div>
 
-
             <div className="job__form__buttons__container">
-
+                <button className="job__form__cancel__button">Cancelar</button>
+                <button className="job__form__continue__button">Prosseguir</button>
             </div>
         </div>
     ); 
