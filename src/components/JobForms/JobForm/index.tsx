@@ -13,9 +13,26 @@ import EPICheckField from './EPICheckField';
 import { FetchAll } from '../../../use_cases/sectors/FetchAll';
 import { SectorService } from '../../../services/sector_service';
 import { Sector } from '../../../entities/sector';
+import { Job } from '../../../entities/job';
+import { Process } from '../../../entities/process';
 
-function JobForm() {
+interface JobFormProps {
+    process: Process,
+    addJobScreen: () => void
+}
+
+function JobForm({ process, addJobScreen }: JobFormProps) {
     const [sectors, setSectors] = useState<Sector[]>([]);
+    const [job, setJob] = useState<Job>({
+        name: '',
+        employeeSize: 0,
+        startAt: new Date(),
+        endAt: new Date(),
+        durationInHours: 0,
+        process: process,
+        sector: undefined,
+        epis: []
+    });
 
     async function fetchSectors() {
         const fetchUC = new FetchAll(new SectorService());
@@ -25,8 +42,63 @@ function JobForm() {
 
     function renderSectorOption(sector: Sector, index: number) {
         return (
-            <option>{sector.value}</option>
+            <option key={`${index}-${sector._id}`}>{sector.value}</option>
         );
+    }
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = event.target;
+
+        let fieldValue: string | number = value;
+
+        if (name === 'employeeSize' || name === 'durationInHours') {
+            fieldValue = parseInt(value, 10);
+        }
+
+        setJob(prevJob => ({
+            ...prevJob,
+            [name]: fieldValue,
+        }));
+    };
+
+    const handleSelectSector = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedSectorValue = event.target.value;
+        const selectedSector = sectors.find(sector => sector.value === selectedSectorValue);
+    
+        setJob(prevJob => ({
+            ...prevJob,
+            sector: selectedSector,
+        }));
+    };
+
+    const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        const [hours, minutes] = value.split(':');
+        const currentDate = new Date();
+        const selectedTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), parseInt(hours, 10), parseInt(minutes, 10));
+    
+        setJob(prevJob => ({
+            ...prevJob,
+            [name]: selectedTime,
+        }));
+    };
+    
+    const handleEpisChange = (epi: string) => {
+        const updatedEpis = [...job.epis];
+        const index = updatedEpis.indexOf(epi);
+        if (index === -1) {
+            updatedEpis.push(epi);
+        } else {
+            updatedEpis.splice(index, 1);
+        }
+        setJob(prevJob => ({
+            ...prevJob,
+            epis: updatedEpis,
+        }));
+    };
+
+    function handleContinueButton() {
+        console.log(job);
     }
 
     useEffect(() => {
@@ -42,12 +114,12 @@ function JobForm() {
 
                     <div className="job__input__container">
                         <label>Nome da tarefa</label>
-                        <input className="job__input__text" type="text" />
+                        <input className="job__input__text" type="text" name="name" value={job.name} onChange={handleInputChange}/>
                     </div>
 
                     <div className="job__input__container">
                         <label>Setor</label>
-                        <select>
+                        <select name="sector" onChange={handleSelectSector}>
                             <option></option>
                             {sectors.map(renderSectorOption)}
                         </select>
@@ -55,7 +127,7 @@ function JobForm() {
 
                     <div className="job__input__container">
                         <label>Nª de operários</label>
-                        <select>
+                        <select name="employeeSize" onChange={handleInputChange}>
                             <option></option>
                             <option>10</option>
                             <option>20</option>
@@ -70,17 +142,17 @@ function JobForm() {
                 <div className="job__form__input__row">
                     <div className="job__input__container">
                         <label>Entrada</label>
-                        <input className="job__input__time" type="time" />
+                        <input className="job__input__time" name="startAt" onChange={handleTimeChange} type="time" />
                     </div>
 
                     <div className="job__input__container">
                         <label>Saída</label>
-                        <input className="job__input__time" type="time" />
+                        <input className="job__input__time" name="endAt" onChange={handleTimeChange} type="time" />
                     </div>
 
                     <div className="job__input__container">
                         <label>Duração</label>
-                        <select>
+                        <select name="durationInHours" onChange={handleInputChange}>
                             <option></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -124,20 +196,20 @@ function JobForm() {
                     <div className="job__input__container">
                         <label>EPIs necessários</label>
                         <div className="job__epis__container">
-                            <EPICheckField icon={braceletIcon}>Pulseira Anti Estática</EPICheckField>
-                            <EPICheckField icon={bootIcon}>Bota</EPICheckField>
-                            <EPICheckField icon={helmetIcon}>Capacete</EPICheckField>
-                            <EPICheckField icon={glassesIcon}>Óculos de proteção</EPICheckField>
-                            <EPICheckField icon={glovesIcon}>Luvas</EPICheckField>
-                            <EPICheckField icon={hearingProtectionIcon}>Protetor Auricular</EPICheckField>
+                            <EPICheckField icon={braceletIcon} handleEpisChange={handleEpisChange}>Pulseira Anti Estática</EPICheckField>
+                            <EPICheckField icon={bootIcon} handleEpisChange={handleEpisChange}>Bota</EPICheckField>
+                            <EPICheckField icon={helmetIcon} handleEpisChange={handleEpisChange}>Capacete</EPICheckField>
+                            <EPICheckField icon={glassesIcon} handleEpisChange={handleEpisChange}>Óculos de proteção</EPICheckField>
+                            <EPICheckField icon={glovesIcon} handleEpisChange={handleEpisChange}>Luvas</EPICheckField>
+                            <EPICheckField icon={hearingProtectionIcon} handleEpisChange={handleEpisChange}>Protetor Auricular</EPICheckField>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div className="job__form__buttons__container">
-                <button className="job__form__cancel__button">Cancelar</button>
-                <button className="job__form__continue__button">Prosseguir</button>
+                <button className="job__form__cancel__button" onClick={() => addJobScreen()}>Cancelar</button>
+                <button className="job__form__continue__button" onClick={handleContinueButton}>Prosseguir</button>
             </div>
         </div>
     ); 

@@ -25,6 +25,7 @@
 
 .job__input__text {
     background-color: #F3F3F3;
+    padding-left: 10px;
     width: 450px;
     height: 30px;
     border-radius: 5px;
