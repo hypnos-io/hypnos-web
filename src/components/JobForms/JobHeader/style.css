@@ -1,0 +1,55 @@
+.job__header__title__container {
+    margin-bottom: 20px;
+}
+
+.add__job__header__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add__job__header__title img {
+    width: 30px;
+}
+
+.job__progress__containers {
+    display: flex;
+    gap: 10px;
+}
+
+
+.job__progress__container p {
+    font-size: 18px;
+}
+
+
+.job__progress__bar__container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress__bar__circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.complete {
+    background-color: #5522D3;
+}
+
+.incomplete {
+    background-color: #00000029;
+}
+
+.progress__bar__circle img {
+    width: 20px;
+}
+
+.job__progress__bar__img {
+    height: 4px;
+}

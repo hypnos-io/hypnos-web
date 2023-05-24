@@ -16,7 +16,7 @@ const ProcessPage: React.FC = () => {
   }
 
   return (
-    <div className="processPage">
+    <div className={isAddingJob ? "processPage adding__job" : "processPage"}>
       <Sidebar></Sidebar>
       {isAddingJob ? <JobForms process={process}></JobForms> : <ProcessList addJobScreen={addJobScreen}></ProcessList>}
     </div>
