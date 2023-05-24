@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../../components/Sidebar'
 import ProcessList from '../../components/ProcessList'
+
 import './style.css'
+import { Process } from '../../entities/process'
+import JobForms from '../../components/JobForms'
 
 const ProcessPage: React.FC = () => {
+  const [isAddingJob, setIsAddingJob] = useState(false);
+  const [process, setProcess] = useState<Process | null>(null);
+
+  function addJobScreen(process: any) {
+    setProcess(process);
+    setIsAddingJob(!isAddingJob);
+  }
+
   return (
     <div className="processPage">
       <Sidebar></Sidebar>
-      <ProcessList></ProcessList>
+      {isAddingJob ? <JobForms process={process}></JobForms> : <ProcessList addJobScreen={addJobScreen}></ProcessList>}
     </div>
   )
 }
