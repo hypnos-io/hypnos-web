@@ -1,5 +1,12 @@
 .signUpPage {
     display: flex;
+    
+}
+
+.icon-and-title {
+    display: flex;
+    margin-top: 6%;
+    margin-left: 7.4%;
 }
 
 .page-content.blur {
@@ -10,9 +17,6 @@
   }  
 
 .upper-title {
-    position: absolute;
-    top: 62px;
-    left: 520px;
     width: 174px;
     height: 49px;
     text-align: left;
@@ -20,12 +24,16 @@
     letter-spacing: 0px;
     color: #191818;
     opacity: 1;
+
+}
+
+.rect-background {
+    display: flex;
+    margin-left: 8.5%;
+    margin-top: 2%;
 }
 
 .column-title-name {
-    position: absolute;
-    top: 243px;
-    left: 535px;
     text-align: left;
     font: normal normal 600 24px/29px Open Sans;
     letter-spacing: 0px;
@@ -35,9 +43,6 @@
 }
 
 .column-title-enrollment {
-    position: absolute;
-    top: 243px;
-    left: 910px;
     text-align: left;
     font: normal normal 600 24px/29px Open Sans;
     letter-spacing: 0px;
@@ -47,9 +52,6 @@
 }
 
 .column-title-permissions {
-    position: absolute;
-    top: 243px;
-    left: 1175px;
     text-align: left;
     font: normal normal 600 24px/29px Open Sans;
     letter-spacing: 0px;
@@ -59,9 +61,6 @@
 }
 
 .column-title-actions {
-    position: absolute;
-    top: 243px;
-    left: 1440px;
     text-align: left;
     font: normal normal 600 24px/29px Open Sans;
     letter-spacing: 0px;
@@ -71,11 +70,9 @@
 }
 
 .awesome-users-icon {
-    top: 60.5px;
-    left: 470px;
-    position: absolute;
     height: 30px;
     width: 42px;
+    margin-right: 0.8%;
 }
 
 .shadow {

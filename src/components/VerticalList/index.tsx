@@ -42,16 +42,22 @@ function VerticalList ({ links }) {
     <div>
       <div className="vertical-list">
         {links.map((link, index) => (
-          <a href="#" key={index}>
+          <a href="#" key={index} >
+            <div className='image-area'>
             <img className="circle" src={link[1]}></img>
-            <span className="link-text">{link[0]}</span>
-            <div className="link-enrollment">
+            </div>
+            <div className='name-area'>
+            <span>{link[0]}</span>
+            </div>
+            <div className="enrollment-area">
               <span>{link[2]}</span>
             </div>
-            <div className="link-permissions">
+            <div className="permission-area">
               <span>{link[3]}</span>
             </div>
-            <BsTrash3Fill key={link[4]} className='trashCan-icon' onClick={(e) => {handleDeleteClick(e, link[4]), setRoleDelete(link[3])}}></BsTrash3Fill>
+            <div className='trashCan-icon-area'>
+              <BsTrash3Fill key={link[4]} className='trashCan-icon' onClick={(e) => {handleDeleteClick(e, link[4]), setRoleDelete(link[3])}}></BsTrash3Fill>
+            </div>
           </a>
         ))}
       </div>

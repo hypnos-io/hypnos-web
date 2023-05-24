@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from '../../components/Sidebar'
-import HeaderRectangle from '../../components/HeaderRectangle'
-import VerticalList from '../../components/VerticalList'
 import GrayRectBackground from '../../components/GrayRectBackground'
-import SearchBar from '../../components/SearchBar'
-import AddUserButton from '../../components/AddUserButton'
 import awesomeUsersDark from '../../components/assets/img/Icon awesome-users-black@2x.png'
 import SignUpWindow from '../../components/SignUpWindow'
 import { FetchAllEmployees } from '../../use_cases/employees/FetchAll'
@@ -119,17 +115,13 @@ const SignUpPage: React.FC = () => {
       <Sidebar></Sidebar>
       <div className={`page-content ${blurBackground ? "blur" : ""}`}>
         {blurBackground && <div className='shadow'></div>}
-        <h1 className="upper-title">Cadastros</h1>
+        <div className='icon-and-title'>
         <img className="awesome-users-icon" src={awesomeUsersDark} alt="Awesome Users Icon"></img>
-        <h2 className="column-title-name">Nome</h2>
-        <h2 className="column-title-enrollment">Matrícula</h2>
-        <h2 className="column-title-permissions">Permissões</h2>
-        <h2 className="column-title-actions">Ações</h2>
+        <h1 className="upper-title">Cadastros</h1>
+        </div>
+        <div className='rect-background'>
         <GrayRectBackground></GrayRectBackground>
-        <HeaderRectangle></HeaderRectangle>
-        <SearchBar onSearch={handleFilter} />
-        <VerticalList links={foundOperators}/>
-        <AddUserButton text="Adicionar Usuário" onClick={handleAddUserClick}></AddUserButton>
+        </div>
       </div>
       {showWindow && <SignUpWindow onWindowClose={handleWindowClose} />}
     </div>

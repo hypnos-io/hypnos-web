@@ -1,12 +1,11 @@
 .vertical-list {
+  display: flex;
   width: 1100px;
-  position: absolute;
-  top: 292px;
-  left: 503px;
   height: 440px;
-  overflow-x: hidden; /* added to disable horizontal scrolling */
+  overflow-x: hidden;
   overflow-y: scroll;
   border-radius: 0px 0px 14px 14px;
+  flex-direction: column;
 }
 
 ::-webkit-scrollbar {
@@ -14,61 +13,61 @@
 }
 
 .vertical-list a {
-  position: relative;
   background-color: #FFFFFF;
   color: black;
-  display: block;
+  display: flex;
   padding: 12px;
   text-decoration: none;
   border: 1px solid #E3E3E3;
+  justify-content: flex-start;
 }
 
 .vertical-list a:hover {
   background-color: #ccc;
 }
 
+.image-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5.5%;
+  width: 5%;
+}
+
+.name-area {
+  width: 71%;
+  padding-left: 0.8%;
+}
+
+.enrollment-area {
+  width: 50%;
+}
+
+.permissions-area {
+  width: 20%;
+}
+
 .circle {
-  position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: rgb(218, 210, 210);
-  display: inline-block;
-  left: 35px;
-  top: 5px;
-}
-
-.link-text {
-  position: absolute;
-  left: 80px;
-}
-
-.link-enrollment {
-  position: relative;
-  right: 79px;
-  text-align: center;
-}
-
-.link-permissions {
-  position: absolute;
-  bottom: 12px;
-  left: 68%;
-  transform: translateX(-50%);
-  text-align: center;
 }
 
 .trashCan-icon {
-  position: absolute;
-  bottom: 12px;
-  left: 88.7%;
   color: rgb(213, 10, 10);
   cursor: pointer;
 }
 
+.trashCan-icon-area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 19%;
+  margin-right: 6.6%;
+}
+
 .confirmation-box {
-  position: fixed;
-  top: 400px;
-  left: 1000px;
   transform: translate(-50%, -50%);
   width: 350px;
   height: 135px;
@@ -88,13 +87,12 @@
   border-radius: 0px 0px 10px 10px;
   background-color: #FFFFFF;
   position: absolute;
-  top: 130px;
 }
 
 .employee-image {
   position: absolute;
-  top: 37%;
-  left: 50.5%;
+  top: 50%;
+  left: 50%;
   width: 404.5px;
   height: 250px;
   padding: 20px;
@@ -144,6 +142,5 @@
 .title-confirmation-deleting {
   font: normal normal normal 20px/20px Open Sans;
   color: white;
-  top: 45px;
   position: fixed;
 }
