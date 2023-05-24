@@ -13,10 +13,11 @@ import { JobService } from '../../../services/job_service';
 import { Job } from '../../../entities/job';
 
 interface ProcessDropDownProps {
-    processProp: Process
+    processProp: Process,
+    addJobScreen: any
 }
 
-function ProcessDropDown({ processProp }: ProcessDropDownProps) {
+function ProcessDropDown({ processProp, addJobScreen }: ProcessDropDownProps) {
     const [isActive, setIsActive] = useState(false);
     const [process, setProcess] = useState<Process>(processProp);
     const [jobs, setJobs] = useState<Job[]>([]);
@@ -53,7 +54,7 @@ function ProcessDropDown({ processProp }: ProcessDropDownProps) {
 
             <div>
 
-                {isActive && <ProcessTable jobs={jobs}></ProcessTable>}
+                {isActive && <ProcessTable process={processProp} jobs={jobs} addJobScreen={addJobScreen}></ProcessTable>}
 
             </div>
 
