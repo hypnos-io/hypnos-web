@@ -1,0 +1,25 @@
+.job__epi__checkfield {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-left: 10px;
+    cursor: pointer;
+    width: 250px;
+    height: 55px;
+    border-radius: 10px;
+    background-color: #F3F3F3;
+}
+
+.job__epi__checkfield img {
+    width: 30px;
+}
+
+.job__epi__checkfield label {
+    cursor: pointer;
+}
+
+.checked {
+    background-color: #E6E5F3;
+}
