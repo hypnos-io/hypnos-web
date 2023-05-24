@@ -1,18 +1,45 @@
 import backIcon from '../../assets/img/Job/JobHeader/Icon awesome-arrow-left@2x.png';
-import checkIcon from '../../assets/img/Job/JobHeader/Icon awesome-check@2x.png';
-import progressBarBlue from '../../assets/img/Job/JobHeader/Retângulo 181@2x.png';
-import progressBarGray from '../../assets/img/Job/JobHeader/Retângulo 947@2x.png';
 
 import './style.css';
 
 import { Process } from "../../../entities/process";
+import ProgressBar from './ProgressBar';
 
 interface JobHeaderProps {
     process: Process | null,
-    addJobScreen: any
+    addJobScreen: any,
+    jobScreenStep: number
 }
 
-function JobHeader({ process, addJobScreen }: JobHeaderProps) {
+function JobHeader({ process, addJobScreen, jobScreenStep }: JobHeaderProps) {
+    function renderProgressBar(step: number) {
+        if (jobScreenStep == 1) {
+            return (
+                <>
+                    <ProgressBar isComplete={true}><strong>01</strong> Informações Básicas</ProgressBar>
+                    <ProgressBar isComplete={false}><strong>02</strong> Adicionar operários</ProgressBar>
+                    <ProgressBar isComplete={false}><strong>03</strong> Sincronização</ProgressBar>
+                </>
+            );
+        } else if (jobScreenStep == 2) {
+            return (
+                <>
+                    <ProgressBar isComplete={true}><strong>01</strong> Informações Básicas</ProgressBar>
+                    <ProgressBar isComplete={true}><strong>02</strong> Adicionar operários</ProgressBar>
+                    <ProgressBar isComplete={false}><strong>03</strong> Sincronização</ProgressBar>
+                </>
+            );
+        } else if (jobScreenStep == 3) {
+            return (
+                <>
+                    <ProgressBar isComplete={true}><strong>01</strong> Informações Básicas</ProgressBar>
+                    <ProgressBar isComplete={true}><strong>02</strong> Adicionar operários</ProgressBar>
+                    <ProgressBar isComplete={true}><strong>03</strong> Sincronização</ProgressBar>
+                </>
+            );
+        }
+    }
+
     return (
         <header>
             <div className="job__header__title__container">
@@ -23,50 +50,7 @@ function JobHeader({ process, addJobScreen }: JobHeaderProps) {
                 <p>{process?.name} &gt; Adicionar Tarefa</p>
             </div>
             <div className="job__progress__containers">
-                <div className="job__progress__container">
-
-                    <p><strong>01</strong> Informações Básicas</p>
-
-                    <div className="job__progress__bar__container">
-
-                        <div className="progress__bar__circle complete">
-                            <img src={checkIcon} />    
-                        </div>
-                        <img className="job__progress__bar__img" src={progressBarBlue} />
-
-                    </div> 
-
-                </div>
-
-                <div className="job__progress__container">
-
-                    <p><strong>02</strong> Adicionar operários</p>
-
-                    <div className="job__progress__bar__container">
-                        
-                        <div className="progress__bar__circle incomplete">
-
-                        </div>
-                        <img className="job__progress__bar__img" src={progressBarGray} />
-
-                    </div> 
-
-                </div>
-
-                <div className="job__progress__container">
-
-                    <p><strong>03</strong> Sincronização</p>
-
-                    <div className="job__progress__bar__container">
-                        
-                        <div className="progress__bar__circle incomplete">
-
-                        </div>
-                        <img className="job__progress__bar__img" src={progressBarGray} />
-
-                    </div> 
-
-                </div>
+                {renderProgressBar(jobScreenStep)}
             </div>
         </header>
     );
