@@ -7,12 +7,15 @@ import blackPencilIcon from '../../../assets/img/ProcessList/Icon open-pencil@2x
 import deleteIcon from '../../../assets/img/ProcessList/Icon material-delete@2x.png';
 import addJobIcon from '../../../assets/img/ProcessList/Icon feather-plus-circle@2x.png';
 import { Job } from '../../../../entities/job';
+import { Process } from '../../../../entities/process';
 
 interface ProcessTableProps {
-    jobs: Job[]
+    process: Process,
+    jobs: Job[],
+    addJobScreen: any
 }
 
-function ProcessTable({ jobs }: ProcessTableProps) {
+function ProcessTable({ process, jobs, addJobScreen }: ProcessTableProps) {
 
     function formatTime(dateString: Date): string {
         const date = new Date(dateString);
@@ -60,7 +63,7 @@ function ProcessTable({ jobs }: ProcessTableProps) {
             
             </table>
 
-            <div className="add__task__container">
+            <div className="add__task__container" onClick={() => addJobScreen(process)}>
                 <img src={addJobIcon}/>
                 <p>Adicionar Tarefa</p>
             </div>
