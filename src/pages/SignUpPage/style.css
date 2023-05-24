@@ -1,6 +1,6 @@
 .signUpPage {
     display: flex;
-    
+    flex: 1 1 50px;
 }
 
 .icon-and-title {
@@ -30,7 +30,7 @@
 .rect-background {
     display: flex;
     margin-left: 8.5%;
-    margin-top: 2%;
+    margin-top: 1%;
 }
 
 .column-title-name {

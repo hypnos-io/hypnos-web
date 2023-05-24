@@ -1,7 +1,9 @@
 import React from 'react'
 import './style.css'
 
-function HeaderRectangle () {
+function HeaderRectangle ({hideCenterTitles = false}) {
+
+
     return (
        <div>
          <div className='rectangle'>
@@ -9,10 +11,10 @@ function HeaderRectangle () {
             Nome
           </div>
           <div className='column-title-enrollment'>
-             Matrícula
+             <p style={{color: !hideCenterTitles ? '#FFFFFF': 'transparent'}}>Matrícula</p>
           </div>
           <div className='column-title-permissions'>
-             Permissões
+             <p style={{color: !hideCenterTitles ? '#FFFFFF': 'transparent'}}>Permissões</p>
           </div>
           <div className='column-title-actions'>
             Ações

@@ -50,10 +50,10 @@ function VerticalList ({ links }) {
             <span>{link[0]}</span>
             </div>
             <div className="enrollment-area">
-              <span>{link[2]}</span>
+              <span className="enrollment-text">{link[2]}</span>
             </div>
             <div className="permission-area">
-              <span>{link[3]}</span>
+              <span className='permissions-text'>{link[3]}</span>
             </div>
             <div className='trashCan-icon-area'>
               <BsTrash3Fill key={link[4]} className='trashCan-icon' onClick={(e) => {handleDeleteClick(e, link[4]), setRoleDelete(link[3])}}></BsTrash3Fill>

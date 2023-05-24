@@ -172,13 +172,17 @@ function SignUpWindow(props: { onWindowClose: () => void; }) {
         <div className="signup-window">
           <div className="white-half"></div>
           <form className='form-data'>
-            <img src={exitButton} className='exit-button' onClick={handleExitButtonClick}></img>
+            <div className="image-area">
+              <div className="exit-button-area">
+                <img src={exitButton} className='exit-button' onClick={handleExitButtonClick}></img>
+              </div>
             <div className="image-uploader">
             {image && <img src={image} alt="Uploaded" className="uploaded-image"/>}
               <label htmlFor="file-input">
                 <img src={uploadButton} alt="Upload" className='upload-button'/>
               </label>
               <input id="file-input" type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
+            </div>
             </div>
             <h2 className='form-title'>Adicionar Usuário</h2>
             <div id="myBtnContainer">

@@ -12,9 +12,10 @@ import './style.css'
 import { LeaderService } from '../../services/leader_service'
 import { SupervisorService } from '../../services/supervisor_service'
 import { FetchAllSupervisors } from '../../use_cases/supervisors/FetchAll'
+import SignUpWindow from '../SignUpWindow';
 
 function GrayRectBackground() {
-
+    const [showWindow, setShowWindow] = useState(false);
     const [foundOperators, setFoundOperators] = useState<(string | undefined)[][]>([]);
     const [allOperators, setAllOperators] = useState(foundOperators);
 
@@ -22,6 +23,10 @@ function GrayRectBackground() {
         event.preventDefault();
         window.location.reload();
     }
+
+    const handleWindowClose = () => {
+      setShowWindow(false);
+    };
 
     const handleFilter = (searchTerm: string) => {
         if (searchTerm === '') {
@@ -105,7 +110,6 @@ function GrayRectBackground() {
         getUsers();
       }, []);
 
-
     
     return (
         <div>
@@ -114,21 +118,27 @@ function GrayRectBackground() {
             <div className="search-bar-area">
             <SearchBar onSearch={handleFilter}></SearchBar>
             </div>
+    
             <div className="refresh-icon-and-button">
             <div>
-            <GrRefresh className='refresh-icon'></GrRefresh>
+            <GrRefresh className='refresh-icon' onClick={handleRefreshClick}></GrRefresh>
             </div>
             <div className="button-to-add">
-            <AddUserButton text="Adicionar Usuário" onClick={undefined}></AddUserButton>
+            <AddUserButton text="Adicionar Usuário" onClick={() => setShowWindow(true)}></AddUserButton>
             </div>
             </div>
             </div>
             <div className="list-and-header">
-                <HeaderRectangle></HeaderRectangle>
+                <HeaderRectangle hideCenterTitles={showWindow}></HeaderRectangle>
                 <VerticalList links={foundOperators}></VerticalList>
             </div>
          </div>
+         <div className="signup-window-area">
+            {showWindow && <SignUpWindow onWindowClose={handleWindowClose} />}
+            </div>
        </div>
+       
+       
     )
 }
 

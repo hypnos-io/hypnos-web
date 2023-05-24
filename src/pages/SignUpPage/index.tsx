@@ -11,33 +11,11 @@ import { LeaderService } from '../../services/leader_service'
 import { SupervisorService } from '../../services/supervisor_service'
 import { FetchAllSupervisors } from '../../use_cases/supervisors/FetchAll'
 
+
 const SignUpPage: React.FC = () => {
-  const [showWindow, setShowWindow] = useState(false);
   const [blurBackground, setBlurBackground] = useState(false);
   const [foundOperators, setFoundOperators] = useState<(string | undefined)[][]>([]);
   const [allOperators, setAllOperators] = useState(foundOperators);
-
-  const handleFilter = (searchTerm: string) => {
-    if (searchTerm === '') {
-      setFoundOperators(allOperators);
-      return;
-    }
-
-    const filteredOperators = allOperators.filter((operator) =>
-      operator[0]?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFoundOperators(filteredOperators);
-  };
-
-  const handleAddUserClick = () => {
-    setShowWindow(true);
-    setBlurBackground(true);
-  };
-
-  const handleWindowClose = () => {
-    setShowWindow(false);
-    setBlurBackground(false);
-  };
 
   useEffect(() => {
     async function getUsers() {
@@ -51,12 +29,12 @@ const SignUpPage: React.FC = () => {
           case 0:
             roleString = 'Operário';
             break;
-          case 1:
-            roleString = 'Gerente';
-            break;
-          case 2:
-            roleString = 'Líder';
-            break;
+            case 1:
+              roleString = 'Gerente';
+              break;
+            case 2:
+              roleString = 'Líder';
+              break;
           default:
             roleString = 'Operário';
         }
@@ -69,12 +47,12 @@ const SignUpPage: React.FC = () => {
           case 0:
             roleString = 'Operário';
             break;
-          case 1:
-            roleString = 'Gerente';
-            break;
-          case 2:
-            roleString = 'Líder';
-            break;
+            case 1:
+              roleString = 'Gerente';
+              break;
+            case 2:
+              roleString = 'Líder';
+              break;
           default:
             roleString = 'Operário';
         }
@@ -87,12 +65,12 @@ const SignUpPage: React.FC = () => {
           case 0:
             roleString = 'Operário';
             break;
-          case 1:
-            roleString = 'Gerente';
-            break;
-          case 2:
-            roleString = 'Líder';
-            break;
+            case 1:
+              roleString = 'Gerente';
+              break;
+            case 2:
+              roleString = 'Líder';
+              break;
           default:
             roleString = 'Operário';
         }
@@ -123,7 +101,7 @@ const SignUpPage: React.FC = () => {
         <GrayRectBackground></GrayRectBackground>
         </div>
       </div>
-      {showWindow && <SignUpWindow onWindowClose={handleWindowClose} />}
+      
     </div>
   );
 };
