@@ -1,11 +1,11 @@
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
+.generic-table table,
+.generic-table caption,
+.generic-table tbody,
+.generic-table tfoot,
+.generic-table thead,
+.generic-table tr,
+.generic-table th,
+.generic-table td {
   margin: 0;
   padding: 0;
   border: 0;
