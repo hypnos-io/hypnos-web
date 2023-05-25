@@ -44,7 +44,7 @@
   align-items: start;
   justify-content: center;
   margin-right: 6.9%;
-  position: fixed;
+  position: absolute;
 }
 
 .enrollment-text {
