@@ -1,11 +1,11 @@
-.container .content .cards {
+.workstation-status .content .cards {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
 
-.container .content .cards .card {
+.workstation-status .content .cards .card {
   --badge-color: #bfc0c3;
   flex-wrap: wrap;
   border-radius: 6px;
@@ -19,19 +19,19 @@
   position: relative;
 }
 
-.container .content .cards .card.off {
+.workstation-status .content .cards .card.off {
   --badge-color: #bfc0c3;
 }
 
-.container .content .cards .card.alert {
+.workstation-status .content .cards .card.alert {
   --badge-color: #f9b74b;
 }
 
-.container .content .cards .card.critical {
+.workstation-status .content .cards .card.critical {
   --badge-color: #f86464;
 }
 
-.container .content .cards .card::before {
+.workstation-status .content .cards .card::before {
   position: absolute;
   content: '';
   height: 100%;
@@ -42,24 +42,24 @@
   background-color: var(--badge-color);
 }
 
-.container .content .cards .card .description {
+.workstation-status .content .cards .card .description {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
 
-.container .content .notifications .cards .card {
+.workstation-status .content .notifications .cards .card {
   width: 100%;
 }
 
-.container .content .cards .card .profile {
+.workstation-status .content .cards .card .profile {
   object-fit: cover;
   border-radius: 50%;
   width: 62px;
   height: 62px;
 }
 
-.container .content .cards .card.none {
+.workstation-status .content .cards .card.none {
   opacity: 0.5;
 }

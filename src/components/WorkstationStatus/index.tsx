@@ -123,19 +123,17 @@ export const WorkstationStatus: React.FC = () => {
 
   if (!workstations) {
     return (
-      <div className="container">
+      <div className="workstation-status">
         <Title title="Detecção de Fadiga nos Postos de Trabalho" live={false} />
         <main className="content">
           <header className="header">
             <label className="title">Visualização</label>
             <GridViewIcon
-              className="button"
               size={20}
               onClick={toggleViewMode}
               opacity={viewType === 'grid' ? 1 : 0.5}
             />
             <ListViewIcon
-              className="button"
               size={20}
               onClick={toggleViewMode}
               opacity={viewType === 'list' ? 1 : 0.5}
@@ -164,19 +162,17 @@ export const WorkstationStatus: React.FC = () => {
   }
 
   return (
-    <div className="container">
+    <div className="workstation-status">
       <Title title="Detecção de Fadiga nos Postos de Trabalho" live />
       <main className="content">
         <header className="header">
           <label className="title">Visualização</label>
           <GridViewIcon
-            className="button"
             size={20}
             onClick={toggleViewMode}
             opacity={viewType === 'grid' ? 1 : 0.5}
           />
           <ListViewIcon
-            className="button"
             size={20}
             onClick={toggleViewMode}
             opacity={viewType === 'list' ? 1 : 0.5}
