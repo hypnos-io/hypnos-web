@@ -12,13 +12,15 @@ function SearchBar({onSearch}) {
 
   return (
     <div className="generic-search-bar">
+      <div className="icon-space">
+      <img className="search-icon" src={searchIcon}></img>
+      </div>
       <input
         type="text"
         placeholder="Buscar"
         value={query}
         onChange={handleInputChange}
       />
-      <img className="search-icon" src={searchIcon}></img>
     </div>
   )
 }

@@ -1,10 +1,44 @@
 .rectangle {
+    display: flex;
     width: 1100px;
     height: 72px;
-    top: 220px;
-    left: 503px;
-    position: absolute;
     background-color: #141533;
     border-radius: 14px 14px 0 0;
+    align-items: center;
+    justify-content: space-around;
   }
+
+  .column-title-name {
+    text-align: left;
+    font: normal normal 600 24px/29px Open Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    width: 20%;
+}
+
+.column-title-enrollment {
+    text-align: left;
+    font: normal normal 600 24px/29px Open Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    
+}
+
+.column-title-permissions {
+    text-align: left;
+    font: normal normal 600 24px/29px Open Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.column-title-actions {
+    text-align: left;
+    font: normal normal 600 24px/29px Open Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
   
