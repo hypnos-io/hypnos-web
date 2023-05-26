@@ -33,7 +33,7 @@ export const Webcam: React.FC<Props> = ({
   const videoRef = useRef<HTMLVideoElement>(null)
   let images: string[] = []
   const workstationImages = new SendWorkstationImages()
-  let interval: number
+  const [interval, setIntervalValue] = useState<number>()
 
   useEffect(() => {
     async function openCamera() {
@@ -56,7 +56,8 @@ export const Webcam: React.FC<Props> = ({
   useEffect(() => {
     if (interval) clearInterval(interval)
     if (sendWebcamStatus && !!workstationAssociated) {
-      interval = setInterval(sendImage, 1000 / FPS)
+      const interval = setInterval(sendImage, 1000 / FPS)
+      setIntervalValue(interval)
     }
   }, [sendWebcamStatus])
 
