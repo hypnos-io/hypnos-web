@@ -1,7 +1,4 @@
 .signup-window {
-  position: absolute;
-  top: 430px;
-  left: 1050px;
   transform: translate(-50%, -50%);
   width: 525px;
   height: 593px;
@@ -16,12 +13,11 @@
 }
 
 .signup-window .white-half {
-  width: 100%;
-  height: 47%;
-  border-radius: 0px 0px 10px 10px;
-  background-color: #FFFFFF;
-  position: absolute;
-  top: 314.5px;
+  width: 108.422%;
+  height: 55%;
+  border-radius: 35px 10px 0px 0px;
+  background-color: #141533;
+  margin-top: -4.2%;
 }
 
 .form-input {
@@ -155,16 +151,18 @@
 .uploaded-image {
   position: fixed;
   left: 0px;
-  height: 345px;
-  width: 525px;
-  bottom: 277.3px;
-  border-radius: 35px 10px 0px 0px;
+  width: 55%;
+  height: 40%;
+  bottom: 320px;
+  margin-left: 23%;
+  border-radius: 15px;
+  object-fit: cover;
 }
 
 .exit-button {
   position: fixed;
   cursor: pointer;
-  bottom: 565px;
+  bottom: 545px;
   left: 470px;
   z-index: 2;
   height: 35px;

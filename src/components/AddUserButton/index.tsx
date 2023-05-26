@@ -5,8 +5,8 @@ import './style.css';
 function AddUserButton({ text, onClick }) {
   return (
     <button className="add-user-button" onClick={onClick}>
-      <span>{text}</span>
       <img className="user-plus-icon" src={userPlusIcon}></img>
+      <span>{text}</span>
     </button>
   );
 }
