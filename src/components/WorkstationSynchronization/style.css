@@ -1,0 +1,56 @@
+.workstation__synchronization__page__container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.workstation__synchronization__container {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 30px;
+    height: 525px;
+    width: 1000px;
+    padding: 20px;
+    padding-right: 40px;
+}
+
+.employees__synchronization__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 325px;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.workstation__synchronization__container .buttons__container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.workstation__synchronization__container .buttons__container .cancel__button {
+    background-color: #ffffff;
+    cursor: pointer;
+    height: 35px;
+    width: 90px;
+    border-color: #818181;
+    color: #818181;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.workstation__synchronization__container .buttons__container .continue__button {
+    background-color: #5522D3;
+    height: 35px;
+    width: 110px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+}
