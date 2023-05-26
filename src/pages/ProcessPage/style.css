@@ -1,7 +1,15 @@
 .processPage {
-    display: flex;
+  display: flex;
 }
 
 .adding__job {
-    background-color: #F7F8FC;
+  background-color: #f7f8fc;
+}
+
+.job-step-2 {
+  display: flex;
+  flex-direction: column;
+  flex: 0.76;
+  gap: 12px;
+  margin: auto;
 }

@@ -1,22 +1,22 @@
-.container .header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.container .header .title {
+.header .title {
   color: #191818;
   font-size: 36px/28px;
   font-weight: bold;
 }
 
-.container .header .status {
+.header .status {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.container .header .status .live {
+.header .status .live {
   font-size: 24px/33px;
   font-weight: bold;
   display: flex;
@@ -24,7 +24,7 @@
   gap: 4px;
 }
 
-.container .header .status .todayis {
+.header .status .todayis {
   font-size: 16px/2px;
   font-style: italic;
 }

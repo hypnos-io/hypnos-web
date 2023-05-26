@@ -1,14 +1,13 @@
 import React, {ChangeEvent, useEffect, useRef, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import {Socket} from 'socket.io-client'
 import {Camera} from '../../entities/camera'
 import {Workstation} from '../../entities/workstation'
-import { SendWorkstationImages } from '../../use_cases/websocket/SendImages'
-import { ConnectSocket } from '../../use_cases/websocket/Connect'
-import {useNavigate} from 'react-router-dom'
 import {FPS} from '../../services/websocket/fatigue'
 import {WorkstationService} from '../../services/workstation_service'
+import {SendWorkstationImages} from '../../use_cases/websocket/SendImages'
 import {Update} from '../../use_cases/workstation/Update'
 import './styles.css'
-import { Socket } from 'socket.io-client'
 
 interface Props {
   camera: Camera
@@ -33,7 +32,8 @@ export const Webcam: React.FC<Props> = ({
   )
   const videoRef = useRef<HTMLVideoElement>(null)
   let images: string[] = []
-  const workstationImages = new SendWorkstationImages();
+  const workstationImages = new SendWorkstationImages()
+  let interval: number
 
   useEffect(() => {
     async function openCamera() {
@@ -50,13 +50,13 @@ export const Webcam: React.FC<Props> = ({
   }, [videoRef])
 
   useEffect(() => {
-    console.log(workstationAssociated)
     setWorkstationName(workstationAssociated?.value)
   }, [workstationAssociated])
 
   useEffect(() => {
+    if (interval) clearInterval(interval)
     if (sendWebcamStatus && !!workstationAssociated) {
-      setInterval(sendImage, 1000 / FPS)
+      interval = setInterval(sendImage, 1000 / FPS)
     }
   }, [sendWebcamStatus])
 
@@ -66,9 +66,12 @@ export const Webcam: React.FC<Props> = ({
 
     images.push(buffer)
     if (images.length >= 10) {
-      console.log(`Enviando imagens de câmera ${camera.name}`)
       if (workstationAssociated !== undefined && socket !== undefined)
-        await workstationImages.sendImagesWithConnection(socket, images, workstationAssociated);
+        await workstationImages.sendImagesWithConnection(
+          socket,
+          images,
+          workstationAssociated
+        )
       images = []
     }
 

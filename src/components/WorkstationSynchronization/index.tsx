@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react'
 
-import './style.css';
+import './style.css'
 
 import { Process } from "../../entities/process";
 import JobHeader from "../JobForms/JobHeader";
@@ -16,9 +16,9 @@ import { Sector } from '../../entities/sector';
 import { Update } from '../../use_cases/workstation/Update';
 
 interface WorkstationSynchronizationProps {
-    process: Process,
-    setCurrentPage: (step: number) => void,
-    jobScreenStep: number
+  process: Process
+  setCurrentPage: (step: number) => void
+  jobScreenStep: number
 }
 
 interface LinkedEmployee {
@@ -103,7 +103,11 @@ function WorkstationSynchronization({ process, setCurrentPage, jobScreenStep }: 
 
     return (
         <div className="workstation__synchronization__page__container">
-            <JobHeader process={process} setCurrentPage={setCurrentPage} jobScreenStep={jobScreenStep}></JobHeader>
+            <JobHeader
+                process={process}
+                setCurrentPage={setCurrentPage}
+                jobScreenStep={jobScreenStep}
+            ></JobHeader>
             <div className="workstation__synchronization__container">
                 <WorkstationSynchronizationHeader></WorkstationSynchronizationHeader>
 
@@ -111,12 +115,17 @@ function WorkstationSynchronization({ process, setCurrentPage, jobScreenStep }: 
                     {linkedEmployees.map(renderCards)}
                 </div>
                 <div className="buttons__container">
-                    <button className="cancel__button">Voltar</button>
-                    <button className="continue__button">Prosseguir</button>
+                    <button
+                        onClick={() => setCurrentPage(2)}
+                        className="button secondary cancel__button"
+                    >
+                        Voltar
+                    </button>
+                    <button className="button continue__button">Prosseguir</button>
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default WorkstationSynchronization;

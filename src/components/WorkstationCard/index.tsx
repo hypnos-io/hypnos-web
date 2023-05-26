@@ -10,6 +10,10 @@ interface Props {
   status: BadgeStatus
 }
 
+import {handleImageError} from '../../common/handle_image_error'
+
+import DefaultImage from '../../components/assets/img/unknown person.jpg'
+
 export const WorkstationCard: React.FC<Props> = ({workstation, status}) => {
   const {employee} = workstation
 
@@ -24,14 +28,15 @@ export const WorkstationCard: React.FC<Props> = ({workstation, status}) => {
   return (
     <li className={`card ${!hasEmployee ? 'none' : ''} ${status}`}>
       <img
-        src="https://images.unsplash.com/photo-1592948078640-39656341be54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+        src={employee?.imageURL || DefaultImage}
+        onError={(event) => handleImageError(event, DefaultImage)}
         alt="profile"
         className="profile"
       />
       <div className="description">
         <label className="employee-name">{fullName}</label>
         <label className="employee-registration">{registration}</label>
-        <label className="workstation-value">Posto {workstation.value}</label>
+        <label className="workstation-value">{workstation.value}</label>
       </div>
     </li>
   )
