@@ -119,7 +119,7 @@ function Sidebar() {
       <div className="Sidebar__content">
         <div className="Sidebar__header">
           <img
-            src={user?.imageURL}
+            src={user?.imageURL || DefaultImage}
             onError={(event) => handleImageError(event, DefaultImage)}
           />
           <div className="Sidebar__greeting__container">

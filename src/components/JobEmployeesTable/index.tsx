@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 
 import {handleImageError} from '../../common/handle_image_error'
 import {Employee} from '../../entities/employee'
@@ -9,6 +9,7 @@ import {GenericTable} from '../GenericTable'
 import TableCell from '../GenericTable/TableCell'
 import './styles.css'
 
+import {JobContext} from '../../contexts/JobFlow'
 import DefaultImage from '../assets/img/unknown person.jpg'
 
 interface Props {
@@ -16,12 +17,12 @@ interface Props {
 }
 
 export const JobEmployeesTable: React.FC<Props> = ({setCurrentPage}) => {
+  const {job, setEmployees: setEmployeesContext} = useContext(JobContext)
   const [employees, setEmployees] = useState<Employee[]>([])
   const [selectedEmployees, setSelectedEmployees] = useState<Employee[]>([])
 
-  const {employeeSize, sector}: {employeeSize: number; sector: Sector} = {
-    employeeSize: 40,
-    sector: {value: 'Setor de exemplo'},
+  const {sector}: {sector?: Sector} = {
+    sector: job?.sector,
   }
 
   useEffect(() => {
@@ -69,24 +70,20 @@ export const JobEmployeesTable: React.FC<Props> = ({setCurrentPage}) => {
           </div>
         </TableCell>
         <TableCell>{employee.registration}</TableCell>
-        <TableCell>{sector.value}</TableCell>
+        <TableCell>{sector?.value}</TableCell>
       </>
     )
   }
 
   function handleNextStep() {
-    console.log(selectedEmployees)
+    setEmployeesContext(selectedEmployees)
+    setCurrentPage(3)
   }
 
   return (
     <div className="job-employee-table">
       <header className="header">
         <h1 className="title">Adicionar Operários</h1>
-        {/* <button className="button add-batch">
-          <UserAddIcon size={20} />
-          Adicionar em lote {employeeSize}
-          {employeeSize === 1 ? ' operário' : ' operários'}
-        </button> */}
       </header>
 
       <GenericTable

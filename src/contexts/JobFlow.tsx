@@ -1,41 +1,39 @@
 import React, {useState} from 'react'
+import {Employee} from '../entities/employee'
 import {Job} from '../entities/job'
 
 interface JobData {
   job?: Job
+  employees: Employee[]
+  setEmployees: (employees: Employee[]) => void
   setJob: (job: Job) => void
 }
 
 interface Props {
-  children: any
+  children: React.ReactNode
 }
 
 export const JobContext = React.createContext<JobData>({
-  job: {
-    durationInHours: 0,
-    employeeSize: 0,
-    endAt: new Date(),
-    startAt: new Date(),
-    epis: [],
-    name: '',
-  },
   setJob: () => {
+    return
+  },
+  employees: [],
+  setEmployees: () => {
     return
   },
 })
 
 export const JobProvider: React.FC<Props> = ({children}) => {
   const [job, setJob] = useState<Job>()
-
-  function handleSetjob(job: Job) {
-    setJob(job)
-  }
+  const [employees, setEmployees] = useState<Employee[]>([])
 
   return (
     <JobContext.Provider
       value={{
-        setJob: handleSetjob,
         job,
+        employees,
+        setJob,
+        setEmployees,
       }}
     >
       {children}

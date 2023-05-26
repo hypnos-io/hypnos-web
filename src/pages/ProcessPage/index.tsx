@@ -6,6 +6,7 @@ import {JobEmployeesTable} from '../../components/JobEmployeesTable'
 import JobForms from '../../components/JobForms'
 import JobHeader from '../../components/JobForms/JobHeader'
 import WorkstationSynchronization from '../../components/WorkstationSynchronization'
+import {JobProvider} from '../../contexts/JobFlow'
 import {Process} from '../../entities/process'
 import './style.css'
 
@@ -56,10 +57,12 @@ const ProcessPage: React.FC = () => {
   }, [currentPage])
 
   return (
-    <div className={isAddingJob ? 'processPage adding__job' : 'processPage'}>
-      <Sidebar></Sidebar>
-      {renderPage()}
-    </div>
+    <JobProvider>
+      <div className={isAddingJob ? 'processPage adding__job' : 'processPage'}>
+        <Sidebar></Sidebar>
+        {renderPage()}
+      </div>
+    </JobProvider>
   )
 }
 

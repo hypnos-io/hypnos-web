@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useContext, useEffect, useState} from 'react'
 
 import './style.css'
 
@@ -9,6 +9,7 @@ import glovesIcon from '../../assets/img/Job/JobForm/Grupo 325@2x.png'
 import helmetIcon from '../../assets/img/Job/JobForm/Grupo 326@2x.png'
 import bootIcon from '../../assets/img/Job/JobForm/Grupo 366@2x.png'
 
+import {JobContext} from '../../../contexts/JobFlow'
 import {Job} from '../../../entities/job'
 import {Process} from '../../../entities/process'
 import {Sector} from '../../../entities/sector'
@@ -22,6 +23,7 @@ interface JobFormProps {
 }
 
 function JobForm({process, setCurrentPage}: JobFormProps) {
+  const {setJob: setJobContext} = useContext(JobContext)
   const [sectors, setSectors] = useState<Sector[]>([])
   const [job, setJob] = useState<Job>({
     name: '',
@@ -106,8 +108,8 @@ function JobForm({process, setCurrentPage}: JobFormProps) {
   }
 
   function handleContinueButton() {
-    console.log(job)
-    setCurrentPage(3)
+    setJobContext(job)
+    setCurrentPage(2)
   }
 
   useEffect(() => {
@@ -262,13 +264,13 @@ function JobForm({process, setCurrentPage}: JobFormProps) {
 
       <div className="job__form__buttons__container">
         <button
-          className="job__form__cancel__button"
+          className="button secondary job__form__cancel__button"
           onClick={() => setCurrentPage(0)}
         >
           Cancelar
         </button>
         <button
-          className="job__form__continue__button"
+          className="button job__form__continue__button"
           onClick={handleContinueButton}
         >
           Prosseguir

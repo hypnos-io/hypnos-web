@@ -21,12 +21,13 @@ input {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  font-size: 24px/28px;
+  font-size: 16px;
   font-weight: 600;
 }
 
 .button:hover {
   background-color: #1649b7;
+  cursor: pointer;
 }
 
 .button.secondary {

@@ -50,7 +50,6 @@ export const Webcam: React.FC<Props> = ({
   }, [videoRef])
 
   useEffect(() => {
-    console.log(workstationAssociated)
     setWorkstationName(workstationAssociated?.value)
   }, [workstationAssociated])
 
@@ -67,7 +66,6 @@ export const Webcam: React.FC<Props> = ({
 
     images.push(buffer)
     if (images.length >= 10) {
-      console.log(`Enviando imagens de câmera ${camera.name}`)
       if (workstationAssociated !== undefined && socket !== undefined)
         await workstationImages.sendImagesWithConnection(
           socket,
