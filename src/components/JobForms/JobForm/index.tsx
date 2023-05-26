@@ -99,6 +99,7 @@ function JobForm({ process, setCurrentPage }: JobFormProps) {
 
     function handleContinueButton() {
         console.log(job);
+        setCurrentPage(3);
     }
 
     useEffect(() => {

@@ -5,6 +5,7 @@ import ProcessList from '../../components/ProcessList'
 import './style.css'
 import { Process } from '../../entities/process'
 import JobForms from '../../components/JobForms'
+import WorkstationSynchronization from '../../components/WorkstationSynchronization'
 
 const ProcessPage: React.FC = () => {
   const [isAddingJob, setIsAddingJob] = useState(false);
@@ -26,6 +27,11 @@ const ProcessPage: React.FC = () => {
     //      <Exemplo setCurrentPage={setCurrentPage}></Exemplo>
     //   );
     // }
+    else if (currentPage === 3) {
+      return (
+        <WorkstationSynchronization process={currentProcess!} setCurrentPage={setCurrentPage} jobScreenStep={3}></WorkstationSynchronization>
+      );
+    }
   }
 
   useEffect(() => {
