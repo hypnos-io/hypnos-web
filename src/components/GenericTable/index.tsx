@@ -1,6 +1,5 @@
 import React from 'react'
 
-import TableCell from './TableCell'
 import TableRow from './TableRow'
 import './styles.css'
 
@@ -38,11 +37,11 @@ export const GenericTable: React.FC<Props> = ({
       )}
       <tbody className="table-body">
         {data.length === 0 && (
-          <TableRow>
-            <TableCell>
+          <tr>
+            <td>
               <label>Não há itens a serem listados.</label>
-            </TableCell>
-          </TableRow>
+            </td>
+          </tr>
         )}
         {data.map(renderRow)}
       </tbody>
