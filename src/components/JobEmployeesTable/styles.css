@@ -1,0 +1,64 @@
+.job-employee-table {
+  padding: 32px;
+  border-radius: 22px;
+  min-height: 500px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.job-employee-table .header {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.job-employee-table .actions {
+  margin-top: auto;
+  align-self: flex-end;
+  display: flex;
+  gap: 16px;
+}
+
+.job-employee-table img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.job-employee-table .generic-table .table-body .table-row {
+  display: flex;
+}
+
+.job-employee-table
+  .generic-table
+  .table-body
+  .table-row
+  .table-cell:nth-child(1) {
+  flex: 0.4;
+}
+
+.job-employee-table
+  .generic-table
+  .table-body
+  .table-row
+  .table-cell:nth-child(2) {
+  width: 20%;
+  justify-content: start;
+}
+
+.job-employee-table .generic-table .user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.job-employee-table
+  .generic-table
+  .table-row:has(input[type='checkbox']:checked) {
+  background-color: #e6e5f3;
+}

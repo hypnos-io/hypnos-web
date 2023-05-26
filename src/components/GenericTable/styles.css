@@ -20,6 +20,8 @@
   flex-direction: column;
   border-radius: 16px;
   background-color: #ffffff;
+  border: 1px solid #e3e3e3;
+  overflow: hidden;
 }
 
 .generic-table thead {
@@ -55,6 +57,10 @@
 .generic-table tbody tr {
   display: flex;
   background-color: #fff;
+}
+
+.generic-table tbody .table-row:hover {
+  background-color: #e6e5f3;
 }
 
 .generic-table tbody tr td {
