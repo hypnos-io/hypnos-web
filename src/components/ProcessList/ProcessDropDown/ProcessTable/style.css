@@ -1,48 +1,56 @@
 .process__table {
-    border-collapse: collapse;
-    display: table;
-    width: 100%;
+  border-collapse: collapse;
+  display: table;
+  width: 100%;
 }
 
 .table__row:nth-child(odd) {
-    background-color: #E3E3E3;
+  background-color: #e3e3e3;
 }
 
 .table__row:nth-child(even) {
-    background-color: white;
+  background-color: white;
 }
 
 .table__header {
-    background-color: #5522D3;
-    color: white;
-    height: 50px;
+  background-color: #5522d3;
+  color: white;
+  height: 50px;
 }
 
 .table__row {
-    text-align: center;
+  text-align: center;
 }
 
 .table__row td {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.table__row td:nth-child(1) {
+  padding: 16px;
+}
+
+.table__row td:last-child {
+  padding: 16px;
 }
 
 .table__row img {
-    width: 15px;
-    cursor: pointer;
+  width: 15px;
+  cursor: pointer;
 }
 
 .add__task__container {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 0 0 15px 15px;
-    height: 50px;
-    gap: 10px;
-    padding-left: 10px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 0 0 15px 15px;
+  height: 50px;
+  gap: 10px;
+  padding-left: 10px;
+  cursor: pointer;
 }
 
 .add__task__container img {
-    width: 30px;
+  width: 30px;
 }

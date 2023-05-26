@@ -1,18 +1,25 @@
-import {api} from '../api/axios';
-import {Job} from '../entities/job';
-import { Process } from '../entities/process';
+import {api} from '../api/axios'
+import {Job} from '../entities/job'
+import {Process} from '../entities/process'
 
 //            /processes/:id/jobs
-const PATH = '/processes';
+const PATH = '/processes'
 
 export class JobService {
   async fetchAll(process: Process): Promise<Job[]> {
-    const {data} = await api.get<Job[]>(`${PATH}/${process._id}/jobs`);
-    return data;
+    const {data} = await api.get<Job[]>(`${PATH}/${process._id}/jobs`)
+    return data
   }
 
   async delete(process: Process, job: Job) {
-    const {data} = await api.delete<Job>(`${PATH}/${process._id}/jobs/${job._id}`);
-    return data;
+    const {data} = await api.delete<Job>(
+      `${PATH}/${process._id}/jobs/${job._id}`
+    )
+    return data
+  }
+
+  async create(processId: string, newJob: Job) {
+    const {data} = await api.post<Job>(`${PATH}/${processId}/jobs`, newJob)
+    return data
   }
 }
