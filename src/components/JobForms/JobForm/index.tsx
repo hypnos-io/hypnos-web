@@ -107,7 +107,7 @@ function JobForm({process, setCurrentPage}: JobFormProps) {
 
   function handleContinueButton() {
     console.log(job)
-    setCurrentPage(2)
+    setCurrentPage(3)
   }
 
   useEffect(() => {

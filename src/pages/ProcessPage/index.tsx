@@ -5,6 +5,7 @@ import Sidebar from '../../components/Sidebar'
 import {JobEmployeesTable} from '../../components/JobEmployeesTable'
 import JobForms from '../../components/JobForms'
 import JobHeader from '../../components/JobForms/JobHeader'
+import WorkstationSynchronization from '../../components/WorkstationSynchronization'
 import {Process} from '../../entities/process'
 import './style.css'
 
@@ -38,6 +39,14 @@ const ProcessPage: React.FC = () => {
           />
           <JobEmployeesTable setCurrentPage={setCurrentPage} />
         </div>
+      )
+    } else if (currentPage === 3) {
+      return (
+        <WorkstationSynchronization
+          process={currentProcess!}
+          setCurrentPage={setCurrentPage}
+          jobScreenStep={3}
+        ></WorkstationSynchronization>
       )
     }
   }

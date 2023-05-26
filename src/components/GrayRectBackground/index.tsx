@@ -118,7 +118,6 @@ function GrayRectBackground() {
             <div className="search-bar-area">
             <SearchBar onSearch={handleFilter}></SearchBar>
             </div>
-    
             <div className="refresh-icon-and-button">
             <div>
             <GrRefresh className='refresh-icon' onClick={handleRefreshClick}></GrRefresh>
