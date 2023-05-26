@@ -2,12 +2,18 @@ import './styles.css'
 
 import arrowsIcon from '../../assets/img/WorkstationSynchronization/Icon material-compare-arrows@2x.png';
 import { Employee } from '../../../entities/employee';
+import { Workstation } from '../../../entities/workstation';
 
-interface EmployeeSynchronizationCardProps {
-    employee: Employee
+interface LinkedEmployee {
+    employee: Employee,
+    workstation: Workstation | null
 }
 
-function EmployeeSynchronizationCard({ employee }: EmployeeSynchronizationCardProps ) {
+interface EmployeeSynchronizationCardProps {
+    linkedEmployee: LinkedEmployee 
+}
+
+function EmployeeSynchronizationCard({ linkedEmployee }: EmployeeSynchronizationCardProps ) {
     return (
         <div className="employee__synchro__card">
             <div className="employee__synchro__card__content">
@@ -18,9 +24,9 @@ function EmployeeSynchronizationCard({ employee }: EmployeeSynchronizationCardPr
                     className="profile"
                 />
                 <div className="description">
-                    <label className="employee-name">{employee.name}</label>
-                    <label className="employee-registration">Teste</label>
-                    <label className="workstation-value"><strong>Posto 123</strong></label>
+                    <label className="employee-name">{linkedEmployee.employee.name}</label>
+                    <label className="employee-registration">{linkedEmployee.employee.registration}</label>
+                    <label className="workstation-value"><strong>{linkedEmployee.workstation ? linkedEmployee.workstation.value : '-'}</strong></label>
                 </div>
             </div>
 
